@@ -55,7 +55,7 @@ def run_nw(dbseqs, repseqs):
             with open('out.needle', "r") as fhIn:
                 for line in fhIn:
                     if line.startswith('# Score:'):
-                        print(f'{seqa[1:]},{seqb[1:]},{line.rstrip()[9:]}')
+                        print(seqa[1:]+','+seqb[1:]+','+line.rstrip()[9:])
             os.remove(f'out.needle')
         exit()
 
