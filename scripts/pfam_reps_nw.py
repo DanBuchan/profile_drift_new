@@ -28,18 +28,18 @@ def execute_process(executable_args, stdout_location=None):
         fstdout.close()
 
 
-def run_nw(db_seqs, rep_seqs):
-    for seqa in rep_seqs.keys():
-        for seqb in db_seqs.keys():
+def run_nw(dbseqs, repseqs):
+    for seqa in repseqs.keys():
+        for seqb in dbseqs.keys():
             if seqa == seqb:
                 continue
             fhOut = open('tmpa.fa', "w")
             fhOut.write(f'{seqa}\n')
-            fhOut.write(f'{rep_seqs[seqa]}')
+            fhOut.write(f'{dbseqs[seqa]}')
             fhOut.close()
             fhOut = open('tmpb.fa', "w")
             fhOut.write(f'{seqb}\n')
-            fhOut.write(f'{rep_seqs[seqb]}')
+            fhOut.write(f'{repseqs[seqb]}')
             fhOut.close()
             nw_args = [
                '/home/dbuchan/EMBOSS-6.4.0/emboss/needle',
