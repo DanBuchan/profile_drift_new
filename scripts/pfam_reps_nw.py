@@ -30,13 +30,13 @@ def execute_process(executable_args, stdout_location=None):
 
 def run_nw(dbseqs, repseqs):
     for seqa in repseqs.keys():
+        fhOut = open('tmpa.fa', "w")
+        fhOut.write(seqa+'\n')
+        fhOut.write(repseqs[seqa])
+        fhOut.close()
         for seqb in dbseqs.keys():
             if seqa == seqb:
                 continue
-            fhOut = open('tmpa.fa', "w")
-            fhOut.write(seqa+'\n')
-            fhOut.write(repseqs[seqa])
-            fhOut.close()
             fhOut = open('tmpb.fa', "w")
             fhOut.write(seqb+'\n')
             fhOut.write(dbseqs[seqb])
@@ -50,13 +50,13 @@ def run_nw(dbseqs, repseqs):
                '-gapextend=0'
             ]
             execute_process(nw_args)
-            os.remove('tmpa.fa')
             os.remove('tmpb.fa')
             with open('out.needle', "r") as fhIn:
                 for line in fhIn:
                     if line.startswith('# Score:'):
                         print(seqa[1:]+','+seqb[1:]+','+line.rstrip()[9:])
             os.remove('out.needle')
+        os.remove('tmpa.fa')
         # exit()
 
 
