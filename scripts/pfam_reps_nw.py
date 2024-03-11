@@ -56,7 +56,7 @@ def run_nw(rep_seqs):
                     if line.startswith('# Score:'):
                         print(f'{seqa[1:]},{seqb[1:]},{line.rstrip()[9:]}')
             os.remove(f'out.needle')
-        # exit()
+        exit()
 
 
 reps_file = sys.argv[1]
