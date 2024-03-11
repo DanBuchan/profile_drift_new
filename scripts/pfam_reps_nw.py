@@ -34,12 +34,12 @@ def run_nw(dbseqs, repseqs):
             if seqa == seqb:
                 continue
             fhOut = open('tmpa.fa', "w")
-            fhOut.write(f'{seqa}\n')
-            fhOut.write(f'{dbseqs[seqa]}')
+            fhOut.write(seqa+'\n')
+            fhOut.write(dbseqs[seqa])
             fhOut.close()
             fhOut = open('tmpb.fa', "w")
-            fhOut.write(f'{seqb}\n')
-            fhOut.write(f'{repseqs[seqb]}')
+            fhOut.write(seqb+'\n')
+            fhOut.write(repseqs[seqb])
             fhOut.close()
             nw_args = [
                '/home/dbuchan/EMBOSS-6.4.0/emboss/needle',
