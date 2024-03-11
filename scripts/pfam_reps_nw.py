@@ -57,7 +57,7 @@ def run_nw(dbseqs, repseqs):
                     if line.startswith('# Score:'):
                         print(seqa[1:]+','+seqb[1:]+','+line.rstrip()[9:])
             os.remove('out.needle')
-        exit()
+        # exit()
 
 
 def read_fasta(file):
