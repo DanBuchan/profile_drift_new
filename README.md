@@ -20,11 +20,10 @@ e. Using RaxML build the distance matrix over all Pfam domains, using mafft and 
 
    This gives us an all-against-all evoltionary distance matrix but built on an MAFFT MSA that may not be meaningful
 
-f. Perform an all-against-all psiblast of the reps. Extract bits scores for a similarity matrix
-   Scale/Normalise to between 0 and one and invert for a distance matrix
-   Use Diamond to generate all the distances
-   ~/Applications/Diamond/diamond makedb --in ./pfam_consensus_reps_labelled.fa --db pfam_consensus_reps_labelled.diamon  
-      
+f. Perform an all-against-all Needleman and wunsch of the reps. Extract bits scores for a similarity matrix Scale/Normalise to between 0 and one and invert for a distance matrix
+   use pfam_reps_nw.py over our relabelled pfam_consensus_reps_labelled.fa
+   wrote a morcambe script run_pfam.sh to batch job this over a couple of days as it is A LOT of comparisons 20k x 20k
+
 
 g. Psiblast Consensus seq against pfam blast db
 h. record drift

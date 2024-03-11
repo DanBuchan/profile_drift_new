@@ -4,8 +4,9 @@ import os
 import csv
 
 # USAGE
-# python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps.fa
-#
+# python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps.fa ~/Data/pfam/1_pfam_consensus
+# Where [0] is the database to search
+# And [1] is a file of fasta seqs to match to the db
 
 def execute_process(executable_args, stdout_location=None):
     try:
@@ -27,9 +28,9 @@ def execute_process(executable_args, stdout_location=None):
         fstdout.close()
 
 
-def run_nw(rep_seqs):
+def run_nw(db_seqs, rep_seqs):
     for seqa in rep_seqs.keys():
-        for seqb in rep_seqs.keys():
+        for seqb in db_seqs.keys():
             if seqa == seqb:
                 continue
             fhOut = open('tmpa.fa', "w")
@@ -59,17 +60,21 @@ def run_nw(rep_seqs):
         exit()
 
 
-reps_file = sys.argv[1]
-rep_seqs = {}
-fasta_name = None
-seq = None
-with open(reps_file, "r") as fhIn:
-    for line in fhIn:
-        if line.startswith(">"):
-            if fasta_name:
-                rep_seqs[fasta_name] = seq
-            fasta_name = line.rstrip()
-            seq = ''
-        else:
-            seq = seq+line.rstrip()
-run_nw(rep_seqs)
+def read_fasta(file):
+    seqs = {}
+    fasta_name = None
+    seq = None
+    with open(file, "r") as fhIn:
+        for line in fhIn:
+            if line.startswith(">"):
+                if fasta_name:
+                    seqs[fasta_name] = seq
+                fasta_name = line.rstrip()
+                seq = ''
+            else:
+                seq = seq+line.rstrip()
+    return(seqs)
+
+db_seqs = read_fasta(sys.argv[1])
+rep_seqs = read_fasta(sys.argv[2])
+run_nw(db_seqs, rep_seqs)
