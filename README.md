@@ -18,7 +18,7 @@ PFAM RELEASE 36 @ 8 March 2024
 5. Using RaxML build the distance matrix over all Pfam domains, using mafft and raxml
    calculate_pfam_distances.py
 
-   This gives us an all-against-all evoltionary distance matrix but built on an MAFFT MSA that may not be meaningful
+   This gives us an all-against-all evolutionary distance matrix but built on an MAFFT MSA that may not be meaningful
 
 6. Perform an all-against-all Needleman and wunsch of the reps. Extract bits scores for a similarity matrix Scale/Normalise to between 0 and one and invert for a distance matrix
    use pfam_reps_nw.py over our relabelled pfam_consensus_reps_labelled.fa
@@ -34,9 +34,7 @@ c. Are the clusters meaningful?
 
 ## 2. Drift analysis
 
-1. Psiblast Consensus seq against pfam blast db
-2. Save number of hits for each family at each iteration
-3. Additionally save sequences at each iteration IF we detect drift and build an MSA
+1. Psiblast Consensus seq against pfam blast db, Save number of hits for each family at each iteration, Additionally save sequences at each iteration IF we detect drift and build an MSA
 
 ## 2b 
 
