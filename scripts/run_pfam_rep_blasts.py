@@ -108,8 +108,8 @@ def run_blasts(family, id, seq, blast_db):
     fhRep.write(f">{id}|{family}\n")
     fhRep.write(f"{seq}\n")
     fhRep.close()
-    # do_blast_iterations(id, blast_db, 4)
-    process_blast_results(id, seq, family, 4)
+    do_blast_iterations(id, blast_db, 20)
+    process_blast_results(id, seq, family, 20)
     os.remove(f'{id}.fa')
 
 def read_fasta(file):
