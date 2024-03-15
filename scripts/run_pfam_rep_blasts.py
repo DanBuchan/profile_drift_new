@@ -6,7 +6,7 @@ import re
 import glob
 from Bio.Blast import NCBIXML
 
-# python run_pfam_rep_blasts.py ~/Data/pfam/test.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+# python run_pfam_rep_blasts.py ~/Data/pfam/test.fa ~/Data/pfam/Pfam-A.full.uniprot.fa n
 
 def read_reps(dom_seqs):
     """
@@ -30,7 +30,8 @@ def read_reps(dom_seqs):
 
 def do_blast_iterations(id, blast_db, n):
     in_file = f'{id}.fa'
-    first_iteration_args = ['/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast',
+    #first_iteration_args = ['/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast',
+    first_iteration_args = ['/home/ucbcdwb/Applications/ncbi-blast-2.12.0+/bin/psiblast',
                             '-query',
                             in_file,
                             '-num_iterations',
@@ -49,7 +50,8 @@ def do_blast_iterations(id, blast_db, n):
     # print(" ".join(first_iteration_args))
     subprocess.call(first_iteration_args)
     for i in range(2, int(n)+1):
-        iteration_args = ['/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast',
+    #    iteration_args = ['/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast',
+        iteration_args = ['/home/ucbcdwb/Applications/ncbi-blast-2.12.0+/bin/psiblast',
                                 '-in_pssm',
                                 f'{id}_iteration{i-1}.pssm',
                                 '-num_iterations',
@@ -107,7 +109,8 @@ def align_seqs(seq_file, iterations):
         seqs = f"{seq_file}_iteration{i}_seqs.fa"
         msa = f"{seq_file}_iteration{i}_seqs.msa"
         mafft_args = [
-            '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
+        #    '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
+            '/home/ucbcdwb/Applications/mafft-linux64/mafft.bat',
             seqs,
         ]
         # print(" ".join(mafft_args))
