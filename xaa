@@ -1,0 +1,1000 @@
+   99  pip uninstall flash-attn
+  100  pip install flash-attn
+  101  python pytorch_dmp2e2e_pred.py 5pcy.fasta 
+  102  cd ~/virtualenvs/
+  103  ls
+  104  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-10.2/lib64/:/home/dbuchan/virtualenvs/dmpmetal/lib/python3.9/site-packages/nvidia/cudnn/lib/:/home/dbuchan/virtualenvs/dmpmetal/lib/python3.9/site-packages/nvidia/nccl/lib/:/home/dbuchan/virtualenvs/dmpmetal/lib/python3.9/site-packages/nvidia/cuda_runtime/lib/:/home/dbuchan/virtualenvs/dmpmetal/lib/python3.9/site-packages/nvidia/cuda_cupti/lib/:/home/dbuchan/virtualenvs/dmpmetal/lib/python3.9/site-packages/nvidia/cusparse/lib/:/home/dbuchan/virtualenvs/dmpmetal/lib/python3.9/site-packages/nvidia/cufft/lib/:/home/dbuchan/virtualenvs/dmpmetal//lib/python3.9/site-packages/nvidia/cublas/lib/"
+  105  cd -
+  106  python pytorch_dmp2e2e_pred.py 5pcy.fasta 
+  107  cd -
+  108  rm -rf dmpmetal/
+  109  mkvirtualenv dmpmetal
+  110  pip3 install torch --index-url https://download.pytorch.org/whl/cu118
+  111  pip install flash-attn --no-build-isolation
+  112  cd -
+  113  ls
+  114  rm -rf __pycache__/
+  115  ls
+  116  python pytorch_dmp2e2e_pred.py 5pcy.fasta 
+  117  pip install numpy
+  118  python pytorch_dmp2e2e_pred.py 5pcy.fasta 
+  119  ls
+  120  rm -rf __pycache__/
+  121  python pytorch_dmp2e2e_pred.py 5pcy.fasta 
+  122  which python
+  123  python --version
+  124  which torch
+  125  pip freeze
+  126  pip install torch==2.0.1 --index-url https://download.pytorch.org/whl/cu118
+  127  ssh bm2
+  128  ssh bm3
+  129  pip freeze
+  130  python pytorch_dmp2e2e_pred.py 5pcy.fasta 
+  131  python pytorch_dmp2e2e_pred.py -i 5pcy.fasta 
+  132  python pytorch_dmp2e2e_pred.py -i 5pcy.fasta -d cpu
+  133  more pytorch_dmp2e2e_pred.py 
+  134  python pytorch_dmp2e2e_pred.py -i 5pcy.fasta
+  135  cd ../psipred_website/
+  136  ls
+  137  git add .
+  138  git commit -m "some biod3 changes"
+  139  git push origin main
+  140  git pull
+  141  git push origin main
+  142  hostname
+  143  cd ../psipred_react/
+  144  git add .
+  145  git commit -m "some biod3 updates"
+  146  git pull
+  147  cd Code/ansible_production_config/
+  148  ls
+  149  more deploy_production.yml 
+  150  history | grep play
+  151  ansible-playbook -i production deploy_production.yml
+  152  ssh bioinfadmin
+  153  cd Code/ansible_production_config/
+  154  ls
+  155  ansible-playbook -i production deploy_production.yml
+  156  cd /var/run/
+  157  ls
+  158  ls -lah
+  159  cd postgresql/
+  160  ls
+  161  cd ../DMPmetal/
+  162  ls
+  163  workon analytics_automated
+  164  python pytorch_dmp2e2e_pred.py -i 5pcy.fasta
+  165  pip install einops
+  166  python pytorch_dmp2e2e_pred.py -i 5pcy.fasta
+  167  pip install flash_attn
+  168  python pytorch_dmp2e2e_pred.py -i 5pcy.fasta
+  169  ssh bm3
+  170  exit
+  171  ssh bm
+  172  ssh bm2
+  173  exit
+  174  workon analytics_automated
+  175  cd ~/Code/analytics_automated/
+  176  ./utility_scripts/spawn_dev_processes_dbuchan.sh 
+  177  cd ../Me
+  178  cd ../Merizo/
+  179  ls
+  180  git pull
+  181  workon analytics_automated
+  182  pyton predict.py --help
+  183  python predict.py --help
+  184  pip install rotary_embedding_torch
+  185  python predict.py --help
+  186  pip install natsort
+  187  python predict.py --help
+  188  pip install matplotlib
+  189  python predict.py --help
+  190  python predict.py -i examples/2xdqA.pdb --save_pdb --return_indices 
+  191  ls
+  192  ls examples/
+  193  mv examples/2xdqA.pdb ./
+  194  python predict.py -i 2xdqA.pdb --save_pdb --return_indices 
+  195  ls
+  196  more 2xdqA_merizo_v2.idx
+  197  ls
+  198  python predict.py -i 2xdqA.pdb --save_pdb --save_domains --return_indices 
+  199  ls
+  200  cd Code/ansible_config/
+  201  history | grep ansible
+  202  ansible-playbook -i staging restart_aa.yml 
+  203  cd ../ansible_production_config/
+  204  ansible-playbook -i production deploy_production.yml 
+  205  cd ../ansible_config/
+  206  ls
+  207  ansible-playbook -i staging restart_aa.yml 
+  208  ssh 128.16.14.77
+  209  cd ~.ssh
+  210  ls
+  211  cd ~/.ssh
+  212  ls
+  213  scp id_rsa.pub dbuchan@128.16.14.77:~/
+  214  ssh 128.16.14.77
+  215  cd -
+  216  ansible-playbook -i staging restart_aa.yml 
+  217  exit
+  218  sudo dnf update
+  219  cd Code/psipred_website/
+  220  cd ../psipred_react/
+  221  git pull
+  222  PUBLIC_URL='' npm start
+  223  PUBLIC_URL='' npm run build
+  224  PUBLIC_URL='' npm start
+  225  git add /
+  226  git add . 
+  227  git commit -m "udpated DMPmetal reporting"
+  228  git push origin main
+  229  cd ../ansible_production_config/
+  230  history | grepl playbook
+  231  history | grep playbook
+  232  ansible-playbook -i production deploy_production.yml
+  233  cd ../server_update/
+  234  git add .
+  235  git commit -m "added memsat-svm-pore cleaning"
+  236  git push origin main
+  237  git push origin master
+  238  cd ../psipred_react/
+  239  ls
+  240  PUBLIC_URL='' npm start
+  241  git pull
+  242  PUBLIC_URL='' npm start
+  243  git add .
+  244  git commit -m "updated merizo"
+  245  git push origin main
+  246  git add .
+  247  git add .; git commit -m "updating merizo downloads"; git push origin main
+  248  ls ~/Downloads/
+  249  cd ~/
+  250  ls
+  251  rm raf\,750x1000\,075\,t\,101010\:01c5ca27c6.webp 
+  252  ls
+  253  mkdir psipred_grant
+  254  cd ../Merizo/
+  255  ls
+  256  mv 2xdqA.pdb examples/
+  257  ls
+  258  rm *.pdb2
+  259  ls
+  260  rm *.idx
+  261  rm *.domains
+  262  ls
+  263  cd Public
+  264  cd ../Publications
+  265  ls
+  266  cd ../
+  267  ls
+  268  cd Projects/
+  269  ls
+  270  cd profile_drift/
+  271  ls
+  272  cp profile_drift_paper.docx ~/MEGA/Papers/
+  273  cd ~/MEGA/Papers/
+  274  ls
+  275  mkdir drift_paper
+  276  mv profile_drift_paper.docx drift_paper/
+  277  cd Documents/
+  278  ls
+  279  cd ../
+  280  ls
+  281  cd Papers/
+  282  ls
+  283  more Profile_drift_paper.tex 
+  284  ls
+  285  cd ../
+  286  ls
+  287  cd Public
+  288  cd ../Publications
+  289  ls
+  290  cd MEGA
+  291  ls
+  292  cd Papers/
+  293  ls
+  294  top
+  295  ps aux | grep mega
+  296  ps aux | grep MEGA
+  297  megasync 
+  298  megasync --hel
+  299  megasync --help
+  300  megasync minimal
+  301  megasync minimal offscreen
+  302  megasync offscreen
+  303  megasync --no-gui
+  304  megasync --start
+  305  megasync && megasync
+  306  ps aux | grep MEGA
+  307  ps aux | grep mega
+  308  ls
+  309  mv drift_paper/ ~/
+  310  cd ~/
+  311  scp drift_paper/profile_drift_paper.docx dbuchan@knuckles.cs.ucl.ac.uk:~/
+  312  exit
+  313  cd arena
+  314  cd Probation/
+  315  ls
+  316  cd arena/
+  317  git pull
+  318  sudo dnf update
+  319  cd Projects/
+  320  ls
+  321  mv profile_drift/ profile_drift_old/
+  322  mkdir profile_drift
+  323  cd profile_drift
+  324  git init
+  325  touch .gitignore
+  326  touch README.md
+  327  cd ~/Probation/
+  328  cd arena/
+  329  git pull
+  330  cd FHEA_application/
+  331  ls
+  332  mv ~/Downloads/FHEA_DanielBuchan_240307.pdf.pdf ./
+  333  cd ~/Projects/
+  334  ls
+  335  cd profile_drift_old/
+  336  ls
+  337  cd ~/Data
+  338  ls
+  339  cd pfam/
+  340  la
+  341  ls
+  342  more reps.re
+  343  more reps_renumbered.fasta.fa 
+  344  ls
+  345  more reps.fasta.fa 
+  346  more reps_renumbered.fasta.fa 
+  347  ls
+  348  more Pfam-A.full.uniprot
+  349  ls
+  350  more pfam_fasta.fa
+  351  ls
+  352  more hmm_subset.hmm 
+  353  ls
+  354  ls ~/bin/
+  355  more ~/bin/prep_pfam_fasta.py 
+  356  ls
+  357  ls -lah
+  358  ls
+  359  rm -rf *
+  360  ls
+  361  df -h
+  362  mv ~/Downloads/Pfam-A.hmm.gz ./
+  363  gunzip Pfam-A.hmm.gz 
+  364  ls
+  365  ls ~/bin/
+  366  ls
+  367  ~/Applications/hmmer-3.3.2/src/hmmemit -c h~/Data/pfam/Pfam-A.hmm
+  368  ~/Applications/hmmer-3.3.2/src/hmmemit -c ~/Data/pfam/Pfam-A.hmm
+  369  ~/Applications/hmmer-3.3.2/src/hmmemit -c ~/Data/pfam/Pfam-A.hmm > pfam_consensus_reps.fa
+  370  ls 
+  371  more Pfam-A.hmm 
+  372  ls
+  373  ks
+  374  ls
+  375  ls -lah
+  376  grep ">" pfam_consensus_reps.fa 
+  377  grep ">" pfam_consensus_reps.fa  | wc -l
+  378  ls
+  379  more Pfam-A.hmm 
+  380  grep --help
+  381  grep -B 2 'zinc_ribbon_10'  Pfam-A.hmm 
+  382  grep -A 2 'zinc_ribbon_10'  Pfam-A.hmm 
+  383  grep NAME Pfam-A.hmm 
+  384  grep NAME Pfam-A.hmm | wc -l
+  385  nvsmi
+  386  nvidia-smi 
+  387  inxi -Fzxx
+  388  mhwd -l -d
+  389  nvidia-modprobe 
+  390  grep mafft *
+  391  ls
+  392  cd ../profile_drift_old/
+  393  grep mafft *
+  394  cd ~/Data/pfam/
+  395  ls
+  396  cp ~/Downloads/Pfam-A.full.gz ./
+  397  gunzip Pfam-A.full.gz 
+  398  /home/dbuchan/Applications/standard-RAxML/raxmlHPC-PTHREADS-AVX --help
+  399  /home/dbuchan/Applications/standard-RAxML/raxmlHPC-PTHREADS-AVX
+  400  /home/dbuchan/Applications/standard-RAxML/raxmlHPC-PTHREADS-AVX -h
+  401  cd ~/Pro
+  402  cd ~/Projects/
+  403  ls
+  404  cd profile_drift_old/ 
+  405  ls
+  406  find . | grep hmmer_seq
+  407  cp msa_transformer_investigation/hmmer_seq_generator.py ../profile_drift/
+  408  cd ../
+  409  cd profile_drift
+  410  ls
+  411  mv hmmer_seq_generator.py emit_hmmer_consensus_seqs.py
+  412  ls
+  413  rm emit_hmmer_consensus_seqs.py 
+  414  touch relabel_pfam_consensus_seqs.py
+  415  python relabel_pfam_consensus_seqs.py 
+  416  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa > pfam_consensus_reps_labelled.fa
+  417  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa
+  418  ls
+  419  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa
+  420  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa > pfam_consensus_reps_labelled.fa
+  421  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa
+  422  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa > out
+  423  wc -l out
+  424  ls
+  425  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa > pfam_consensus_reps_labelled.fa
+  426  ls
+  427  more pfam_consensus_reps_labelled.fa 
+  428  python relabel_pfam_consensus_seqs.py ~/Data/pfam/Pfam-A.hmm ~/Data/pfam/pfam_consensus_reps.fa > pfam_consensus_reps_labelled.fa
+  429  more pfam_consensus_reps_labelled.fa 
+  430  ls
+  431  cp ../profile_drift_old/calculate_pfam_distances.py ./
+  432  ls
+  433  more pfam_consensus_reps_labelled.fa 
+  434  ls
+  435  ls ~/Data/pfam/
+  436  ls
+  437  owd
+  438  pw
+  439  pwd
+  440  ls
+  441  mv pfam_consensus_reps_labelled.fa ~/Data/pfam/
+  442  python3 ../calculate_pfam_distances.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  443  python3 ./calculate_pfam_distances.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  444  ls
+  445  rm out 
+  446  python3 ./calculate_pfam_distances.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  447  which mafft
+  448  ls ~/Applications/
+  449  ls ~/Applications/mafft-7.490-with-extensions/binaries/mafft
+  450  ls ~/Applications/mafft-7.490-with-extensions/binaries/mafft.1
+  451  ~/Applications/mafft-7.490-with-extensions/binaries/mafft.1
+  452  cd ~/Applications/mafft-7.490-with-extensions/
+  453  ls
+  454  more readme 
+  455  ls
+  456  more readme 
+  457  cd core/
+  458  ls
+  459  make clean
+  460  make
+  461  ls
+  462  cd ../
+  463  ls
+  464  ./binaries/mafft.1 
+  465  ./binaries/mafft.1 --help
+  466  more readme 
+  467  cd core/
+  468  vi Makefile
+  469  sudo make install
+  470  mafft
+  471  which mafft
+  472  cd -
+  473  cd ~/Projects/profile_drift
+  474  ls
+  475  python calculate_pfam_distances.py 
+  476  python calculate_pfam_distances.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  477  cd N/Da
+  478  cd ~/Data
+  479  ls
+  480  cd pfam/
+  481  ls
+  482  ls -lah
+  483  mv ~/Downloads/Pfam-A.full.gz ./
+  484  ls -lah
+  485  rm Pfam-A.full
+  486  gunzip Pfam-A.full.gz 
+  487  ls -lah
+  488  ls
+  489  rm Pfam-A.full
+  490  mv ~/Downloads/Pfam-A.full.uniprot.gz ./
+  491  gunzip Pfam-A.full.uniprot.gz 
+  492  ls
+  493  python ~/bin/prep_fasta.py Pfam-A.full.uniprot
+  494  ls
+  495  python ~/bin/prep_fasta.py Pfam-A.full.uniprot
+  496  ls
+  497  python ~/bin/prep_fasta.py Pfam-A.full.uniprot
+  498  python3 ~/bin/prep_fasta.py Pfam-A.full.uniprot
+  499  cd ~/bin/
+  500  ls
+  501  more prep_pfam_fasta.py 
+  502  ls
+  503  cd ~/Data
+  504  ls
+  505  cd pfam/
+  506  ls
+  507  ~/Applications/ncbi-blast-2.12.0+/bin/makeblastdb -in pfam_consensus_reps_labelled.fa
+  508  ~/Applications/ncbi-blast-2.12.0+/bin/makeblastdb -in pfam_consensus_reps_labelled.fa -input prot
+  509  ~/Applications/ncbi-blast-2.12.0+/bin/makeblastdb -in pfam_consensus_reps_labelled.fa -input_type prot
+  510  ls
+  511  ~/Applications/ncbi-blast-2.12.0+/bin/makeblastdb -in pfam_consensus_reps_labelled.fa -input_type prot
+  512  ls
+  513  more pfam_consensus_reps_labelled.fa 
+  514  ls
+  515  ~/Applications/ncbi-blast-2.12.0+/bin/makeblastdb -in pfam_consensus_reps_labelled.fa -input_type prot
+  516  ~/Applications/ncbi-blast-2.12.0+/bin/makeblastdb -in pfam_consensus_reps_labelled.fa -dbtype prot
+  517  ls
+  518  top
+  519  cd ~/Projects/
+  520  ls
+  521  cd profile_drift
+  522  ls
+  523  touch pfam_reps_blast.py
+  524  cd Projects/
+  525  ls
+  526  cd profile_drift
+  527  ls
+  528  vi pfam_reps_blast.py 
+  529  ls ~/Data/pfam/
+  530  ls
+  531  cd ../profile_drift_old/
+  532  ls
+  533  more pfam_consensus_reps.fa
+  534  more calculate_pfam_distances.py
+  535  ls
+  536  more calculate_drift_types.py
+  537  grep execute_process *
+  538  more calculate_cath_distances.py
+  539  touch test.fa
+  540  more ~/Data/pfam/pfam_consensus_reps.fa
+  541  ls
+  542  rm test.fa 
+  543  cd ../profile_drift
+  544  ls
+  545  test test.fa
+  546  ls
+  547  touch test.fa
+  548  vi test.fa 
+  549  ~/Applications/ncbi-blast-2.12.0+/bin/blastp -in test.fa -db ~/Data/pfam/pfam_consensus_reps.fa 
+  550  ~/Applications/ncbi-blast-2.12.0+/bin/blastp -input test.fa -db ~/Data/pfam/pfam_consensus_reps.fa 
+  551  ~/Applications/ncbi-blast-2.12.0+/bin/blastp -query test.fa -db ~/Data/pfam/pfam_consensus_reps.fa 
+  552  ls
+  553  top
+  554  ls
+  555  ls ~/Data/pfam/
+  556  ~/Applications/ncbi-blast-2.12.0+/bin/blastp -query test.fa -db ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  557  ~/Applications/ncbi-blast-2.12.0+/bin/blastp -help
+  558  >1-cysPrx_C-consensus
+  559  ALQFVDKHGVVTPANWRPGDKVIVPPPATQEEAVKRYLEG>1-cysPrx_C-consensus
+  560  ALQFVDKHGVVTPANWRPGDKVIVPPPATQEEAVKRY
+  561  ~/Applications/ncbi-blast-2.12.0+/bin/blastp -query test.fa -db ~/Data/pfam/pfam_consensus_reps_labelled.fa -outfmt 5
+  562  ls
+  563  rm 1-cysPrx_C-consensus 
+  564  ls
+  565  rm test.fa 
+  566  ls
+  567  vi calculate_pfam_distances.py 
+  568  vi pfam_reps_blast.py 
+  569  pip install biopython
+  570  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps.fa
+  571  vi pfam_reps_blast.py 
+  572  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  573  vi pfam_reps_blast.py 
+  574  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  575  vi pfam_reps_blast.py 
+  576  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  577  vi pfam_reps_blast.py 
+  578  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  579  vi pfam_reps_blast.py 
+  580  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  581  ls
+  582  more 1-cysPrx_C-consensus\|PF10417.bls 
+  583  ls
+  584  vi pfam_reps_blast.py 
+  585  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  586  ls
+  587  vi pfam_reps_blast.py 
+  588  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  589  vi pfam_reps_blast.py 
+  590  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  591  /home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/blastp -query 1-cysPrx_C-consensus|PF10417.fa -db /home/dbuchan/Data/pfam/pfam_consensus_reps_labelled.fa -outfmt 6
+  592  ls
+  593  rm 1-cysPrx_C-consensus\|PF10417.bls 
+  594  touch test.fa
+  595  vi 
+  596  more ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  597  vi test.fa 
+  598  l;s
+  599  ls
+  600  /home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/blastp -query test.fa -db /home/dbuchan/Data/pfam/pfam_consensus_reps_labelled.fa -outfmt 6
+  601  vi pfam_reps_blast.py 
+  602  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  603  ls
+  604  more 1-cysPrx_C-consensus\|PF10417.bls 
+  605  ls
+  606  vi pfam_reps_blast.py 
+  607  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  608  vi pfam_reps_blast.py 
+  609  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  610  vi pfam_reps_blast.py 
+  611  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  612  vi pfam_reps_blast.py 
+  613  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  614  vi pfam_reps_blast.py 
+  615  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  616  vi pfam_reps_blast.py 
+  617  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  618  vi pfam_reps_blast.py 
+  619  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  620  vi pfam_reps_blast.py 
+  621  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  622  top
+  623  ls
+  624  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > pfam_rep_psiblast_distances.csv
+  625  more pfam_rep_psiblast_distances.csv 
+  626  vi pfam_reps_blast.py 
+  627  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > pfam_rep_psiblast_distances.csv
+  628  bg
+  629  top
+  630  ls
+  631  more pfam_rep_psiblast_distances.csv
+  632  vi README.md 
+  633  top
+  634  ls
+  635  more pfam_rep_psiblast_distances.csv
+  636  wc -l pfam_rep_psiblast_distances.csv
+  637  fg
+  638  ls
+  639  rm pfam_rep_psiblast_distances.csv
+  640  cd ~/Applications/EMBOSS-6.4.0/
+  641  ls
+  642  cd emboss/
+  643  ls
+  644  ./needle
+  645  cd ../../
+  646  git clone https://github.com/bbuchfink/diamond.git
+  647  cd diamond/
+  648  ls
+  649  cd src/
+  650  ls
+  651  cd align/
+  652  ls
+  653  cd ../../
+  654  ls
+  655  cd src/
+  656  ls
+  657  cd run/
+  658  ls
+  659  #cd ../../
+  660  ls
+  661  cd ../../
+  662  ls
+  663  cd ../
+  664  ls
+  665  rm -rf diamond/
+  666  ls
+  667  wget https://github.com/bbuchfink/diamond/releases/download/v2.1.9/diamond-linux64.tar.gz
+  668  l
+  669  tar -zxvf diamond-linux64.tar.gz
+  670  ls
+  671  ./diamond 
+  672  mkdir diamond
+  673  mkdir Diamond
+  674  mv diamond/Dia
+  675  mv diamond Diamond/
+  676  ls
+  677  cd ~/Data/pfam/
+  678  ls
+  679  mv pfam_consensus_reps_labelled.fa ../
+  680  rm pfam_consensus_reps_labelled.fa*
+  681  ls
+  682  mv ../pfam_consensus_reps_labelled.fa ./
+  683  ls
+  684  ~/Applications/Diamond/diamond makedb --in ./pfam_consensus_reps_labelled.fa --db pfam_consensus_reps_labelled.diamondb
+  685  ls
+  686  vi ~/Projects/profile_drift/README.md 
+  687  diamond blastp --query  pfam_consensus_reps_labelled.fa --db pfam_consensus_reps_labelled.diamondb.dmnd --outfmt 6 qseqid sseqid pident --threads 2 -o diamond_results
+  688  ~/Applications/Diamond/diamond blastp --query  pfam_consensus_reps_labelled.fa --db pfam_consensus_reps_labelled.diamondb.dmnd --outfmt 6 qseqid sseqid pident --threads 2 -o diamond_results
+  689  ls
+  690  more diamond_results 
+  691  ls
+  692  wc -l diamond_results 
+  693  grep ">" pfam_consensus_reps_labelled.fa | wc -l
+  694  ls
+  695  rm diamond_results 
+  696  ~/Applications/Diamond/diamond blastp --query  pfam_consensus_reps_labelled.fa --db pfam_consensus_reps_labelled.diamondb.dmnd --outfmt 6 qseqid sseqid bitscore --threads 2 -o diamond_results
+  697  ls
+  698  rm diamond_results 
+  699  r, pfam_consensus_reps_labelled.
+  700  r, pfam_consensus_reps_labelled.diamondb.dmnd 
+  701  rm pfam_consensus_reps_labelled.diamondb.dmnd 
+  702  ls
+  703  vi pfam_consensus_reps_labelled.fa 
+  704  touch testa.fa
+  705  vi testa.fa 
+  706  vi pfam_consensus_reps_labelled.fa
+  707  touch testb.fa
+  708  vi testb.fa 
+  709  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa 
+  710  more pf10417.needle 
+  711  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa 
+  712  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa 10.0 0.5 out.needle
+  713  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa 10.0 0.5
+  714  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa 10.0
+  715  ls
+  716  rm 10.0 
+  717  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa out.needle
+  718  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa out.needle -gapopen=10 -gapextend=0.5
+  719  rm out.needle 
+  720  ~/Applications/EMBOSS-6.4.0/emboss/needle testa.fa testb.fa out.needle -gapopen=10 -gapextend=0.5
+  721  ls
+  722  more out.needle 
+  723  ls
+  724  rm out.needle 
+  725  rm pf10417.needle 
+  726  ls
+  727  rm testa.fa 
+  728  rm testb.fa 
+  729  cd ~/Projects/profile_drift
+  730  ls
+  731  top
+  732  ls
+  733  more RAxML_info.reps.dist
+  734  ls
+  735  more RAxML_parsimonyTree.reps.dist.RUN
+  736  more RAxML_parsimonyTree.reps.dist.RUN.0
+  737  ls
+  738  more reps.afa 
+  739  ls
+  740  rm test.fa 
+  741  rm AAA_9-consensus\|PF12781.fa 
+  742  mv pfam_reps_blast.py pfam_reps_nw.py 
+  743  vi pfam_reps_nw.py 
+  744  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  745  vi pfam_reps_nw.py 
+  746  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  747  vi pfam_reps_nw.py 
+  748  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  749  vi pfam_reps_nw.py 
+  750  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  751  vi pfam_reps_nw.py 
+  752  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  753  vi pfam_reps_nw.py 
+  754  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  755  ls
+  756  more out.needle 
+  757  vi pfam_reps_nw.py 
+  758  more out.needle 
+  759  vi pfam_reps_nw.py 
+  760  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  761  vi pfam_reps_nw.py 
+  762  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  763  vi pfam_reps_nw.py 
+  764  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  765  vi pfam_reps_nw.py 
+  766  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  767  vi pfam_reps_nw.py 
+  768  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  769  vi pfam_reps_nw.py 
+  770  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  771  vi pfam_reps_nw.py 
+  772  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  773  vi pfam_reps_nw.py 
+  774  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  775  vi pfam_reps_nw.py 
+  776  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa 
+  777  vi pfam_reps_nw.py 
+  778  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > pfam_reps_nw_distances.csv &
+  779  top
+  780  ls
+  781  cd Projects/profile_drift
+  782  ls
+  783  wc -l pfam_reps_nw_distances.csv
+  784  cd ~/Data/pfam/
+  785  ls
+  786  grep ">" pfam_consensus_reps_labelled.fa | wc -l
+  787  df -h
+  788  ls
+  789  cd ~/Projects/profile_drift
+  790  ls
+  791  tail pfam_reps_nw_distances.csv
+  792  python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > pfam_reps_nw_distances.csv 2> reps.err &
+  793  top
+  794  ls
+  795  wc -l pfam_reps_nw_distances.csv
+  796  fg
+  797  exit
+  798  ls
+  799  cd Downloads/
+  800  ls
+  801  ls *.docx
+  802  scp Offer\ Request.doc dbuchan@knuckles.cs.ucl.ac.uk:~/
+  803  cd Projects/profile_drift
+  804  ls
+  805  more reps.err 
+  806  ls
+  807  ls -alh
+  808  more reps.afa 
+  809  ls
+  810  ls -lah
+  811  mv reps.afa ~/Data/pfam/pfam_consensus_reps_mafft_alignment.afa
+  812  ls
+  813  ls -lah
+  814  mkdir scripts
+  815  mkdir pfam_ditance_matrix
+  816  mv *.py scripts/
+  817  ls
+  818  mv * pfam_ditance_matrix/
+  819  mv pfam_ditance_matrix/ pfam_distance_matrix/
+  820  mv pfam_distance_matrix/scripts/ ./
+  821  ls
+  822  mv pfam_distance_matrix/README.md ./
+  823  ls
+  824  git add .
+  825  git commit -m "new profile drift project"
+  826  git branch -M main
+  827  git remote add origin https://github.com/DanBuchan/profile_drift_new.git
+  828  git push -u origin main
+  829  ls
+  830  cd scripts/
+  831  ls
+  832  more pfam_reps_nw.py 
+  833  time python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps.fa > out.csv
+  834  time python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > out.csv
+  835  cd ../
+  836  git pull
+  837  time python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > out.csv
+  838  cd scripts/
+  839  time python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > out.csv
+  840  time python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa  
+  841  python pfam_reps_blast.py ~/Data/pfam/pfam_consensus_reps_labelled.fa  
+  842  time python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa  
+  843  time python pfam_reps_nw.py ~/Data/pfam/pfam_consensus_reps_labelled.fa > out.csv 
+  844  more ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  845  ls
+  846  wc -l ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  847  more ~/Data/pfam/pfam_consensus_reps_labelled.fa
+  848  cd ~/bin/
+  849  ls
+  850  more prep_fasta.py 
+  851  cd ~/Data/pfam/
+  852  ls
+  853  ~/bin/prep_fasta.py pfam_consensus_reps_labelled.fa > out.fa
+  854  python ~/bin/prep_fasta.py pfam_consensus_reps_labelled.fa > out.fa
+  855  more out.fa 
+  856  wc -l out.fa 
+  857  tail out.fa 
+  858  head out.fa 
+  859  tail out.fa 
+  860  wc -l out.fa 
+  861  tail -n 41590 out.fa > this.fa
+  862  wc -l this.fa 
+  863  head this.fa 
+  864  tail this.fa 
+  865  ls
+  866  rm out.fa 
+  867  ls
+  868  mv this.fa pfam_consensus_reps_labelled_flattened.fa
+  869  man split
+  870  split -d -n 50 pfam_consensus_reps_labelled_flattened.fa
+  871  ls
+  872  rm x*
+  873  ls
+  874  man split
+  875  split --numeric-suffixes 1 -n 50 pfam_consensus_reps_labelled_flattened.fa
+  876  split --numeric-suffixes=1 -n 50 pfam_consensus_reps_labelled_flattened.fa
+  877  ls
+  878  rm x*
+  879  man split
+  880  split --numeric-suffixes=1 -n 50 --additional-suffix=pfam_consensus pfam_consensus_reps_labelled_flattened.fa
+  881  ls
+  882  rm x*
+  883  split --numeric-suffixes=1 -n 50 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa
+  884  ls
+  885  rm x*
+  886  ls
+  887  split --numeric-suffixes=1 -n 50 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa f
+  888  ls
+  889  rm f*
+  890  split --numeric-suffixes=1 -n 50 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
+  891  ls
+  892  head 01_pfam_consensus 
+  893  tail 50_pfam_consensus 
+  894  ls
+  895  cd ~/Data/pfam/
+  896  ls
+  897  grep ">" 01_pfam_consensus | wc -l
+  898  mv 01_pfam_consensus 1_pfam_consensus 
+  899  mv 02_pfam_consensus 2_pfam_consensus 
+  900  mv 03_pfam_consensus 3_pfam_consensus 
+  901  mv 04_pfam_consensus 4_pfam_consensus 
+  902  mv 05_pfam_consensus 5_pfam_consensus 
+  903  mv 06_pfam_consensus 6_pfam_consensus 
+  904  mv 07_pfam_consensus 7_pfam_consensus 
+  905  mv 08_pfam_consensus 8_pfam_consensus 
+  906  mv 09_pfam_consensus 9_pfam_consensus 
+  907  ls
+  908  cd ~/Projects/profile_drift
+  909  ls
+  910  ls ~/Data/pfam/1_pfam_consensus 
+  911  hostname
+  912  cd ~/Data/pfam/
+  913  ls
+  914  scp *_pfam_consensus dbuchan@morecambe.cs.ucl.ac.uk:~/pfam_nw
+  915  ls
+  916  scp pfam_consensus_reps_labelled_flattened.fa dbuchan@morecambe.cs.ucl.ac.uk:~/pfam_nw
+  917  cd ~/Applications/EMBOSS-6.4.0/
+  918  ls
+  919  cd emboss/
+  920  ls
+  921  needle
+  922  ./needle
+  923  scp needle dbuchan@morecambe.cs.ucl.ac.uk:~/
+  924  cd ../
+  925  scp -R EMBOSS-6.4.0/ dbuchan@morecambe.cs.ucl.ac.uk:~/
+  926  scp -r EMBOSS-6.4.0/ dbuchan@morecambe.cs.ucl.ac.uk:~/
+  927  ls
+  928  cd ~/Data
+  929  ls
+  930  cd pfam/
+  931  ls
+  932  history | grep split
+  933  wc -l pfam_consensus_reps_labelled_flattened.fa
+  934  split --numeric-suffixes=1 -l 832 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
+  935  ls -lah
+  936  ks
+  937  ls
+  938  wc -l 24_pfam_consensus
+  939  wc -l 50_pfam_consensus
+  940  head 35_pfam_consensus
+  941  scp *_pfam_consensus dbuchan@morecambe.cs.ucl.ac.uk:~/pfam_nw/
+  942  ssh bioinfadmin
+  943  exit
+  944  ssh morecambe
+  945  exit
+  946  cd ~/Code/
+  947  ls
+  948  cd psipred_react/
+  949  grep -r "psipred@cs.ucl.ac.uk" *
+  950  ls
+  951  cd src
+  952  grep -r "psipred@cs.ucl.ac.uk" *
+  953  cd ./
+  954  cd ../
+  955  git add .
+  956  git commit -m "updated psipred email address to new help email"
+  957  git push origin main
+  958  git pull
+  959  git push origin main
+  960  PUBLIC_URL='' npm start
+  961  cd ../analytics_automated/
+  962  grep -r "psipred@cs.ucl.ac.uk" *
+  963  cd ..
+  964  ls
+  965  cd static_team_pages/
+  966  ls
+  967  grep -r "psipred@cs.ucl.ac.uk" *
+  968  ls
+  969  cd scripts/
+  970  more ../README.md 
+  971  python3 include_extension.py -a
+  972  cd ../
+  973  grep -r "psipred@cs.ucl.ac.uk" *
+  974  git add .
+  975  git commit -m "update the contact email"
+  976  git push origin main
+  977  git pull
+  978  git push origin main
+  979  cd ../ansible_production_config/
+  980  ls
+  981  more deploy_production.yml 
+  982  ls
+  983  ansible-playbook -i production deploy_production.yml 
+  984  ssh bm3
+  985  ssh bm1
+  986  ssh blastmonster
+  987  ssh blastmonster1
+  988  ssh bm2
+  989  ssh bm3
+  990  ssh morecambe
+  991  cd Projects/
+  992  ls
+  993  cd profile_drift
+  994  git pull
+  995  cd Projects/profile_drift
+  996  ls ../
+  997  git add .
+  998  git commit -m "things"
+  999  git push origin main
+ 1000  ssh morecambe
+ 1001  ls
+ 1002  cd Downloads/
+ 1003  ls
+ 1004  cd ../
+ 1005  ls
+ 1006  cd tutees/
+ 1007  ls
+ 1008  wi problematic_ec.txt 
+ 1009  vi problematic_ec.txt 
+ 1010  cd ~/Projects/profile_drift
+ 1011  ls
+ 1012  cd ../
+ 1013  sl
+ 1014  ls
+ 1015  cd profile_drift
+ 1016  git pull
+ 1017  cd scripts/
+ 1018  ls
+ 1019  rm A0A4R9FS83.1_156-190_*
+ 1020  ls
+ 1021  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot 
+ 1022  ls
+ 1023  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot 
+ 1024  ls
+ 1025  rm 1-cysPrx_C-consensus*
+ 1026  ls
+ 1027  rm 1-cysPrx_C-consensus*
+ 1028  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot 
+ 1029  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot
+ 1030  /home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast -query 1-cysPrx_C-consensus.fa -num_iterations 1 -db /home/dbuchan/Data/pfam/Pfam-A.full.uniprot -out_pssm 1-cysPrx_C-consensus_iteration1.pssm -outfmt 5 -out 1-cysPrx_C-consensus_iteration1.xml -save_pssm_after_last_round -max_target_seqs 10000
+ 1031  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot
+ 1032  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1033  ls
+ 1034  more 1-cysPrx_C-consensus_iteration1_seqs.fa
+ 1035  ls
+ 1036  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1037  ls
+ 1038  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1039  ls
+ 1040  more 1-cysPrx_C-consensus_blast_summary.csv
+ 1041  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1042  ls
+ 1043  more 1-cysPrx_C-consensus_blast_summary.csv
+ 1044  more 1-cysPrx_C-consensus_iteration1.xml
+ 1045  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1046  ls
+ 1047  more 1-cysPrx_C-consensus_blast_summary.csv
+ 1048  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1049  ~/Applications/mafft-7.490-with-extensions/binaries/mafft.1 1-cysPrx_C-consensus_iteration1_seqs.fa
+ 1050  ~/Applications/mafft-7.490-with-extensions/binaries/mafft.1
+ 1051  cd ~/Applications/mafft-7.490-with-extensions/
+ 1052  ls
+ 1053  cd binaries/
+ 1054  ls
+ 1055  ./mafft.1 
+ 1056  more mafft.1 
+ 1057  ls
+ 1058  cd ../
+ 1059  ls
+ 1060  more readme 
+ 1061  ls
+ 1062  cd core/
+ 1063  ls
+ 1064  ./mafft
+ 1065  cd ~/Projects/profile_drift/scripts/
+ 1066  ls
+ 1067  ~/Applications/mafft-7.490-with-extensions/core/mafft 1-cysPrx_C-consensus_iteration1_seqs.fa
+ 1068  ~/Applications/mafft-7.490-with-extensions/core/mafft --help
+ 1069  ~/Applications/mafft-7.490-with-extensions/core/mafft 1-cysPrx_C-consensus_iteration1_seqs.fa > 
+ 1070  ls
+ 1071  ~/Applications/mafft-7.490-with-extensions/binaries/mafft.1 1-cysPrx_C-consensus_iteration1_seqs.fa
+ 1072  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1073  /home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft 1-cysPrx_C-consensus_iteration1_seqs.fa > 1-cysPrx_C-consensus_iteration1_seqs.msa
+ 1074  ls
+ 1075  /home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft 1-cysPrx_C-consensus_iteration1_seqs.fa > 1-cysPrx_C-consensus_iteration1_seqs.msa
+ 1076   
+ 1077  /home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft 1-cysPrx_C-consensus_iteration1_seqs.fa > 1-cysPrx_C-consensus_iteration1_seqs.msa
+ 1078  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1079  /home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft 1-cysPrx_C-consensus_iteration1_seqs.fa > 1-cysPrx_C-consensus_iteration1_seqs.msa
+ 1080  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1081  ls
+ 1082  more 1-cysPrx_C-consensus_iteration1_seqs.msa
+ 1083  python run_pfam_rep_blasts.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
+ 1084  ls
+ 1085  more 1-cysPrx_C-consensus_iteration1_seqs.msa
+ 1086  ls
+ 1087  rm 1-cysPrx_C-consensus_*
+ 1088  ls
+ 1089  cd ../
+ 1090  git add .
+ 1091  git commit -m "psiblast script now working
+"
+ 1092  git push origin main
+ 1093  ls
+ 1094  touch .gitignore
+ 1095  git add .
+ 1096  git commit -m "added ignore"
+ 1097  git push origin main

@@ -3,6 +3,7 @@ import subprocess
 import sys
 import os
 import re
+import glob
 from Bio.Blast import NCBIXML
 
 # python run_pfam_rep_blasts.py ~/Data/pfam/test.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
@@ -124,10 +125,15 @@ def run_blasts(family, id, seq, blast_db):
     fhRep.write(f">{id}|{family}\n")
     fhRep.write(f"{seq}\n")
     fhRep.close()
-    # do_blast_iterations(id, blast_db, iterations)
-    # process_blast_results(id, seq, family, iterations)
+    do_blast_iterations(id, blast_db, iterations)
+    process_blast_results(id, seq, family, iterations)
     align_seqs(id, iterations)
     os.remove(f'{id}.fa')
+    for xml in glob.glob("*.xml"):
+        os.remove(xml)
+    for pssm in glob.glob("*.pssm"):
+        os.remove(pssm)
+        
 
 def read_fasta(file):
     seqs = {}
@@ -148,9 +154,17 @@ rep_file = sys.argv[1]
 blast_db = sys.argv[2]
 
 rep_seqs = read_fasta(rep_file)
-for id in rep_seqs.keys():
-    family = id[-7:]
-    seq_id = id[1:-8]
-    seq_id = seq_id.replace("/", "_")
-    run_blasts(family, seq_id, rep_seqs[id], blast_db)
-    exit()
+id_list = list(rep_seqs.keys())
+
+id = id_list[int(sys.argv[3])-1]
+family = id[-7:]
+seq_id = id[1:-8]
+seq_id = seq_id.replace("/", "_")
+run_blasts(family, seq_id, rep_seqs[id], blast_db)
+
+# for id in rep_seqs.keys():
+#     family = id[-7:]
+#     seq_id = id[1:-8]
+#     seq_id = seq_id.replace("/", "_")
+#     run_blasts(family, seq_id, rep_seqs[id], blast_db)
+#     exit()
