@@ -5,7 +5,7 @@ import os
 import re
 from Bio.Blast import NCBIXML
 
-# python run_pfam_rep_blasts.py ~/Data/pfam/test.fa ~/Data/pfam/Pfam-A.fasta
+# python run_pfam_rep_blasts.py ~/Data/pfam/test.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
 
 def read_reps(dom_seqs):
     """
@@ -44,7 +44,8 @@ def do_blast_iterations(id, blast_db, n):
                             f'{id}_iteration1.xml',
                             '-save_pssm_after_last_round',
                             '-max_target_seqs',
-                            '10000']
+                            '50000']
+    # print(" ".join(first_iteration_args))
     subprocess.call(first_iteration_args)
     for i in range(2, int(n)+1):
         iteration_args = ['/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast',
@@ -62,14 +63,14 @@ def do_blast_iterations(id, blast_db, n):
                                 f'{id}_iteration{i}.xml',
                                 '-save_pssm_after_last_round',
                                 '-max_target_seqs',
-                                '10000']
+                                '50000']
         subprocess.call(iteration_args)
 
 def process_blast_results(file_id, seq, family, iterations):
 
     fhsummary = open(f"{file_id}_blast_summary.csv", "w")
     fhsummary.write("iteration,query,query_family,hit_family,count\n")
-    pf_pattern = re.compile(r"(PF\d{5}).")
+    pf_pattern = re.compile(r"\|(PF\d{5})")
     iteration_counts = {}
     for i in range(1, iterations+1):
         print("parsing", i)
@@ -88,7 +89,7 @@ def process_blast_results(file_id, seq, family, iterations):
 
                         result = re.search(pf_pattern, alignment.title)
                         if result:
-                            print(result.groups()[0])
+                            # print(result.groups()[0])
                             counts[result.groups()[0]] += 1
         iteration_counts[i] = counts
         blastfh.close()
@@ -100,16 +101,32 @@ def process_blast_results(file_id, seq, family, iterations):
     fhsummary.close()
         
 
+def align_seqs(seq_file, iterations):
+    for i in range(1, iterations+1):
+        seqs = f"{seq_file}_iteration{i}_seqs.fa"
+        msa = f"{seq_file}_iteration{i}_seqs.msa"
+        mafft_args = [
+            '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
+            seqs,
+        ]
+        # print(" ".join(mafft_args))
+        msa_data = subprocess.check_output(mafft_args)
+        fhOut = open(msa, "wb")
+        fhOut.write(msa_data)
+        fhOut.close()
+
 def run_blasts(family, id, seq, blast_db):
     """
     run psiblast over each rep against the cath dom seqs db
     """
+    iterations = 4
     fhRep = open(f'{id}.fa', "w")
     fhRep.write(f">{id}|{family}\n")
     fhRep.write(f"{seq}\n")
     fhRep.close()
-    do_blast_iterations(id, blast_db, 20)
-    process_blast_results(id, seq, family, 20)
+    # do_blast_iterations(id, blast_db, iterations)
+    # process_blast_results(id, seq, family, iterations)
+    align_seqs(id, iterations)
     os.remove(f'{id}.fa')
 
 def read_fasta(file):

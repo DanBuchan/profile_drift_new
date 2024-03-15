@@ -34,7 +34,10 @@ c. Are the clusters meaningful?
 
 ## 2. Drift analysis
 
+1. Use prep_pfam_fasta.py to make a fasta file of all PF families in Pfam-A.full.uniprot
 1. Psiblast Consensus seq against pfam blast db, Save number of hits for each family at each iteration, Additionally save sequences at each iteration IF we detect drift and build an MSA
+
+
 
 ## 2b 
 
