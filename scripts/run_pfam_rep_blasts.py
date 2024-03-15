@@ -120,7 +120,7 @@ def run_blasts(family, id, seq, blast_db):
     """
     run psiblast over each rep against the cath dom seqs db
     """
-    iterations = 4
+    iterations = 20
     fhRep = open(f'{id}.fa', "w")
     fhRep.write(f">{id}|{family}\n")
     fhRep.write(f"{seq}\n")
