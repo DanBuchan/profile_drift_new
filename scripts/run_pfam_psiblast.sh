@@ -24,7 +24,7 @@
 
 # Run the application.
 module load python3
-source /home/ucbcdwb/Scratch/profile_drift/profile_drift/bin/activate
+source /home/ucbcdwb/Scratch/virtualenvs/profile_drift/bin/activate
 mkdir $SGE_TASK_ID
 cd $SGE_TASK_ID/
 echo "python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_pfam_rep_blasts.py ~/Scratch/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Scratch/Data/pfam/Pfam-A.full.uniprot.fa $SGE_TASK_ID"
