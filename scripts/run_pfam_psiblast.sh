@@ -3,7 +3,7 @@
 #$ -e /home/ucbcdwb/Scratch/output/profile/std.err
 
 # Request an hour of run time
-#$ -l h_rt=2:00:0
+#$ -l h_rt=6:00:0
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
 #$ -l mem=2G
@@ -26,6 +26,7 @@
 # Run the application.
 module load python3
 source /home/ucbcdwb/Scratch/virtualenvs/profile_drift/bin/activate
+cd /home/ucbcdwb/Scratch/output/profile/
 mkdir $SGE_TASK_ID
 cd $SGE_TASK_ID/
 echo "python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_pfam_rep_blasts.py ~/Scratch/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Scratch/Data/pfam/Pfam-A.full.uniprot.fa $SGE_TASK_ID 20"
