@@ -163,7 +163,7 @@ id = id_list[int(sys.argv[3])-1]
 family = id[-7:]
 seq_id = id[1:-8]
 seq_id = seq_id.replace("/", "_")
-run_blasts(family, seq_id, rep_seqs[id], blast_db, sys.argv[4])
+run_blasts(family, seq_id, rep_seqs[id], blast_db, int(sys.argv[4]))
 
 # for id in rep_seqs.keys():
 #     family = id[-7:]
