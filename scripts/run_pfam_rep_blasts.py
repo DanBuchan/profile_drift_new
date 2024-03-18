@@ -6,7 +6,7 @@ import re
 import glob
 from Bio.Blast import NCBIXML
 
-# python run_pfam_rep_blasts.py ~/Data/pfam/test.fa ~/Data/pfam/Pfam-A.full.uniprot.fa n
+# python run_pfam_rep_blasts.py ~/Data/pfam/test.fa ~/Data/pfam/Pfam-A.full.uniprot.fa [ID NUMBER [ITERATIONS]
 
 def read_reps(dom_seqs):
     """
@@ -47,7 +47,7 @@ def do_blast_iterations(id, blast_db, n):
                             '-save_pssm_after_last_round',
                             '-max_target_seqs',
                             '50000']
-    # print(" ".join(first_iteration_args))
+    print(" ".join(first_iteration_args))
     subprocess.call(first_iteration_args)
     for i in range(2, int(n)+1):
     #    iteration_args = ['/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast',
@@ -67,6 +67,7 @@ def do_blast_iterations(id, blast_db, n):
                                 '-save_pssm_after_last_round',
                                 '-max_target_seqs',
                                 '50000']
+        print(" ".join(iteration_args))    
         subprocess.call(iteration_args)
 
 def process_blast_results(file_id, seq, family, iterations):
@@ -163,7 +164,7 @@ id = id_list[int(sys.argv[3])-1]
 family = id[-7:]
 seq_id = id[1:-8]
 seq_id = seq_id.replace("/", "_")
-run_blasts(family, seq_id, rep_seqs[id], blast_db)
+run_blasts(family, seq_id, rep_seqs[id], blast_db, sys.argv[4])
 
 # for id in rep_seqs.keys():
 #     family = id[-7:]
