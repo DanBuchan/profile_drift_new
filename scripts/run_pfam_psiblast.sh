@@ -3,7 +3,7 @@
 #$ -e /home/ucbcdwb/Scratch/output/profile/std.err
 
 # Request an hour of run time
-#$ -l h_rt=10:00:0
+#$ -l h_rt=24:00:0
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
 #$ -l mem=16G
@@ -13,8 +13,8 @@
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
-# $ -t 1-21979
-#$ -t 1-10
+#$ -t 1-21979
+# $ -t 1-10
 
 # Set the name of the job.
 #$ -N pfamReps
