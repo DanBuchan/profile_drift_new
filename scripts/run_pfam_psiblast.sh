@@ -6,7 +6,7 @@
 #$ -l h_rt=10:00:0
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=2G
+#$ -l mem=16G
 
 # Request 10 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
 #$ -l tmpfs=10G
