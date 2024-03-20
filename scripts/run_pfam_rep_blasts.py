@@ -130,8 +130,8 @@ def run_blasts(family, id, seq, blast_db, iterations):
     fhRep.close()
     do_blast_iterations(id, blast_db, iterations)
     process_blast_results(id, seq, family, iterations)
-    align_seqs(id, iterations)
-    os.remove(f'{id}.fa')
+    # align_seqs(id, iterations)
+    # os.remove(f'{id}.fa')
     for xml in glob.glob("*.xml"):
         os.remove(xml)
     for pssm in glob.glob("*.pssm"):
