@@ -127,10 +127,10 @@ def align_seqs(seq_file, iterations):
         '*.msa'
     ]
     tar_output = subprocess.check_output(tar_args)
-    for seqs in glob.glob("*_seqs.fa"):
-        os.remove(seqs)
-    for msa in glob.glob("*_seqs.msa"):
-        os.remove(msa)
+    # for seqs in glob.glob("*_seqs.fa"):
+    #     os.remove(seqs)
+    # for msa in glob.glob("*_seqs.msa"):
+    #     os.remove(msa)
 
 def run_blasts(family, id, seq, blast_db, iterations):
     """
