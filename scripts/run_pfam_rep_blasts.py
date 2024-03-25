@@ -106,6 +106,7 @@ def process_blast_results(file_id, seq, family, iterations):
         
 
 def align_seqs(seq_file, iterations):
+    clean_up = False
     for i in range(1, iterations+1):
         seqs = f"{seq_file}_iteration{i}_seqs.fa"
         msa = f"{seq_file}_iteration{i}_seqs.msa"
@@ -115,22 +116,27 @@ def align_seqs(seq_file, iterations):
             seqs,
         ]
         # print(" ".join(mafft_args))
-        # msa_data = subprocess.check_output(mafft_args)
-        # fhOut = open(msa, "wb")
-        # fhOut.write(msa_data)
-        # fhOut.close()
-        
-    tar_args = [
-        '/usr/bin/tar',
-        'czf',
-        f'{seq_file}_msa.tar.gz',
-    ]
-    tar_args.extend(glob.glob("*.msa"))
-    tar_output = subprocess.check_output(tar_args)
-    for seqs in glob.glob("*_seqs.fa"):
-        os.remove(seqs)
-    for msa in glob.glob("*_seqs.msa"):
-        os.remove(msa)
+        try:
+            msa_data = subprocess.check_output(mafft_args)
+            fhOut = open(msa, "wb")
+            fhOut.write(msa_data)
+            fhOut.close()
+            clean_up=True
+        except Exception as e:
+            pass
+    
+    if clean_up:
+        tar_args = [
+            '/usr/bin/tar',
+            'czf',
+            f'{seq_file}_msa.tar.gz',
+        ]
+        tar_args.extend(glob.glob("*.msa"))
+        tar_output = subprocess.check_output(tar_args)
+        for seqs in glob.glob("*_seqs.fa"):
+            os.remove(seqs)
+        for msa in glob.glob("*_seqs.msa"):
+            os.remove(msa)
 
 def run_blasts(family, id, seq, blast_db, iterations):
     """
