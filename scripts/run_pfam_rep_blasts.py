@@ -124,9 +124,9 @@ def align_seqs(seq_file, iterations):
         '/usr/bin/tar',
         'czf',
         f'{seq_file}_msa.tar.gz',
-        '*.msa'
     ]
-    tar_output = subprocess.check_output(tar_args, shell=True)
+    tar_args.extend(glob.glob("*.msa"))
+    tar_output = subprocess.check_output(tar_args)
     # for seqs in glob.glob("*_seqs.fa"):
     #     os.remove(seqs)
     # for msa in glob.glob("*_seqs.msa"):
