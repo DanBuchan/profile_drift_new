@@ -115,18 +115,22 @@ def align_seqs(seq_file, iterations):
             seqs,
         ]
         # print(" ".join(mafft_args))
-        msa_data = subprocess.check_output(mafft_args)
+        # msa_data = subprocess.check_output(mafft_args)
         fhOut = open(msa, "wb")
         fhOut.write(msa_data)
         fhOut.close()
-        # os.remove(seqs)
+        
     tar_args = [
         '/usr/bin/tar',
         'czf',
-        f'{id}_msa.tar.gz',
+        f'{seq_file}_msa.tar.gz',
         '*.msa'
     ]
     tar_output = subprocess.check_output(tar_args)
+    # for seqs in glob.glob("*_seqs.fa"):
+    #     os.remove(seqs)
+    # for msa in glob.glob("*_seqs.msa"):
+    #     os.remove(msa)
 
 def run_blasts(family, id, seq, blast_db, iterations):
     """
