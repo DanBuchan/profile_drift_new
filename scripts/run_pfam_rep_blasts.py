@@ -116,9 +116,9 @@ def align_seqs(seq_file, iterations):
         ]
         # print(" ".join(mafft_args))
         # msa_data = subprocess.check_output(mafft_args)
-        fhOut = open(msa, "wb")
-        fhOut.write(msa_data)
-        fhOut.close()
+        # fhOut = open(msa, "wb")
+        # fhOut.write(msa_data)
+        # fhOut.close()
         
     tar_args = [
         '/usr/bin/tar',
