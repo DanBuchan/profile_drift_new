@@ -119,6 +119,14 @@ def align_seqs(seq_file, iterations):
         fhOut = open(msa, "wb")
         fhOut.write(msa_data)
         fhOut.close()
+        # os.remove(seqs)
+    tar_args = [
+        '/usr/bin/tar',
+        'czf',
+        f'{id}_msa.tar.gz',
+        '*.msa'
+    ]
+    tar_output = subprocess.check_output(tar_args)
 
 def run_blasts(family, id, seq, blast_db, iterations):
     """
@@ -128,15 +136,14 @@ def run_blasts(family, id, seq, blast_db, iterations):
     fhRep.write(f">{id}|{family}\n")
     fhRep.write(f"{seq}\n")
     fhRep.close()
-    do_blast_iterations(id, blast_db, iterations)
-    process_blast_results(id, seq, family, iterations)
-    # align_seqs(id, iterations)
-    # os.remove(f'{id}.fa')
+    # do_blast_iterations(id, blast_db, iterations)
+    # process_blast_results(id, seq, family, iterations)
+    align_seqs(id, iterations)
+    os.remove(f'{id}.fa')
     for xml in glob.glob("*.xml"):
         os.remove(xml)
     for pssm in glob.glob("*.pssm"):
         os.remove(pssm)
-        
 
 def read_fasta(file):
     seqs = {}
