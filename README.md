@@ -7,10 +7,11 @@
 
 ## 1. Calculating PFAM distance matrices
 
-PFAM RELEASE 37 @ 15 March 2024
+PFAM RELEASE 36 @ 15 March 2024
 
 1. Get the Pfam-A.full.uniprot sequences and Pfam-A.hmm model sdataset from Interpro
 2. extract all pfam sequences to fasta and annotation with family ID: ~/bin/prep_pfam_fasta.py
+   discarding truncated sequence
 3. Convert to PSI-BLAST DB
 4. Using Hmmemit output the consensus sequence for each family: 
    > ~/Applications/hmmer-3.3.2/src/hmmemit -c ~/Data/pfam/Pfam-A.hmm > pfam_consensus_reps.fa
@@ -23,7 +24,7 @@ PFAM RELEASE 37 @ 15 March 2024
 6. Perform an all-against-all Needleman and wunsch of the reps. Extract bits scores for a similarity matrix Scale/Normalise to between 0 and one and invert for a distance matrix
    > wc -l pfam_consensus_reps_labelled_flattened.fa
    Then use split to divide in to 50 files (880 will change depending on size), for cluster execution
-   > split --numeric-suffixes=1 -l 880 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
+   > split --numeric-suffixes=1 -l 832 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
 
    use pfam_reps_nw.py over our relabelled pfam_consensus_reps_labelled.fa
    wrote a morcambe script run_pfam_nw.sh to batch job this over a couple of days as it is A LOT of comparisons 20k x 20k
@@ -41,9 +42,14 @@ c. Are the clusters meaningful?
 1. Use prep_pfam_fasta.py to make a fasta file of all PF families in Pfam-A.full.uniprot, The makeblastdb to make a blsat db of it
 2. Psiblast Consensus seq against pfam blast db, Save number of hits for each family at each iteration, Additionally save sequences at each iteration IF we detect drift and build an MSA
    > python run_pfam_rep_blasts.py
-   user run_pfam_psiblast.py on myriad to coordinate this.
+  use run_pfam_psiblast.sh on myriad to coordinate this.
+3. Analyse *_blast_summary.csv, to find out which families show drift and what kinds of drift
+   > python calculate_drift_types.py results_data/psiblast_iteration_summaries/
+
 
 ## 2b 
+
+1. Analyse *_blast_summary.csv, to find out which families show drift and what kinds of drift
 
 1. How many and What families drift?
 2. What kinds of drift pattern are there?
