@@ -214,7 +214,7 @@ query_stable = 0
 for family in significant_drifts:
     count+=1
     data = full_results[family]
-    print(family)
+    # print(family)
     pprint.pp(data)
     if data['families_at_final_iteration'] < data['number_of_drift_familes'] + 1:
         families_lost += 1
@@ -238,7 +238,6 @@ for family in significant_drifts:
             spiked_set.add(growth_data[family]['spiked'])
             purified_set.add(growth_data[family]['purified'])
             flat_set.add(growth_data[family]['flat'])
-    print(spiked_set, grow_set, flat_set, purified_set)
     if len(grow_set) == 1 and len(spiked_set) == 1 and len(purified_set) == 1 and len(flat_set) == 1: 
         if list(spiked_set)[0] or list(grow_set)[0]:
             contaminants_grew +=1
