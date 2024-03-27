@@ -168,7 +168,7 @@ with open("drift_error_list.txt", "w") as fhErrors:
         fhErrors.write(f'{family}\n')
 
 neglible_drifts = []
-significant_drift = []
+significant_drifts = []
 for main_family in full_results.keys():
     significant_drift = False
     drift_info = full_results[main_family]['growth_types']
@@ -179,12 +179,12 @@ for main_family in full_results.keys():
             signifcant_drift = True
 
     if significant_drift:
-        significant_drift.append(main_family)
+        significant_drifts.append(main_family)
     else:
         neglible_drifts.append(main_family)
 
 with open("significant_drifts.txt", "w") as fhDrifts:
-    for family in significant_drift:
+    for family in significant_drifts:
         fhDrifts.write(f'{family}\n')
 
 with open("insignificant_drifts.txt", "w") as fhDrifts:
