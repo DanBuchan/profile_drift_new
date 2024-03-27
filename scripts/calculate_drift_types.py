@@ -43,7 +43,7 @@ def parse_summary(summary_file):
 
 def calculate_drift_types(main_family, summary):
     # summary[iteration][family][value]
-    pprint.pp(summary)
+    # pprint.pp(summary)
     families = set()
     track_data = {}
     for iteration in summary:
@@ -72,9 +72,15 @@ def calculate_drift_types(main_family, summary):
                     if summary[iteration][family] > track_data[family]['peak_value']:
                         track_data[family]['peak_value'] = summary[iteration][family]
                         track_data[family]['peak_iteration'] = iteration
-                        
-                    
+                                  
     pprint.pp(track_data)
+    # Now work out drift types
+    for family in track_data:
+        if family is main_family:
+            print("analysing main family")
+        else:
+            print("analysing drift family")
+
 
 
 summaries_dir = sys.argv[1]
