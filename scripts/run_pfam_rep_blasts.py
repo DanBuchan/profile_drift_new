@@ -123,7 +123,8 @@ def align_seqs(seq_file, iterations):
             fhOut.close()
             clean_up=True
         except Exception as e:
-            pass
+            clean_up = False
+            break
     
     if clean_up:
         tar_args = [
