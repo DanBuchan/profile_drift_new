@@ -54,6 +54,7 @@ def calculate_drift_types(main_family, summary):
                                   'initial_iteration': None,
                                   'final_iteration': None,
                                   'peak_value': None,
+                                  'peak_iteration': None
                                   }
     for family in families:
         for iteration in summary:
@@ -62,6 +63,7 @@ def calculate_drift_types(main_family, summary):
                     track_data[family]['initial_iteration'] = iteration
                     track_data[family]['initial_value'] = summary[iteration][family]
                     track_data[family]['peak_value'] = summary[iteration][family]
+                    track_data[family]['peak_iteration'] = iteration
                     track_data[family]['final_iteration'] = iteration
                     track_data[family]['final_value'] = summary[iteration][family]
                 else:
@@ -69,6 +71,8 @@ def calculate_drift_types(main_family, summary):
                     track_data[family]['final_iteration'] = iteration
                     if summary[iteration][family] > track_data[family]['peak_value']:
                         track_data[family]['peak_value'] = summary[iteration][family]
+                        track_data[family]['peak_iteration'] = iteration
+                        
                     
     pprint.pp(track_data)
 
