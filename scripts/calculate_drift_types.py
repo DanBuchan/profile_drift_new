@@ -213,6 +213,8 @@ query_stable = 0
 for family in significant_drifts:
     count+=1
     data = full_results[family]
+    print(family)
+    pprint.pp(data)
     if data['families_at_final_iteration'] < data['number_of_drift_familes'] + 1:
         families_lost += 1
     growth_data = data['growth_types']
