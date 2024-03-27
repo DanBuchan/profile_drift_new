@@ -67,6 +67,8 @@ def calculate_drift_types(main_family, summary):
                 else:
                     track_data[family]['final_value'] = summary[iteration][family]
                     track_data[family]['final_iteration'] = iteration
+                    if summary[iteration][family] > track_data[family]['peak_value']:
+                        track_data[family]['peak_value'] = summary[iteration][family]
                     
     print(track_data)
 
