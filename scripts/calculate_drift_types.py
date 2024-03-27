@@ -63,7 +63,7 @@ def return_growth_types(initial, peak, final):
         flat = True
     
     # and just return flat if abs values are small
-    if initial < 30 and peak < 30 and final < 30
+    if initial < 30 and peak < 30 and final < 30:
         grew = False
         spiked = False
         purified = False
