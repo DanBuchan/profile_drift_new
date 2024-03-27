@@ -230,11 +230,11 @@ for family in significant_drifts:
 
 
 
-print("Count where there were fewer families at iteration 20 than total seen: " + families_lost)
-print("Count where query grew: ", query_grew)
-print("Count where query peaked: ", query_spiked)
-print("Count where query had flat growth: ", query_stable)
-print("Count where query was purified: ", query_purified)
+print(f"Count where there were fewer families at iteration 20 than total seen: {families_lost}")
+print(f"Count where query grew: {query_grew}")
+print(f"Count where query peaked: {query_spiked}")
+print(f"Count where query had flat growth: {query_stable}")
+print(f"Count where query was purified: {query_purified}")
 
 # print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
 # print(f"Purifying Selection: QUERY REDUCED: {purified_query}")
