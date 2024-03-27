@@ -42,13 +42,18 @@ def parse_summary(summary_file):
 
 
 def calculate_drift_types(main_family, summary):
+    print(summary)
     families = set()
     track_data = {}
     for iteration in summary:
         for family in summary[iteration]: 
             families.add(family)
-            track_data[family] = {}
-    
+            track_data[family] = {'initial_value': None,
+                                  'final_value': None,
+                                  'initial_iteration': None,
+                                  'final_iteration': None,
+                                  'peak_value': None,
+                                  }
     for family in families:
         for iteration in summary:
             if family == main_family:
