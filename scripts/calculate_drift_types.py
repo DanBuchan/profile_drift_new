@@ -151,7 +151,7 @@ for file in glob.glob(f'{summaries_dir}/*.csv'):
         non_drift_families.append(current_family)
     break
 
-# pprint.pp(full_results)
+pprint.pp(full_results)
 # print("drifts:", drift_families)
 # print("non drifts:", non_drift_families)
 # print("errors:", erroneous_files)
