@@ -179,7 +179,6 @@ for main_family in full_results.keys():
         if full_results[main_family]['growth_types'][family]['negligible_contaminant'] == False:
             signifcant_drift = True
 
-    print( significant_drift)
     if significant_drift:
         significant_drifts.append(main_family)
     else:
