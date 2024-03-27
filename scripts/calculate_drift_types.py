@@ -178,14 +178,10 @@ for main_family in full_results.keys():
             continue
         if full_results[main_family]['growth_types'][family]['negligible_contaminant'] is False:
             significant_drift = True
-    print(full_results[main_family]['growth_types'][family]['negligible_contaminant'], significant_drift)
     if significant_drift:
         significant_drifts.append(main_family)
     else:
         negligible_drifts.append(main_family)
-
-print(significant_drifts)
-print(negligible_drifts)
 
 with open("significant_drifts.txt", "w") as fhSigDrifts:
     for family in significant_drifts:
@@ -195,6 +191,8 @@ with open("insignificant_drifts.txt", "w") as fhInSigDrifts:
     for family in negligible_drifts:
         fhInSigDrifts.write(f'{family}\n')
 
+for family in significant_drifts:
+    pprint.pp(significant_drifts[family])
 
 # print("---")
 # print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
