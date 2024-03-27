@@ -78,6 +78,7 @@ def calculate_drift_types(main_family, summary):
     pprint.pp(track_data)
     # Now work out drift types
     small_non_growing_contaminant = False
+    number_of_contaminents = len(track_data)-1
     query_grew = False
     query_spiked = False
     query_purified = False
@@ -90,6 +91,7 @@ def calculate_drift_types(main_family, summary):
         else:
             print("analysing drift family")
 
+    print("Number of drift families:", number_of_contaminents)
     print("Number of families at final iteration:", number_families_at_final_iteration)
 
 summaries_dir = sys.argv[1]
