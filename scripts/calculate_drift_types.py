@@ -219,6 +219,10 @@ for family in significant_drifts:
     if data['families_at_final_iteration'] < data['number_of_drift_familes'] + 1:
         families_lost += 1
     growth_data = data['growth_types']
+    grow_set = set()
+    spiked_set = set()
+    purified_set = set()
+    flat_set = set()
     for growth_family in growth_data:
         if family in growth_family:
             if growth_data[family]['grew']:
@@ -229,7 +233,12 @@ for family in significant_drifts:
                 query_stable+= 1
             if growth_data[family]['purified']:
                 query_purified+= 1
-
+        if growth_data[family]['negligible_contaminant'] == False:
+            grow_set.add(growth_data[family]['grew'])
+            spiked_set.add(growth_data[family]['grew'])
+            purified_set.add(growth_data[family]['grew'])
+            flat_set.add(growth_data[family]['grew'])
+            
 
 print(f"Total Analysed familes: {count}")
 print(f"Count where there were fewer families at iteration 20 than total seen: {families_lost}")
