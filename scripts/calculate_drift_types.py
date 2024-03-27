@@ -67,7 +67,7 @@ def calculate_drift_types(main_family, summary):
                     track_data[family]['final_value'] = summary[iteration][family]
                     track_data[family]['final_iteration'] = iteration
                     
-
+    print(track_data)
 
 
 summaries_dir = sys.argv[1]
