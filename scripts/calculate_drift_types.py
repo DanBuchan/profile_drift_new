@@ -2,7 +2,7 @@ import csv
 import sys
 from collections import defaultdict
 import glob
-import os
+import pprint
 import operator
 
 '''
@@ -43,7 +43,7 @@ def parse_summary(summary_file):
 
 def calculate_drift_types(main_family, summary):
     # summary[iteration][family][value]
-    print(summary)
+    pprint.pp(summary)
     families = set()
     track_data = {}
     for iteration in summary:
@@ -70,7 +70,7 @@ def calculate_drift_types(main_family, summary):
                     if summary[iteration][family] > track_data[family]['peak_value']:
                         track_data[family]['peak_value'] = summary[iteration][family]
                     
-    print(track_data)
+    pprint.pp(track_data)
 
 
 summaries_dir = sys.argv[1]
