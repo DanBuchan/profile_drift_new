@@ -197,11 +197,45 @@ with open("insignificant_drifts.txt", "w") as fhInSigDrifts:
 ###
 ### Output summary
 ###
-        
-for family in significant_drifts:
-    pprint.pp(full_results[family])
+count = 0
+contaminants_purified = 0
+contaminants_grew = 0
+contaminants_spiked = 0
+families_lost = 0
+contaminants_stable = 0
+contaminants_complex = 0
+query_purified = 0
+query_grew = 0
+query_spiked = 0
+query_lost = 0
+query_stable = 0
 
-# print("---")
+ 
+for family in significant_drifts:
+    count+=1
+    data = full_results[family]
+    if data['families_at_final_iteration'] < data['number_of_drift_familes'] + 1:
+        families_lost += 1
+    growth_data = data['growth_types']
+    for growth_family in growth_data:
+        if family in growth_family:
+            if growth_data[family]['grew']:
+                query_grew += 1
+            if growth_data[family]['spiked']:
+                query_spiked += 1
+            if growth_data[family]['flat']:
+                query_stable+= 1
+            if growth_data[family]['purified']:
+                query_purified+= 1
+
+
+
+print("Count where there were fewer families at iteration 20 than total seen: " + families_lost)
+print("Count where query grew: ", query_grew)
+print("Count where query peaked: ", query_spiked)
+print("Count where query had flat growth: ", query_stable)
+print("Count where query was purified: ", query_purified)
+
 # print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
 # print(f"Purifying Selection: QUERY REDUCED: {purified_query}")
 # print(f"Purifying Selection: CONTAMINANT REDUCED: {purified_contaminant}")
