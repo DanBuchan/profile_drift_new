@@ -121,14 +121,14 @@ def calculate_drift_types(main_family, summary):
                                            'spiked': drift_types[1],
                                            'purified': drift_types[2],
                                            'flat': drift_types[3]}
-
-    pprint.pp(results)
+    return(results)
    
 
 summaries_dir = sys.argv[1]
 drift_families = []
 non_drift_families = []
 erroneous_files = []
+full_results = {}
 for file in glob.glob(f'{summaries_dir}/*.csv'):
     current_family, current_drift, current_erroneous, summary_data = parse_summary(file)
     if current_erroneous:
@@ -136,11 +136,12 @@ for file in glob.glob(f'{summaries_dir}/*.csv'):
         continue
     if current_drift:
         drift_families.append(current_family)
-        calculate_drift_types(current_family, summary_data)
+        full_results[current_family] = calculate_drift_types(current_family, summary_data)
     else:
         non_drift_families.append(current_family)
     break
 
+print(full_results)
 # print("drifts:", drift_families)
 # print("non drifts:", non_drift_families)
 # print("errors:", erroneous_files)
