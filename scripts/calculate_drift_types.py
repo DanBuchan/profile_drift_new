@@ -123,9 +123,14 @@ def calculate_drift_types(main_family, summary):
                                            'flat': drift_types[3]}
         
     for family in track_data.keys():
-        for family2 in  track_data.keys():
-            if family in family2:
-                continue
+        if family in main_family:
+            continue # don't compare the main family
+        five_percent_peak = track_data[main_family]['peak_value'] * 0.05
+        if track_data[family]['peak_value'] <= five_percent_peak and \
+               track_data[family]['final_value'] <= five_percent_peak:
+           results['growth_types'][family]['negligible_contaminant'] = True
+        else:
+            results['growth_types'][family]['negligible_contaminant'] = False
     return(results)
    
 
