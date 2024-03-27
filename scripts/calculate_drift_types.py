@@ -106,7 +106,7 @@ def calculate_drift_types(main_family, summary):
                         track_data[family]['peak_value'] = summary[iteration][family]
                         track_data[family]['peak_iteration'] = iteration
                                   
-    pprint.pp(track_data)
+    # pprint.pp(track_data)
     # Now work out drift types
     number_of_contaminents = len(track_data)-1
     results = {'number_of_drift_familes': number_of_contaminents,
@@ -155,7 +155,7 @@ for file in glob.glob(f'{summaries_dir}/*.csv'):
         break
 
 pprint.pp(full_results)
-# print("drifts:", drift_families)
+print("drifts:", drift_families)
 # print("non drifts:", non_drift_families)
 # print("errors:", erroneous_files)
 # print("drifts:", len(drift_families))
