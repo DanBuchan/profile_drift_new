@@ -175,6 +175,7 @@ for main_family in full_results.keys():
     for family in drift_info:
         if family in main_family:
             continue
+        print(full_results[main_family]['growth_types'][family]['negligible_contaminant'])
         if full_results[main_family]['growth_types'][family]['negligible_contaminant'] == False:
             signifcant_drift = True
 
