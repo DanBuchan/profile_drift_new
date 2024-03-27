@@ -210,7 +210,6 @@ query_spiked = 0
 query_lost = 0
 query_stable = 0
 
- 
 for family in significant_drifts:
     count+=1
     data = full_results[family]
@@ -229,7 +228,7 @@ for family in significant_drifts:
                 query_purified+= 1
 
 
-
+print(f"Total Analysed familes: {count}")
 print(f"Count where there were fewer families at iteration 20 than total seen: {families_lost}")
 print(f"Count where query grew: {query_grew}")
 print(f"Count where query peaked: {query_spiked}")
