@@ -151,7 +151,7 @@ for file in glob.glob(f'{summaries_dir}/*.csv'):
         full_results[current_family] = calculate_drift_types(current_family, summary_data)
     else:
         non_drift_families.append(current_family)
-    if count == 20:
+    if count == 30:
         break
 
 ###
