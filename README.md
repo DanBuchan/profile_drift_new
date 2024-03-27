@@ -45,6 +45,12 @@ c. Are the clusters meaningful?
   use run_pfam_psiblast.sh on myriad to coordinate this.
 3. Analyse *_blast_summary.csv, to find out which families show drift and what kinds of drift
    > python calculate_drift_types.py results_data/psiblast_iteration_summaries/
+   outputs
+   drift_list.txt - familes with drift contamination
+   non_drift_list.txt - families with no such contamination
+   drift_error_list.txt - families with errors in the drift summary file, to be re-run
+   insignificant_drifts.txt - families where contamination is less than 5% of the peak family size
+   significant_drifts.txt - list of drift families with substantial amounts of drift
 
 
 ## 2b 

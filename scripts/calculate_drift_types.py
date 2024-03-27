@@ -176,6 +176,7 @@ for main_family in full_results.keys():
         if family in main_family:
             continue
         if full_results[main_family]['growth_types'][family]['negligible_contaminant'] == False:
+            print("hi")
             signifcant_drift = True
 
     if significant_drift:
@@ -191,7 +192,6 @@ with open("insignificant_drifts.txt", "w") as fhDrifts:
     for family in neglible_drifts:
         fhDrifts.write(f'{family}\n')
 
-exit()
 
 print("---")
 print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
