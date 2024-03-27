@@ -76,7 +76,7 @@ def calculate_drift_types(main_family, summary):
     pprint.pp(track_data)
     # Now work out drift types
     for family in track_data:
-        if family is main_family:
+        if family in main_family:
             print("analysing main family")
         else:
             print("analysing drift family")
