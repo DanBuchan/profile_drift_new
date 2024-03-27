@@ -139,7 +139,9 @@ drift_families = []
 non_drift_families = []
 erroneous_files = []
 full_results = {}
+count = 0
 for file in glob.glob(f'{summaries_dir}/*.csv'):
+    count += 1
     current_family, current_drift, current_erroneous, summary_data = parse_summary(file)
     if current_erroneous:
         erroneous_files.append(file[len(summaries_dir):])
@@ -149,7 +151,8 @@ for file in glob.glob(f'{summaries_dir}/*.csv'):
         full_results[current_family] = calculate_drift_types(current_family, summary_data)
     else:
         non_drift_families.append(current_family)
-    break
+    if count == 5:
+        break
 
 pprint.pp(full_results)
 # print("drifts:", drift_families)
