@@ -40,6 +40,30 @@ def parse_summary(summary_file):
         drift = True
     return family, drift, erroneous, data
 
+def return_growth_types(initial, peak, final):
+    ten_percent_initial = initial * 0.1
+    twenty_percent_initial = initial * 0.2
+    eighty_percent_peak = peak * 0.8
+
+    grew = False
+    spiked = False
+    purified = False
+    flat = False
+
+    if peak >= initial + twenty_percent_initial:
+        grew = True
+
+    if final <= eighty_percent_peak:
+        spiked = True
+    
+    if final <= initial + ten_percent_initial and grew:
+        purified = True
+
+    if grew == False and spiked == False and purified == False:
+        flat = True
+    
+    return [grew, spiked, purified, flat]
+
 
 def calculate_drift_types(main_family, summary):
     # summary[iteration][family][value]
@@ -77,22 +101,22 @@ def calculate_drift_types(main_family, summary):
                                   
     pprint.pp(track_data)
     # Now work out drift types
-    small_non_growing_contaminant = False
     number_of_contaminents = len(track_data)-1
-    query_grew = False
-    query_spiked = False
-    query_purified = False
-    contaminant_grew = False
-    contaminant_spiked = False
-    contaminant_purified = False
-    for family in track_data:
-        if family in main_family:
-            print("analysing main family")
-        else:
-            print("analysing drift family")
+    results = {'number_of_drift_familes': number_of_contaminents,
+               'families_at_final_iteration': number_families_at_final_iteration,
+               'growth_types': {},
+               }
+    for family in track_data.keys():
+        drift_types = return_growth_types(track_data[family]['initial_value'],
+                                          track_data[family]['peak_value'],
+                                          track_data[family]['final_value'])
+        results['growth_types'][family] = {'grew': drift_types[0],
+                                           'spiked': drift_types[1],
+                                           'purified': drift_types[2],
+                                           'flat': drift_types[3]}
 
-    print("Number of drift families:", number_of_contaminents)
-    print("Number of families at final iteration:", number_families_at_final_iteration)
+    pprint.pp(results)
+   
 
 summaries_dir = sys.argv[1]
 drift_families = []
