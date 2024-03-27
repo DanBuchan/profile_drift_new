@@ -256,6 +256,11 @@ print(f"Count where query grew: {query_grew}")
 print(f"Count where query peaked: {query_spiked}")
 print(f"Count where query had flat growth: {query_stable}")
 print(f"Count where query was purified: {query_purified}")
+print(f"Count where contaminants only grew: {contaminants_complex}")
+print(f"Count where contaminants peaked: {contaminants_complex}")
+print(f"Count where contaminants only stable: {contaminants_complex}")
+print(f"Count where contaminants only purified: {contaminants_complex}")
+
 
 # print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
 # print(f"Purifying Selection: QUERY REDUCED: {purified_query}")
