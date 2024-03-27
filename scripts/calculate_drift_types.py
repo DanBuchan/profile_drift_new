@@ -169,13 +169,13 @@ with open("drift_error_list.txt", "w") as fhErrors:
 
 negligible_drifts = []
 significant_drifts = []
+signifcant_drift = None
 for main_family in full_results.keys():
     significant_drift = False
     drift_info = full_results[main_family]['growth_types']
     for family in drift_info:
         if family in main_family:
             continue
-        print(full_results[main_family]['growth_types'][family]['negligible_contaminant'])
         if not full_results[main_family]['growth_types'][family]['negligible_contaminant']:
             signifcant_drift = True
 
