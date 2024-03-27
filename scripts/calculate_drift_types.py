@@ -238,7 +238,17 @@ for family in significant_drifts:
             spiked_set.add(growth_data[family]['grew'])
             purified_set.add(growth_data[family]['grew'])
             flat_set.add(growth_data[family]['grew'])
-            
+    if len(grow_set) == 1 and len(spiked_set) == 1 and len(purified_set) == 1 and len(flat_set) == 1: 
+        if list(spiked_set}[0] or list(grow_set}[0]:
+            contaminants_grew +=1
+        if list(spiked_set}[0]:
+            contaminants_spiked+=1
+        if list(flat_set}[0]:
+            contaminants_stable+=1
+        if list(purified_set}[0]:
+            contaminants_purified+=1
+    else:
+        contaminants_complex+=1
 
 print(f"Total Analysed familes: {count}")
 print(f"Count where there were fewer families at iteration 20 than total seen: {families_lost}")
