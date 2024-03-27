@@ -154,7 +154,10 @@ for file in glob.glob(f'{summaries_dir}/*.csv'):
     if count == 50:
         break
 
-pprint.pp(full_results)
+###
+### Output lists of results
+###
+        
 with open("drift_list.txt", "w") as fhDrifts:
     for family in drift_families:
         fhDrifts.write(f'{family}\n')
@@ -191,8 +194,12 @@ with open("insignificant_drifts.txt", "w") as fhInSigDrifts:
     for family in negligible_drifts:
         fhInSigDrifts.write(f'{family}\n')
 
+###
+### Output summary
+###
+        
 for family in significant_drifts:
-    pprint.pp(significant_drifts[family])
+    pprint.pp(full_results[family])
 
 # print("---")
 # print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
