@@ -176,7 +176,6 @@ for main_family in full_results.keys():
         if family in main_family:
             continue
         if full_results[main_family]['growth_types'][family]['negligible_contaminant'] == False:
-            print("hi")
             signifcant_drift = True
 
     if significant_drift:
@@ -184,23 +183,23 @@ for main_family in full_results.keys():
     else:
         neglible_drifts.append(main_family)
 
-with open("significant_drifts.txt", "w") as fhDrifts:
+with open("significant_drifts.txt", "w") as fhSigDrifts:
     for family in significant_drifts:
-        fhDrifts.write(f'{family}\n')
+        fhSigDrifts.write(f'{family}\n')
 
-with open("insignificant_drifts.txt", "w") as fhDrifts:
+with open("insignificant_drifts.txt", "w") as fhInSigDrifts:
     for family in neglible_drifts:
-        fhDrifts.write(f'{family}\n')
+        fhInSigDrifts.write(f'{family}\n')
 
 
-print("---")
-print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
-print(f"Purifying Selection: QUERY REDUCED: {purified_query}")
-print(f"Purifying Selection: CONTAMINANT REDUCED: {purified_contaminant}")
-print(f"Purifying Selection: TOTALLY MISSING HIT: {purified_total_lost_hit}")
-print(f"Count with Growing Query: {grew_query}")
-print(f"Count with Spiked Query: {spiked_query}")
-print(f"Count with Growing Contaminant: {grew_contaminant}")
-print(f"Count with Spiked Contaminant: {spiked_contaminant}")
-print(f"Count with Non growing contaminants: {non_growing_contaminants}")
-print(f"Count with multiple contaminants: {multiple_families}")
+# print("---")
+# print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
+# print(f"Purifying Selection: QUERY REDUCED: {purified_query}")
+# print(f"Purifying Selection: CONTAMINANT REDUCED: {purified_contaminant}")
+# print(f"Purifying Selection: TOTALLY MISSING HIT: {purified_total_lost_hit}")
+# print(f"Count with Growing Query: {grew_query}")
+# print(f"Count with Spiked Query: {spiked_query}")
+# print(f"Count with Growing Contaminant: {grew_contaminant}")
+# print(f"Count with Spiked Contaminant: {spiked_contaminant}")
+# print(f"Count with Non growing contaminants: {non_growing_contaminants}")
+# print(f"Count with multiple contaminants: {multiple_families}")
