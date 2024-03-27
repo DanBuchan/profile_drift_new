@@ -56,9 +56,11 @@ def calculate_drift_types(main_family, summary):
                                   'peak_value': None,
                                   'peak_iteration': None
                                   }
+    number_families_at_final_iteration = 0
     for family in families:
         for iteration in summary:
             if family in summary[iteration]:
+                number_families_at_final_iteration = len(summary[iteration])
                 if track_data[family]['initial_iteration'] is None:
                     track_data[family]['initial_iteration'] = iteration
                     track_data[family]['initial_value'] = summary[iteration][family]
@@ -75,13 +77,20 @@ def calculate_drift_types(main_family, summary):
                                   
     pprint.pp(track_data)
     # Now work out drift types
+    small_non_growing_contaminant = False
+    query_grew = False
+    query_spiked = False
+    query_purified = False
+    contaminant_grew = False
+    contaminant_spiked = False
+    contaminant_purified = False
     for family in track_data:
         if family in main_family:
             print("analysing main family")
         else:
             print("analysing drift family")
 
-
+    print("Number of families at final iteration:", number_families_at_final_iteration)
 
 summaries_dir = sys.argv[1]
 drift_families = []
