@@ -51,6 +51,7 @@ c. Are the clusters meaningful?
    drift_error_list.txt - families with errors in the drift summary file, to be re-run
    insignificant_drifts.txt - families where contamination is less than 5% of the peak family size
    significant_drifts.txt - list of drift families with substantial amounts of drift
+   drift_summary.txt - summary of some differnt behaviours of the query and contaminant families
 
 
 ## 2b 
