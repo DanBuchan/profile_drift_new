@@ -55,6 +55,7 @@ def return_growth_types(initial, peak, final):
 
     if final <= eighty_percent_peak:
         spiked = True
+        grew = True
     
     if final <= initial + ten_percent_initial and grew:
         purified = True
