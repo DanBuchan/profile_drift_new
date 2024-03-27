@@ -235,9 +235,9 @@ for family in significant_drifts:
                 query_purified+= 1
         elif growth_data[growth_family]['negligible_contaminant'] == False:
             grow_set.add(growth_data[family]['grew'])
-            spiked_set.add(growth_data[family]['grew'])
-            purified_set.add(growth_data[family]['grew'])
-            flat_set.add(growth_data[family]['grew'])
+            spiked_set.add(growth_data[family]['spiked'])
+            purified_set.add(growth_data[family]['purified'])
+            flat_set.add(growth_data[family]['flat'])
     print(spiked_set, grow_set, flat_set, purified_set)
     if len(grow_set) == 1 and len(spiked_set) == 1 and len(purified_set) == 1 and len(flat_set) == 1: 
         if list(spiked_set)[0] or list(grow_set)[0]:
