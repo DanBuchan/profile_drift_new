@@ -1,0 +1,11 @@
+Total Analysed familes: 13
+Count where there were fewer families at iteration 20 than total seen: 11
+Count where query grew: 12
+Count where query peaked: 11
+Count where query had flat growth: 1
+Count where query was purified: 10
+Count where contaminants with different behaviours: 0
+Count where contaminants only grew: 12
+Count where contaminants peaked: 11
+Count where contaminants only had flat growth: 1
+Count where contaminants only purified: 10
