@@ -123,7 +123,8 @@ def align_seqs(seq_file, iterations):
             fhOut.close()
             clean_up=True
         except Exception as e:
-            pass
+            clean_up = False
+            break
     
     if clean_up:
         tar_args = [
@@ -146,14 +147,14 @@ def run_blasts(family, id, seq, blast_db, iterations):
     fhRep.write(f">{id}|{family}\n")
     fhRep.write(f"{seq}\n")
     fhRep.close()
-    # do_blast_iterations(id, blast_db, iterations)
-    # process_blast_results(id, seq, family, iterations)
-    align_seqs(id, iterations)
-    os.remove(f'{id}.fa')
+    do_blast_iterations(id, blast_db, iterations)
+    process_blast_results(id, seq, family, iterations)
+    #align_seqs(id, iterations)
+    #os.remove(f'{id}.fa')
     for xml in glob.glob("*.xml"):
         os.remove(xml)
-    for pssm in glob.glob("*.pssm"):
-        os.remove(pssm)
+    #for pssm in glob.glob("*.pssm"):
+    #    os.remove(pssm)
 
 def read_fasta(file):
     seqs = {}
