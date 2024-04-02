@@ -125,19 +125,7 @@ def align_seqs(seq_file, iterations):
         except Exception as e:
             clean_up = False
             break
-    
-    if clean_up:
-        tar_args = [
-            '/usr/bin/tar',
-            'czf',
-            f'{seq_file}_msa.tar.gz',
-        ]
-        tar_args.extend(glob.glob("*.msa"))
-        tar_output = subprocess.check_output(tar_args)
-        for seqs in glob.glob("*_seqs.fa"):
-            os.remove(seqs)
-        for msa in glob.glob("*_seqs.msa"):
-            os.remove(msa)
+    return clean_up
 
 def run_blasts(family, id, seq, blast_db, iterations):
     """
@@ -149,12 +137,26 @@ def run_blasts(family, id, seq, blast_db, iterations):
     fhRep.close()
     do_blast_iterations(id, blast_db, iterations)
     process_blast_results(id, seq, family, iterations)
-    # align_seqs(id, iterations)
-    os.remove(f'{id}.fa')
-    for xml in glob.glob("*.xml"):
-        os.remove(xml)
-    for pssm in glob.glob("*.pssm"):
-        os.remove(pssm)
+    clean_up = False
+    # clean_up = align_seqs(id, iterations)
+    clean_up = True
+    if clean_up:
+        tar_args = [
+            '/usr/bin/tar',
+            'czf',
+            f'{id}_seqs.tar.gz',
+        ]
+        tar_args.extend(glob.glob("*_seqs.fa"))
+        tar_output = subprocess.check_output(tar_args)
+        for seqs in glob.glob("*_seqs.fa"):
+            os.remove(seqs)
+        # for msa in glob.glob("*_seqs.msa"):
+        #     os.remove(msa)
+        os.remove(f'{id}.fa')
+        for xml in glob.glob("*.xml"):
+            os.remove(xml)
+        for pssm in glob.glob("*.pssm"):
+            os.remove(pssm)
 
 def read_fasta(file):
     seqs = {}
