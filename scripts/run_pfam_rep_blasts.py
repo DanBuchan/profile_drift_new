@@ -152,7 +152,7 @@ def run_blasts(family, sge_id, id, seq, blast_db, iterations):
            os.remove(seqs)
         # for msa in glob.glob("*_seqs.msa"):
         #     os.remove(msa)
-        os.remove(f'{id}.fa')
+        os.remove(f'{sge_id}_{id}.fa')
         for xml in glob.glob("*.xml"):
             os.remove(xml)
         for pssm in glob.glob("*.pssm"):
