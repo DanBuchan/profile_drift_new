@@ -148,8 +148,8 @@ def run_blasts(family, id, seq, blast_db, iterations):
         ]
         tar_args.extend(glob.glob("*_seqs.fa"))
         tar_output = subprocess.check_output(tar_args)
-        # for seqs in glob.glob("*_seqs.fa"):
-        #    os.remove(seqs)
+        for seqs in glob.glob("*_seqs.fa"):
+           os.remove(seqs)
         # for msa in glob.glob("*_seqs.msa"):
         #     os.remove(msa)
         os.remove(f'{id}.fa')
