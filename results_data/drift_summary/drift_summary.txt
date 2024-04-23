@@ -1,11 +1,11 @@
-Total Analysed familes: 13
-Count where there were fewer families at iteration 20 than total seen: 11
-Count where query grew: 12
-Count where query peaked: 11
-Count where query had flat growth: 1
-Count where query was purified: 10
-Count where contaminants with different behaviours: 0
-Count where contaminants only grew: 12
-Count where contaminants peaked: 11
-Count where contaminants only had flat growth: 1
-Count where contaminants only purified: 10
+Total Analysed drift familes: 3230
+Count where there were fewer families at iteration 20 than total seen: 1453
+Count where query grew: 2235
+Count where query peaked: 1591
+Count where query had flat growth: 950
+Count where query was purified: 1434
+Count where contaminants with different behaviours: 1024
+Count where contaminants only grew: 2137
+Count where contaminants peaked: 239
+Count where contaminants only had flat growth: 107
+Count where contaminants only purified: 38

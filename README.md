@@ -23,13 +23,14 @@ PFAM RELEASE 36 @ 15 March 2024
 
 6. Perform an all-against-all Needleman and wunsch of the reps. Extract bits scores for a similarity matrix Scale/Normalise to between 0 and one and invert for a distance matrix
    > wc -l pfam_consensus_reps_labelled_flattened.fa
-   Then use split to divide in to 50 files (880 will change depending on size), for cluster execution
-   > split --numeric-suffixes=1 -l 832 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
+   Then use split to divide in to 500 files (880 will change depending on size), for cluster execution
+   > split --numeric-suffixes=1 -a 3 -l 84 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
 
    use pfam_reps_nw.py over our relabelled pfam_consensus_reps_labelled.fa
    wrote a morcambe script run_pfam_nw.sh to batch job this over a couple of days as it is A LOT of comparisons 20k x 20k
 
 7. Script that combines the distances down to a big matrix, maybe numpy and save as blob or pickle.
+   > build_rep_distance_matrix.py
 
 ## 1b Cluster analysis
 
@@ -51,7 +52,7 @@ c. Are the clusters meaningful?
    drift_error_list.txt - families with errors in the drift summary file, to be re-run
    insignificant_drifts.txt - families where contamination is less than 5% of the peak family size
    significant_drifts.txt - list of drift families with substantial amounts of drift
-   drift_summary.txt - summary of some differnt behaviours of the query and contaminant families
+   drift_summary.txt - summary of some different behaviours of the query and contaminant families
 
 
 ## 2b 

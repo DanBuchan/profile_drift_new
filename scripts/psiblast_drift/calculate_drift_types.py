@@ -122,11 +122,17 @@ def calculate_drift_types(main_family, summary):
                                            'spiked': drift_types[1],
                                            'purified': drift_types[2],
                                            'flat': drift_types[3]}
-        
+    
+    # print(track_data)
     for family in track_data.keys():
         if family in main_family:
             continue # don't compare the main family
-        five_percent_peak = track_data[main_family]['peak_value'] * 0.05
+        
+        try: # if a search never finds it's own family set this threshold to 0
+            five_percent_peak = track_data[main_family]['peak_value'] * 0.05
+        except:
+            five_percent_peak = 0
+
         if track_data[family]['peak_value'] <= five_percent_peak and \
                track_data[family]['final_value'] <= five_percent_peak:
            results['growth_types'][family]['negligible_contaminant'] = True
@@ -142,6 +148,9 @@ erroneous_files = []
 full_results = {}
 count = 0
 for file in glob.glob(f'{summaries_dir}/*.csv'):
+    # if 'results_data/psiblast_iteration_summaries/10047_GH123_N-consensus_blast_summary.csv' not in file:
+    #     continue
+    # print(file)
     count += 1
     current_family, current_drift, current_erroneous, summary_data = parse_summary(file)
     if current_erroneous:
@@ -152,8 +161,8 @@ for file in glob.glob(f'{summaries_dir}/*.csv'):
         full_results[current_family] = calculate_drift_types(current_family, summary_data)
     else:
         non_drift_families.append(current_family)
-    if count == 40:
-        break
+    # if count == 2:
+    #     break
 
 ###
 ### Output lists of results
@@ -199,17 +208,17 @@ with open("insignificant_drifts.txt", "w") as fhInSigDrifts:
 ### Output summary
 ###
 count = 0
-contaminants_purified = 0
-contaminants_grew = 0
-contaminants_spiked = 0
-families_lost = 0
-contaminants_stable = 0
-contaminants_complex = 0
-query_purified = 0
-query_grew = 0
-query_spiked = 0
-query_lost = 0
-query_stable = 0
+contaminants_purified  = set()
+contaminants_grew  = set()
+contaminants_spiked  = set()
+families_lost  = set()
+contaminants_stable  = set()
+contaminants_complex  = set()
+query_purified = []
+query_grew = []
+query_spiked = []
+query_stable = []
+
 
 for family in significant_drifts:
     count+=1
@@ -217,59 +226,83 @@ for family in significant_drifts:
     # print(family)
     # pprint.pp(data)
     if data['families_at_final_iteration'] < data['number_of_drift_familes'] + 1:
-        families_lost += 1
+        families_lost.add(family)
     growth_data = data['growth_types']
     grow_set = set()
     spiked_set = set()
     purified_set = set()
     flat_set = set()
-    for growth_family in growth_data:
-        if family in growth_family:
-            if growth_data[family]['grew']:
-                query_grew += 1
-            if growth_data[family]['spiked']:
-                query_spiked += 1
-            if growth_data[family]['flat']:
-                query_stable+= 1
-            if growth_data[family]['purified']:
-                query_purified+= 1
-        elif growth_data[growth_family]['negligible_contaminant'] == False:
-            grow_set.add(growth_data[family]['grew'])
-            spiked_set.add(growth_data[family]['spiked'])
-            purified_set.add(growth_data[family]['purified'])
-            flat_set.add(growth_data[family]['flat'])
+    # pprint.pp(growth_data)
+    # First total up what the query family is doing
+    if family in growth_data:
+        if growth_data[family]['grew']:
+            query_grew.append(family)
+        if growth_data[family]['spiked']:
+            query_spiked.append(family)
+        if growth_data[family]['flat']:
+            query_stable.append(family)
+        if growth_data[family]['purified']:
+            query_purified.append(family)
+        del growth_data[family]
+    
+    # loop over the contaminants and check what the non-neligible ones are doing.
+    # Add the behaviours to theses sets
+    for contaminant_family in growth_data:
+        if growth_data[contaminant_family]['negligible_contaminant'] is False:
+            grow_set.add(growth_data[contaminant_family]['grew'])
+            spiked_set.add(growth_data[contaminant_family]['spiked'])
+            purified_set.add(growth_data[contaminant_family]['purified'])
+            flat_set.add(growth_data[contaminant_family]['flat'])
+
     if len(grow_set) == 1 and len(spiked_set) == 1 and len(purified_set) == 1 and len(flat_set) == 1: 
         if list(spiked_set)[0] or list(grow_set)[0]:
-            contaminants_grew +=1
+            contaminants_grew.add(family)
         if list(spiked_set)[0]:
-            contaminants_spiked+=1
+            contaminants_spiked.add(family)
         if list(flat_set)[0]:
-            contaminants_stable+=1
+            contaminants_stable.add(family)
         if list(purified_set)[0]:
-            contaminants_purified+=1
+            contaminants_purified.add(family)
+        if (list(spiked_set)[0] or list(grow_set)[0]) and list(flat_set)[0]:
+            contaminants_complex.add(family)
+        if (list(spiked_set)[0] or list(grow_set)[0]) and list(purified_set)[0]:
+            contaminants_complex.add(family)
+            
     else:
-        contaminants_complex+=1
+        contaminants_complex.add(family)
 
-print(f"Total Analysed familes: {count}")
-print(f"Count where there were fewer families at iteration 20 than total seen: {families_lost}")
-print(f"Count where query grew: {query_grew}")
-print(f"Count where query peaked: {query_spiked}")
-print(f"Count where query had flat growth: {query_stable}")
-print(f"Count where query was purified: {query_purified}")
-print(f"Count where contaminants with different behaviours: {contaminants_complex}")
-print(f"Count where contaminants only grew: {contaminants_grew}")
-print(f"Count where contaminants peaked: {contaminants_spiked}")
-print(f"Count where contaminants only had flat growth: {contaminants_stable}")
-print(f"Count where contaminants only purified: {contaminants_purified}")
+print(f"Total Analysed drift familes: {count}")
+print(f"Count where there were fewer families at iteration 20 than total seen: {len(list(families_lost))}")
+print(f"Count where query grew: {len(query_grew)}")
+print(f"Count where query peaked: {len(query_spiked)}")
+print(f"Count where query had flat growth: {len(query_stable)}")
+print(f"Count where query was purified: {len(query_purified)}")
+print(f"Count where contaminants with different behaviours: {len(list(contaminants_complex))}")
+print(f"Count where contaminants only grew: {len(list(contaminants_grew))}")
+print(f"Count where contaminants peaked: {len(list(contaminants_spiked))}")
+print(f"Count where contaminants only had flat growth: {len(list(contaminants_stable))}")
+print(f"Count where contaminants only purified: {len(list(contaminants_purified))}")
 
+with open("set_where_there_are_fewer_families_at_the_end.txt", "w", encoding="utf-8") as fhOut:
+    for item in families_lost:
+        fhOut.write(f'{item}\n')
 
-# print(f"Purifying Selection: LOST QUERY: {purified_lost_query}")
-# print(f"Purifying Selection: QUERY REDUCED: {purified_query}")
-# print(f"Purifying Selection: CONTAMINANT REDUCED: {purified_contaminant}")
-# print(f"Purifying Selection: TOTALLY MISSING HIT: {purified_total_lost_hit}")
-# print(f"Count with Growing Query: {grew_query}")
-# print(f"Count with Spiked Query: {spiked_query}")
-# print(f"Count with Growing Contaminant: {grew_contaminant}")
-# print(f"Count with Spiked Contaminant: {spiked_contaminant}")
-# print(f"Count with Non growing contaminants: {non_growing_contaminants}")
-# print(f"Count with multiple contaminants: {multiple_families}")
+with open("set_where_the_query_was_purified_out.txt", "w", encoding="utf-8") as fhOut:
+    for item in query_purified:
+        fhOut.write(f'{item}\n')
+
+with open("set_with_complex_contamination_behaviours.txt", "w", encoding="utf-8") as fhOut:
+    for item in contaminants_complex:
+        fhOut.write(f'{item}\n')
+
+with open("set_where_contaminants_are_purified_out.txt", "w", encoding="utf-8") as fhOut:
+    for item in contaminants_purified:
+        fhOut.write(f'{item}\n')
+
+with open("set_where_contaminants_are_purified_out.txt", "w", encoding="utf-8") as fhOut:
+    for item in contaminants_purified:
+        fhOut.write(f'{item}\n')
+
+with open("set_where_contaminants_grew.txt", "w", encoding="utf-8") as fhOut:
+    for item in contaminants_grew:
+        fhOut.write(f'{item}\n')
