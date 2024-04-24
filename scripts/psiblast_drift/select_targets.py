@@ -7,11 +7,39 @@ def select_from_list(file, number):
             pf_family = line.rstrip()
             print(pf_family)
             target_list.append(pf_family)
-    return(random.sample(target_list, number))
+    if len(list) < number
+        return target_list
+    return random.sample(target_list, number)
     
 
 print("family,type")
-non_drift_list = "results_data/drift_summary/non_drift_list.txt"
-non_drift_set = select_from_list(non_drift_list, 100)
-for item in non_drift_set:
+drift_list = "results_data/drift_summary/non_drift_list.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
     print(f"{item},non_drift")
+
+drift_list = "results_data/drift_summary/non_drift_list.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
+    print(f"{item},insig_drift")
+
+drift_list = "results_data/drift_summary/set_where_contaminants_grew.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
+    print(f"{item},contaminants_grew")
+
+drift_list = "results_data/drift_summary/set_where_contaminants_are_purified_out.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
+    print(f"{item},contaminants_purified")
+
+drift_list = "results_data/drift_summary/set_with_complex_contamination_behaviours.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
+    print(f"{item},contaminants_complex")
+set_where_the_query_was_purified_out.txt
+
+drift_list = "results_data/drift_summary/set_where_the_query_was_purified_out.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
+    print(f"{item},query_purified")
