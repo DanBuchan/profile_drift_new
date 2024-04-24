@@ -24,7 +24,7 @@ def read_targets(file):
     targets = []
     with open(file) as csvfile:
         targetreader = csv.reader(csvfile, delimiter=',') 
-        next targetreader
+        next(targetreader)
         for row in targetreader:
             targets.append(row[0])
     return(targets)
