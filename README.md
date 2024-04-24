@@ -53,6 +53,11 @@ c. Are the clusters meaningful?
    insignificant_drifts.txt - families where contamination is less than 5% of the peak family size
    significant_drifts.txt - list of drift families with substantial amounts of drift
    drift_summary.txt - summary of some different behaviours of the query and contaminant families
+4. We select some Pfam families from each drift class. Unpack the sequences. Align them with raxml.
+   > select_targets.py
+   > run_raxml.py raxml.sh
+5. Take all our alignments and then run alphafold2.
+6. Collate models and analyse.
 
 
 ## 2b 
