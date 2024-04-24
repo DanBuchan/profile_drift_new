@@ -7,7 +7,7 @@ def select_from_list(file, number):
             pf_family = line.rstrip()
             print(pf_family)
             target_list.append(pf_family)
-    if len(list) < number:
+    if len(target_list) < number:
         return target_list
     return random.sample(target_list, number)
     
