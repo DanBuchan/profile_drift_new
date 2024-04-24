@@ -30,10 +30,10 @@ drift_set = select_from_list(drift_list, 100)
 for item in drift_set:
     print(f"{item},contaminants_grew")
 
-# drift_list = "results_data/drift_summary/set_where_contaminants_are_purified_out.txt"
-# drift_set = select_from_list(drift_list, 100)
-# for item in drift_set:
-#     print(f"{item},contaminants_purified")
+drift_list = "results_data/drift_summary/set_where_contaminants_are_purified_out.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
+    print(f"{item},contaminants_purified")
 
 # drift_list = "results_data/drift_summary/set_with_complex_contamination_behaviours.txt"
 # drift_set = select_from_list(drift_list, 100)
