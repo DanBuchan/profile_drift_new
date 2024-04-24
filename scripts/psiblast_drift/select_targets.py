@@ -40,7 +40,7 @@ drift_set = select_from_list(drift_list, 100)
 for item in drift_set:
     print(f"{item},contaminants_complex")
 
-# drift_list = "results_data/drift_summary/set_where_the_query_was_purified_out.txt"
-# drift_set = select_from_list(drift_list, 100)
-# for item in drift_set:
-#     print(f"{item},query_purified")
+drift_list = "results_data/drift_summary/set_where_the_query_was_purified_out.txt"
+drift_set = select_from_list(drift_list, 100)
+for item in drift_set:
+    print(f"{item},query_purified")
