@@ -1,5 +1,6 @@
 from collections import defaultdict
 import sys
+import csv
 
 # python run_raxml.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa results_data/drift_summary/alpha_fold_targets.csv
 
@@ -20,7 +21,12 @@ def read_fasta(file):
     return(seqs)
 
 def read_targets(file):
-    tagets = []
+    targets = []
+    with open(file) as csvfile:
+        targetreader = csv.reader(csvfile, delimiter=',') 
+        next targetreader
+        for row in targetreader:
+            targets.append(row[0])
     return(targets)
 
 
