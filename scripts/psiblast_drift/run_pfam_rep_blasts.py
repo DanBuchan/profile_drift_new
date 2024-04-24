@@ -28,8 +28,8 @@ def read_reps(dom_seqs):
                 reps[family] = {rep_id: seq}
     return reps
 
-def do_blast_iterations(id, blast_db, n):
-    in_file = f'{id}.fa'
+def do_blast_iterations(sge_id, id, blast_db, n):
+    in_file = f'{sge_id}_{id}.fa'
     #first_iteration_args = ['/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast',
     first_iteration_args = ['/home/ucbcdwb/Applications/ncbi-blast-2.12.0+/bin/psiblast',
                             '-query',
@@ -70,9 +70,9 @@ def do_blast_iterations(id, blast_db, n):
         print(" ".join(iteration_args))    
         subprocess.call(iteration_args)
 
-def process_blast_results(file_id, seq, family, iterations):
+def process_blast_results(sge_id, file_id, seq, family, iterations):
 
-    fhsummary = open(f"{file_id}_blast_summary.csv", "w")
+    fhsummary = open(f"{sge_id}_{file_id}_blast_summary.csv", "w")
     fhsummary.write("iteration,query,query_family,hit_family,count\n")
     pf_pattern = re.compile(r"\|(PF\d{5})")
     iteration_counts = {}
@@ -125,36 +125,38 @@ def align_seqs(seq_file, iterations):
         except Exception as e:
             clean_up = False
             break
-    
+    return clean_up
+
+def run_blasts(family, sge_id, id, seq, blast_db, iterations):
+    """
+    run psiblast over each rep against the cath dom seqs db
+    """
+    fhRep = open(f'{sge_id}_{id}.fa', "w")
+    fhRep.write(f">{id}|{family}\n")
+    fhRep.write(f"{seq}\n")
+    fhRep.close()
+    do_blast_iterations(sge_id, id, blast_db, iterations)
+    process_blast_results(sge_id, id, seq, family, iterations)
+    clean_up = False
+    # clean_up = align_seqs(id, iterations)
+    clean_up = True
     if clean_up:
         tar_args = [
             '/usr/bin/tar',
             'czf',
-            f'{seq_file}_msa.tar.gz',
+            f'{sge_id}_{id}_seqs.tar.gz',
         ]
-        tar_args.extend(glob.glob("*.msa"))
+        tar_args.extend(glob.glob("*_seqs.fa"))
         tar_output = subprocess.check_output(tar_args)
         for seqs in glob.glob("*_seqs.fa"):
-            os.remove(seqs)
-        for msa in glob.glob("*_seqs.msa"):
-            os.remove(msa)
-
-def run_blasts(family, id, seq, blast_db, iterations):
-    """
-    run psiblast over each rep against the cath dom seqs db
-    """
-    fhRep = open(f'{id}.fa', "w")
-    fhRep.write(f">{id}|{family}\n")
-    fhRep.write(f"{seq}\n")
-    fhRep.close()
-    # do_blast_iterations(id, blast_db, iterations)
-    # process_blast_results(id, seq, family, iterations)
-    align_seqs(id, iterations)
-    os.remove(f'{id}.fa')
-    for xml in glob.glob("*.xml"):
-        os.remove(xml)
-    for pssm in glob.glob("*.pssm"):
-        os.remove(pssm)
+           os.remove(seqs)
+        # for msa in glob.glob("*_seqs.msa"):
+        #     os.remove(msa)
+        os.remove(f'{sge_id}_{id}.fa')
+        for xml in glob.glob("*.xml"):
+            os.remove(xml)
+        for pssm in glob.glob("*.pssm"):
+            os.remove(pssm)
 
 def read_fasta(file):
     seqs = {}
@@ -181,7 +183,7 @@ id = id_list[int(sys.argv[3])-1]
 family = id[-7:]
 seq_id = id[1:-8]
 seq_id = seq_id.replace("/", "_")
-run_blasts(family, seq_id, rep_seqs[id], blast_db, int(sys.argv[4]))
+run_blasts(family, sys.argv[3], seq_id, rep_seqs[id], blast_db, int(sys.argv[4]))
 
 # for id in rep_seqs.keys():
 #     family = id[-7:]
