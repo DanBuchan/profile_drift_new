@@ -33,6 +33,6 @@ def read_targets(file):
 rep_file = sys.argv[1]
 rep_seqs = read_fasta(rep_file)
 id_list = list(rep_seqs.keys())
-print(id_list)
+# print(id_list)
 target_file = sys.argv[2]
 read_targets(target_file)
