@@ -18,8 +18,7 @@ drift_list = "results_data/drift_summary/non_drift_list.txt"
 drift_set = select_from_list(drift_list, 100)
 print(len(drift_set))
 for item in drift_set:
-    pass
-#     print(f"{item},non_drift")
+    print(f"{item},non_drift")
 
 # drift_list = "results_data/drift_summary/non_drift_list.txt"
 # drift_set = select_from_list(drift_list, 100)
