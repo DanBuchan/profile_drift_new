@@ -3,11 +3,10 @@ import random
 def select_from_list(file, number):
     target_list = []
     with open(file, "r", encoding="utf-8") as fhIn:
-        for line in file:
+        for line in fhIn:
             pf_family = line.rstrip()
             print(pf_family)
             target_list.append(pf_family)
-    print(len(target_list))
     return(random.sample(target_list, number))
     
 
