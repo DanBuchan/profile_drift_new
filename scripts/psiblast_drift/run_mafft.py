@@ -11,7 +11,7 @@ def read_target_id_list(file):
     return(targets)
 
 def untar_seqs():
-    for tar_file in glob.glob('*.tag.gz'):
+    for tar_file in glob.glob('*.tar.gz'):
         tar_args = [
             '/usr/bin/tar',
             'zxf',
@@ -45,7 +45,7 @@ targets_file = sys.argv[2] # target list
 
 targets = read_target_id_list(targets_file)
 run_dir = targets[target_id]
-print(f'ALIGNING: {run_dir}')
+print('ALIGNING: {run_dir}')
 os.chdir(f'/home/ucbcdwb/Scratch/output/profile/{run_dir}')
 untar_seqs()
-# align_seqs()    
+align_seqs()    
