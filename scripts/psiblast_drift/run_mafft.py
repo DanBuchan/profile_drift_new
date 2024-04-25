@@ -25,20 +25,21 @@ def align_seqs():
         # print(fa_file[:-3])
         msa = f"{fa_file[:-3]}.msa"
         print(msa)
-        # mafft_args = [
-        # #    '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
-        #     '/home/ucbcdwb/Applications/mafft-linux64/mafft.bat',
-        #     fa_file,
-        # ]
-        # # print(" ".join(mafft_args))
-        # try:
-        #     msa_data = subprocess.check_output(mafft_args)
-        #     fhOut = open(msa, "wb")
-        #     fhOut.write(msa_data)
-        #     fhOut.close()
-        #     clean_up=True
-        # except Exception as e:
-        #     break
+        mafft_args = [
+        #    '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
+            '/home/ucbcdwb/Applications/mafft-linux64/mafft.bat',
+            fa_file,
+        ]
+        # print(" ".join(mafft_args))
+        try:
+            msa_data = subprocess.check_output(mafft_args)
+            fhOut = open(msa, "wb")
+            fhOut.write(msa_data)
+            fhOut.close()
+            clean_up=True
+        except Exception as e:
+            break
+        break
 
 
 target_id = int(sys.argv[1])-1 # id in the target list to process
