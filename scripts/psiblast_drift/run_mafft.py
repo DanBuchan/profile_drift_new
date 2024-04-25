@@ -39,7 +39,7 @@ def align_seqs():
             clean_up=True
         except Exception as e:
             break
-        break
+        #break
 
 
 target_id = int(sys.argv[1])-1 # id in the target list to process
