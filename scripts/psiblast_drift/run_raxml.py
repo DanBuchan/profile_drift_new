@@ -3,8 +3,8 @@ import sys
 def read_target_id_list(file):
     targets = []
     with open(file, "r", encoding="utf-8") as fhIn:
-        for line in fhIn
-            targets.append(target_id.rstrip))
+        for line in fhIn:
+            targets.append(target_id.rstrip())
     return(targets)
 
 target_id = sys.argv[1] # id in the target list to process
