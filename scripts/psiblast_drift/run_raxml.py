@@ -7,7 +7,7 @@ def read_target_id_list(file):
             targets.append(target_id.rstrip())
     return(targets)
 
-target_id = sys.argv[1] # id in the target list to process
+target_id = int(sys.argv[1]) # id in the target list to process
 targets_file = sys.argv[2] # target list
 
 targets = read_target_id_list(targets_file)
