@@ -20,6 +20,7 @@ def read_fasta(file):
                 seq = seq+line.rstrip()
     return(seqs)
 
+
 def read_targets(file):
     targets = []
     with open(file) as csvfile:
@@ -29,10 +30,12 @@ def read_targets(file):
             targets.append(row[0])
     return(targets)
 
-
 rep_file = sys.argv[1]
 rep_seqs = read_fasta(rep_file)
 id_list = list(rep_seqs.keys())
 # print(id_list)
 target_file = sys.argv[2]
-read_targets(target_file)
+target_list = read_targets(target_file)
+
+for id in id_list:
+    print(id)

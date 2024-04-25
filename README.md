@@ -55,6 +55,7 @@ c. Are the clusters meaningful?
    drift_summary.txt - summary of some different behaviours of the query and contaminant families
 4. We select some Pfam families from each drift class. Unpack the sequences. Align them with raxml.
    > select_targets.py
+   we take in some lists of families and output a list of targets that we want to model
    > run_raxml.py raxml.sh
 5. Take all our alignments and then run alphafold2.
 6. Collate models and analyse.
