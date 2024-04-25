@@ -39,5 +39,5 @@ target_list = read_targets(target_file)
 
 for i, id in enumerate(id_list):
     print(id)
-    pfam_id = id[:-7]
+    pfam_id = id[-7:]
     print(pfam_id, i+1)
