@@ -27,7 +27,7 @@ def read_targets(file):
         targetreader = csv.reader(csvfile, delimiter=',') 
         next(targetreader)
         for row in targetreader:
-            targets.append(row[0])
+            targets.append(row[0][1:])
     return(targets)
 
 rep_file = sys.argv[1]
@@ -37,5 +37,5 @@ id_list = list(rep_seqs.keys())
 target_file = sys.argv[2]
 target_list = read_targets(target_file)
 
-for id in id_list:
+for i, id in enumerate(id_list):
     print(id)
