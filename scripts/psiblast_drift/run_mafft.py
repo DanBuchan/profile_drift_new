@@ -43,6 +43,6 @@ targets_file = sys.argv[2] # target list
 
 targets = read_target_id_list(targets_file)
 print(f'ALIGNING: {targets[target_id]}')
-os.chdir(f'/home/ucbcdwb/Scratch/output/profile/{targets[target_id])}')
+os.chdir(f'/home/ucbcdwb/Scratch/output/profile/{targets[target_id]}')
 # untar_seqs()
 # align_seqs()    
