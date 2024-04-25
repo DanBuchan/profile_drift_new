@@ -16,7 +16,7 @@
 
 # Set the name of the job.
 
-#$ -N pfamReps
+#$ -N runMAFFT
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
