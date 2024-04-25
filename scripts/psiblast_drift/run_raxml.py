@@ -38,6 +38,6 @@ target_file = sys.argv[2]
 target_list = read_targets(target_file)
 
 for i, id in enumerate(id_list):
-    print(id)
     pfam_id = id[-7:]
-    print(pfam_id, i+1)
+    if pfam_id in target_list:
+       print(id, pfam_id, i+1)
