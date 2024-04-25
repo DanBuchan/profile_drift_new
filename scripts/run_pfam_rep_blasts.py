@@ -153,10 +153,10 @@ def run_blasts(family, sge_id, id, seq, blast_db, iterations):
         # for msa in glob.glob("*_seqs.msa"):
         #     os.remove(msa)
         os.remove(f'{sge_id}_{id}.fa')
-        for xml in glob.glob("*.xml"):
-            os.remove(xml)
-        for pssm in glob.glob("*.pssm"):
-            os.remove(pssm)
+        # for xml in glob.glob("*.xml"):
+        #     os.remove(xml)
+        # for pssm in glob.glob("*.pssm"):
+        #     os.remove(pssm)
 
 def read_fasta(file):
     seqs = {}
