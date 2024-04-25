@@ -38,11 +38,11 @@ def align_seqs(seq_file, iterations):
             break
 
 
-target_id = int(sys.argv[1]) # id in the target list to process
+target_id = int(sys.argv[1])-1 # id in the target list to process
 targets_file = sys.argv[2] # target list
 
 targets = read_target_id_list(targets_file)
 print(f'ALIGNING: {targets[target_id]}')
-os.chdir(f'/home/ucbcdwb/Scratch/output/profile/{targets[target_id]}')
+# os.chdir(f'/home/ucbcdwb/Scratch/output/profile/{targets[target_id]}')
 # untar_seqs()
 # align_seqs()    
