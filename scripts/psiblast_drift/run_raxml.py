@@ -13,7 +13,7 @@ def read_fasta(file):
         for line in fhIn:
             if line.startswith(">"):
                 if fasta_name:
-                    seqs[fasta_name] = seq
+                    seqs[fasta_name[1:]] = seq
                 fasta_name = line.rstrip()
                 seq = ''
             else:
@@ -27,7 +27,7 @@ def read_targets(file):
         targetreader = csv.reader(csvfile, delimiter=',') 
         next(targetreader)
         for row in targetreader:
-            targets.append(row[0][1:])
+            targets.append(row[0])
     return(targets)
 
 rep_file = sys.argv[1]
@@ -39,3 +39,5 @@ target_list = read_targets(target_file)
 
 for i, id in enumerate(id_list):
     print(id)
+    pfam_id = id[:-7]
+    print(pfam_id, i+1)
