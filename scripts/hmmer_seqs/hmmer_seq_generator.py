@@ -1,27 +1,33 @@
-import csv
 import sys
-from collections import defaultdict
+import glob
+import csv
+import subprocess
 
-"""
-python hmmer_seq_generator.py ../iteration_summary.csv ~/Data/pfam/Pfam-A.hmm
-"""
+# python hmmer_seq_generator.py /home/dbuchan/Projects/profile_drift/results_data/drift_summary/mafft_targets.txt /home/dbuchan/Projects/profile_drift/results_data/psiblast_iteration_summaries ~/Data/pfam/Pfam-A.hmm 100
 
-def read_drifts(file):
-    drift_families = defaultdict(set)
+
+# Read in list of targets alpha_fold_targets.csv
+# Open drift summaries for each and get full list of PFIDs
+
+def read_mafft_targets(file):
+    values = []
     with open(file, "r") as fhIn:
-        next(fhIn)
-        iteration_reader = csv.reader(fhIn, delimiter=",")
-        for row in iteration_reader:
-            drift_families[row[1]].add(row[3])
-    return drift_families
+        for line in fhIn:
+            values.append(line.rstrip())
+    return values
 
-
-def make_drift_set_non_redundant(drift_families):
-    families = set()
-    for key, hit_set in drift_families.items():
-        families.add(key)
-        families.update(hit_set)
-    return(families)
+def read_summaries(targets, summaries):
+    target_pfam_ids = set()
+    for target in targets:
+        file = list(glob.glob(f"{summaries}/{target}_*.csv"))[0]
+        # print(file)
+        with open(file, "r", encoding="utf-8") as fhIn:
+            next(fhIn)
+            csvreader = csv.reader(fhIn, delimiter=',')
+            entries = next(csvreader)
+            # print(entries)
+            target_pfam_ids.add(entries[1])
+    return(list(target_pfam_ids))
 
 
 def make_hmms_file(drift_set, hmm_file):
@@ -47,13 +53,27 @@ def make_hmms_file(drift_set, hmm_file):
                 current_pfam_id = ''
     fhOut.close()
 
-def runhmmemit():
-    pass
-    #NOT IMPLEMENTED, ran hmmemit on commandline as:
-    # ~/Applications/hmmer-3.3.2/src/hmmemit -N 100 hmm_subset.hmm > hmm_generated_seqs.fa
+
+def runhmmemit(num_seqs):
+        hmmemit_args = [
+            '/home/dbuchan/Applications/hmmer-3.3.2/src/hmmemit',
+            '-N',
+            num_seqs,
+            'hmm_subset.hmm',
+        ]
+        # print(" ".join(mafft_args))
+        try:
+            emit_data = subprocess.check_output(hmmemit_args)
+            fhOut = open('hmm_generated_seqs.fa', "wb")
+            fhOut.write(emit_data)
+            fhOut.close()
+        except Exception:
+            pass
 
 
-drift_families = read_drifts(sys.argv[1])
-nr_drift_set = make_drift_set_non_redundant(drift_families)
-make_hmms_file(nr_drift_set, sys.argv[2])
-# run_hmmemit()
+mafft_targets = read_mafft_targets(sys.argv[1])
+# print(mafft_targets)
+pfam_list = read_summaries(mafft_targets, sys.argv[2])
+# print(pfam_list)
+make_hmms_file(pfam_list, sys.argv[3])
+runhmmemit(sys.argv[4])
