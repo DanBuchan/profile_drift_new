@@ -5,7 +5,7 @@ import pprint
 import glob
 import csv
 
-# usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa results_data/psiblast_iteration_summaries/ /home/dbuchan/Data/pfam/
+# usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa results_data/psiblast_iteration_summaries/  ~/Data/pfam/Pfam-A.full.uniprot.fa
 
 # 2. Open MSA summary for family and get all families
 # 3. make fasta db of all the families
@@ -83,6 +83,6 @@ generated_seqs = get_hmm_generated_sequences(sys.argv[1])
 # 2. get a unique list of the pfam family names
 pfam_family_names = get_pfam_family_names(generated_seqs)
 # 3. Collect a fasta file of all the seqs we are going to need
-collect_all_fasta_seqs(pfam_family_names, sys.argv[2], sys)
+collect_all_fasta_seqs(pfam_family_names, sys.argv[2], sys.argv[3])
 
 # pprint.pp(pfam_family_names)
