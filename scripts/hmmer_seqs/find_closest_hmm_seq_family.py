@@ -46,7 +46,7 @@ def get_pfam_family_names(seqs):
 
 def collect_all_fasta_seqs(pfam_family_names, summaries):
     for family_name in pfam_family_names:
-        for file in glob.glob(f'{summaries}/*_{family_name}_*.csv'):
+        for file in glob.glob(f'{summaries}/*{family_name}-*.csv'):
             print(file)
 
 # 1. open file of generated seqs, read in and get family ID etc
