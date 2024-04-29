@@ -37,7 +37,7 @@ def get_hmm_generated_sequences(hmm_seqs):
 def find_closest_fasta(all_family_seqs, generated_seqs):
     for pf_id in generated_seqs:        
         for seq_record in generated_seqs[pf_id]:
-            match = re.search("^>.+\|(PF\d+-sample)\d+", seq_record['header'])
+            match = re.search("^>.+\|(PF\d+-sample\d+)", seq_record['header'])
             query_name = ''
             if match:
                 query_name = match.groups()[0]
@@ -66,8 +66,8 @@ def find_closest_fasta(all_family_seqs, generated_seqs):
             results = result_stdout.decode('utf-8')
             lines = results.split("\n")
             parse_results = False
-            best_hit = ''
-            best_score = ''
+            best_hit = 'None'
+            best_score = 'NA'
             for line in lines:
                 if parse_results:
                     entries = line.split()
@@ -77,7 +77,7 @@ def find_closest_fasta(all_family_seqs, generated_seqs):
                         best_score = line[62:]
                         best_score = float(best_score.split()[0])
                     except:
-                        best_hit = 'NA'
+                        best_hit = 'None'
                         best_score = 'NA'
                     break
                 if line.startswith("The best scores are:"):
