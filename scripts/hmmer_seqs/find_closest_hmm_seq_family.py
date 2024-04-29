@@ -46,7 +46,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
             '-q',
             '-p',
             '-O',
-            'out',
+            f'{query_name}.out',
             f"{query_name}.fa", 
             f"{all_family_seqs}",
     ]
@@ -68,7 +68,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
     best_score = 'NA'
     end = time.time()
     # print(f'RUN TIME: {end - start}')
-    print(lines)
+    # print(lines)
     for line in lines:
         if parse_results:
             entries = line.split()
@@ -90,7 +90,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
     fhOut = open(f"{query_name}.best", "w", encoding="utf-8")
     fhOut.write(f"{query_name},{best_hit},{best_score}\n")
     fhOut.close()
-    
+
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
 # 51k generated seqs
