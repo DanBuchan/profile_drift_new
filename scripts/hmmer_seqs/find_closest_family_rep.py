@@ -9,11 +9,6 @@ from subprocess import Popen, PIPE
 python find_closest_family_rep.py ../iteration_summary.csv ~/Data/pfam/Pfam-A.full.uniprot single/msa
 """
 
-# 1. open file of seqs, read in and get family ID. 
-# 2. Open MSA summary for family and get all families
-# 3. make fasta db of all the families
-# 4. Iteratr over seqs in family seeing what the top hits are
-
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
