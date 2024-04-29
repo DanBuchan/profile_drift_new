@@ -5,6 +5,7 @@ import pprint
 import glob
 import csv
 from os.path import exists
+from subprocess import Popen, PIPE
 
 # usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa results_data/psiblast_iteration_summaries/  ~/Data/pfam/Pfam-A.full.uniprot.fa
 
