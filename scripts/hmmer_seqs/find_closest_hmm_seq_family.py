@@ -36,8 +36,10 @@ def get_hmm_generated_sequences(hmm_seqs):
     return seqs       
 
 def find_closest_fasta(all_family_seqs, generated_seqs):
-    for pf_id in generated_seqs:        
+    count = 0
+    for pf_id in generated_seqs:      
         for seq_record in generated_seqs[pf_id]:
+            count += 1
             match = re.search("^>.+\|(PF\d+-sample\d+)", seq_record['header'])
             query_name = ''
             if match:
@@ -89,7 +91,8 @@ def find_closest_fasta(all_family_seqs, generated_seqs):
                 if "residues in 1 query   sequences" in line:
                     parse_results = False
             print(query_name, best_hit, best_score)
-            exit()
+            if count > 20:
+                exit()
 
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
