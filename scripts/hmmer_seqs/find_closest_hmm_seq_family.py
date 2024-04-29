@@ -11,6 +11,7 @@ def get_hmm_generated_sequnces(hmm_seqs):
         prt_ctl = False
         for line in fhIn:
             line = line.strip()
+            print(line)
             if line.startswith(">"):
                 match = re.search("^>.+\|(PF\d+)-sample\d+", line)
                 if match:
