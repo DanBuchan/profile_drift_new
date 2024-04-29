@@ -134,8 +134,8 @@ def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
             if match:
                 query_name = match.groups()[0]
             fhtmp = open(f"{query_name}.fa", "w", encoding="utf-8")
-            fhtmp.write(f'{seq_record['header']}\n')
-            fhtmp.write(f'{seq_record['seq']}\n')
+            fhtmp.write(f'{seq_record["header"]}\n')
+            fhtmp.write(f'{seq_record["seq"]}\n')
             fhtmp.close()
             args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
                     '-q',
