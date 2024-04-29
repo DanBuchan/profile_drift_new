@@ -119,16 +119,64 @@ def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
                     for row in summary:
                         db_set.add(row[1])
                         db_set.add(row[2])
-        fhOut = open("tmp_db.fa", "w", encoding="utf-8")
+        fhOut = open(f"{pf_id}_db.fa", "w", encoding="utf-8")
         for pfam_id in db_set:
             print("hi")
             if pfam_id in all_family_seqs.keys():
                 print("hi 2")
                 for seq_record in all_family_seqs[pfam_id]:
-                    fhOut.write(seq_record['header'])
-                    fhOut.write(seq_record['seq'])
+                    fhOut.write(f'{seq_record['header']}\n')
+                    fhOut.write(f'{seq_record['seq']}\n')
         fhOut.close()
-        exit()
+        for seq_record in generated_seqs[pf_id]:
+            match = re.search("^>.+\|(PF\d+-sample)\d+", seq_record['header'])
+            query_name = ''
+            if match:
+                query_name = match.groups()[0]
+            fhtmp = open(f"{query_name}.fa", "w", encoding="utf-8")
+            fhtmp.write(f'{seq_record['header']}\n')
+            fhtmp.write(f'{seq_record['seq']}\n')
+            fhtmp.close()
+            args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
+                    '-q',
+                    '-p',
+                    '-O',
+                    'out',
+                    f"{query_name}.fa", 
+                    f"{pf_id}_db.fa"
+            ]
+            print("Calculating", " ".join(args))
+            try:
+                p = Popen(args, stdout=PIPE, stderr=PIPE)
+                result_stdout, err = p.communicate()
+            except Exception as e:
+                print(str(e))
+                sys.exit(1)
+            if p.returncode != 0:
+                print("Non Zero Exit status: "+str(p.returncode))
+                raise OSError("Non Zero Exit status: "+str(p.returncode))
+            results = result_stdou.decode('utf-8')
+            lines = results.split("\n")
+            parse_results = False
+            best_hit = ''
+            best_score = ''
+            for line in lines:
+                if parse_results:
+                    entries = line.split()
+                    best_hit = entries[0]
+                    try:
+                        best_hit = best_hit.split("___")[1]
+                        best_score = line[62:]
+                        best_score = float(best_score.split()[0])
+                    except:
+                        best_hit = 'NA'
+                        best_score = 'NA'
+                    break
+                if line.startswith("The best scores are:"):
+                    parse_results = True
+                if "residues in 1 query   sequences" in line:
+                    parse_results = False
+            exit()
 
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
