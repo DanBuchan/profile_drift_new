@@ -74,7 +74,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
             entries = line.split()
             best_hit = entries[0]
             try:
-                best_hit = best_hit.split("___")[1]
+                best_hit = best_hit.split("|")[1]
                 best_score = line[62:]
                 best_score = float(best_score.split()[0])
             except:
