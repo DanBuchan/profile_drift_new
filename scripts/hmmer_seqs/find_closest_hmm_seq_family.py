@@ -93,4 +93,4 @@ generated_seqs = get_hmm_generated_sequences(sys.argv[1])
 # {PFID: [{header:,
 #          seq: },]}
 # Header format ">pfam_family_name|PFID-sampleNN"
-find_closest_fasta(sys.argv[2], generated_seqs)):
+find_closest_fasta(sys.argv[2], generated_seqs):
