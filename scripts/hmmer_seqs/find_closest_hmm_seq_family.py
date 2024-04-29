@@ -121,8 +121,9 @@ def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
                         db_set.add(row[2])
         fhOut = open("tmp_db.fa", "w", encoding="utf-8")
         for pfam_id in db_set:
-            if pfam_id in all_family_seqs:
-                print("hi")
+            print("hi")
+            if pfam_id in all_family_seqs.keys():
+                print("hi 2")
                 for seq_record in all_family_seqs[pfam_id]:
                     fhOut.write(seq_record['header'])
                     fhOut.write(seq_record['seq'])
