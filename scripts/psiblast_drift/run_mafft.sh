@@ -26,5 +26,5 @@
 module load python3
 source /home/ucbcdwb/Scratch/virtualenvs/profile_drift/bin/activate
 cd /home/ucbcdwb/Scratch/output/profile/
-echo "python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_mafft.py $SGE_TASK_ID /home/ucbcdwb/Applications/profile_drift_new//mafft_targets.txt"
-python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_mafft.py $SGE_TASK_ID /home/ucbcdwb/Applications/profile_drift_new//mafft_targets.txt
+echo "python /home/ucbcdwb/Applications/profile_drift_new/scripts/psiblast_drift/run_mafft.py $SGE_TASK_ID /home/ucbcdwb/Applications/profile_drift_new/mafft_targets.txt"
+python /home/ucbcdwb/Applications/profile_drift_new/scripts/psiblast_drift/run_mafft.py $SGE_TASK_ID /home/ucbcdwb/Applications/profile_drift_new/mafft_targets.txt

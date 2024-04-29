@@ -26,7 +26,7 @@ def align_seqs():
         msa = f"{fa_file[:-3]}.msa"
         print(msa)
         mafft_args = [
-        #    '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
+            # '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
             '/home/ucbcdwb/Applications/mafft-linux64/mafft.bat',
             fa_file,
         ]
