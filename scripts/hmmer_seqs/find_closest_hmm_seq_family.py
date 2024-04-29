@@ -105,8 +105,8 @@ def read_fasta_db_seqs(fasta_file):
 
 
 def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
-    for family in generated_seqs:
-        first_entry = generated_seqs[family][0]
+    for pf_id in generated_seqs:
+        first_entry = generated_seqs[pf_id][0]
         match = re.search("^>(.+)\|PF\d+-sample\d+", first_entry['header'])
         pf_family_name = ''
         db_set = set()
@@ -122,6 +122,7 @@ def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
         fhOut = open("tmp_db.fa", "w", encoding="utf-8")
         for pfam_id in db_set:
             if pfam_id in all_family_seqs:
+                print("hi")
                 for seq_record in all_family_seqs[pfam_id]:
                     fhOut.write(seq_record['header'])
                     fhOut.write(seq_record['seq'])
@@ -143,7 +144,7 @@ pfam_family_names = get_pfam_family_names(generated_seqs)
 if not exists("all_drift_family_seqs.fa"):
     collect_all_fasta_seqs(pfam_family_names, sys.argv[2], sys.argv[3])
 all_family_seqs = read_fasta_db_seqs("all_drift_family_seqs.fa")
-pprint.pp(all_family_seqs)
+# pprint.pp(all_family_seqs)
 # {PFID: [{header:,
 #          seq: },]}
 # Header format ">UniprotID|PFID"
