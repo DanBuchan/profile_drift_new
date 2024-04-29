@@ -114,13 +114,21 @@ generated_seqs = get_hmm_generated_sequences(sys.argv[1])
 pprint.pp(generated_seqs)
 # {PFID: [{header:,
 #          seq: },]}
+# Header format ">pfam_family_name|PFID-sampleNN"
+
 # 2. get a unique list of the pam family names
 pfam_family_names = get_pfam_family_names(generated_seqs)
+# a list of pfam_family_names
+
 pprint.pp(generated_seqs)
 # 3. Collect a fasta file of all the seqs we are going to need
 if not exists("all_drift_family_seqs.fa"):
     collect_all_fasta_seqs(pfam_family_names, sys.argv[2], sys.argv[3])
 all_family_seqs = read_fasta_db_seqs("all_drift_family_seqs.fa")
+# {PFID: [{header:,
+#          seq: },]}
+# Header format ">UniprotID|PFID"
+
 # 4. loop over the generated seqs, for each family make a fasta db. Then fasta all the seqs
 find_closest_fasta(all_family_seqs, sys.argv[2], generated_seqs)
 
