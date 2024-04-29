@@ -6,6 +6,7 @@ import glob
 import csv
 from os.path import exists
 from subprocess import Popen, PIPE
+import time
 
 # usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa ~/Data/pfam/Pfam-A.full.uniprot.fa
 
@@ -54,6 +55,7 @@ def find_closest_fasta(all_family_seqs, generated_seqs):
                     f"{all_family_seqs}",
             ]
             print("Calculating", " ".join(args))
+            start = time.time()
             try:
                 p = Popen(args, stdout=PIPE, stderr=PIPE)
                 result_stdout, err = p.communicate()
@@ -68,6 +70,8 @@ def find_closest_fasta(all_family_seqs, generated_seqs):
             parse_results = False
             best_hit = 'None'
             best_score = 'NA'
+            end = time.time()
+            print(f'RUN TIME: {end - start}')
             for line in lines:
                 if parse_results:
                     entries = line.split()
