@@ -107,6 +107,7 @@ def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
     for family in generated_seqs:
         first_entry = generated_seqs[family][0]
         print(first_entry)
+        exit()
 
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
