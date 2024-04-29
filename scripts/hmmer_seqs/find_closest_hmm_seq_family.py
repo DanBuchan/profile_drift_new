@@ -88,7 +88,7 @@ def read_fasta_db_seqs(fasta_file):
             line = line.strip()
             # print(line)
             if line.startswith(">"):
-                match = re.search("^>.+\|(PF\d+)\d+", header)
+                match = re.search("^>.+\|(PF\d+)", header)
                 pf_family=''
                 if match:
                     # print(match)
