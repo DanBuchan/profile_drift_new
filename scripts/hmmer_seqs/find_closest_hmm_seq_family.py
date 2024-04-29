@@ -64,10 +64,9 @@ def collect_all_fasta_seqs(pfam_family_names, summaries, pfam_fasta):
             line = line.strip()
             # print(line)
             if line.startswith(">"):
-                match = re.search("^>.+\|(PF\d+)-sample\d+", header)
+                match = re.search("^>.+\|(PF\d+)", header)
                 pf_family=''
                 if match:
-                    # print(match)
                     pf_family = match.groups()[0]
                 if prt_ctl and pf_family in all_families:
                     fhOut.write(f'{header}\n')
