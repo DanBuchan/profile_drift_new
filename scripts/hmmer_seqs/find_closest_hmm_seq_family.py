@@ -25,4 +25,4 @@ def get_hmm_generated_sequnces(hmm_seqs):
             else:
                 seq += line        
 
-get_hmm_generated_sequnces(sys.argv[0])
+get_hmm_generated_sequnces(sys.argv[1])
