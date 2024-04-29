@@ -18,7 +18,7 @@ def get_hmm_generated_sequnces(hmm_seqs):
                 pf_family=''
                 if match:
                     print(match)
-                    pf_family = match.groups()[0])
+                    pf_family = match.groups()[0]
                 if prt_ctl:
                     seqs[pf_family].append({"header": header,
                                             "seq": seq})
