@@ -67,7 +67,8 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
     best_hit = 'None'
     best_score = 'NA'
     end = time.time()
-    print(f'RUN TIME: {end - start}')
+    # print(f'RUN TIME: {end - start}')
+    print(lines)
     for line in lines:
         if parse_results:
             entries = line.split()
@@ -84,6 +85,9 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
             parse_results = True
         if "residues in 1 query   sequences" in line:
             parse_results = False
+        if ">>" in line:
+            parse_results = False
+            
     print(query_name, best_hit, best_score)
 
 # 1. open file of generated seqs, read in and get family ID etc
