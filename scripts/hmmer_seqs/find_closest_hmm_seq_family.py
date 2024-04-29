@@ -3,6 +3,7 @@ from collections import defaultdict
 import re
 import pprint
 import glob
+import csv
 
 # usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa results_data/psiblast_iteration_summaries/
 
@@ -45,9 +46,15 @@ def get_pfam_family_names(seqs):
     return list(family_names)
 
 def collect_all_fasta_seqs(pfam_family_names, summaries):
+    all_families = set()
     for family_name in pfam_family_names:
         for file in glob.glob(f'{summaries}/*{family_name}-*.csv'):
-            print(file)
+            with open(file, "r", encoding="utf-8") as fhIn:
+                summary = csv.reader(fhIn, delimiter=',')
+                for row in summary:
+                    all_families.add(row[1])
+                    all_families.add(row[2])
+    print(all_families)
 
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequnces(sys.argv[1])
@@ -55,4 +62,4 @@ generated_seqs = get_hmm_generated_sequnces(sys.argv[1])
 pfam_family_names = get_pfam_family_names(generated_seqs)
 # 3. Collect a fasta file of all the seqs we are going to need
 collect_all_fasta_seqs(pfam_family_names, sys.argv[2])
-pprint.pp(pfam_family_names)
+# pprint.pp(pfam_family_names)
