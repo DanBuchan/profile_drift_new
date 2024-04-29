@@ -87,9 +87,10 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
             parse_results = False
         if ">>" in line:
             parse_results = False
-            
-    print(query_name, best_hit, best_score)
-
+    fhOut = open(f"{query_name}.best", "w", encoding="utf-8")
+    fhOut.write(f"{query_name},{best_hit},{best_score}\n")
+    fhOut.close()
+    
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
 # 51k generated seqs
