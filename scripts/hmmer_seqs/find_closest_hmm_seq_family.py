@@ -5,6 +5,7 @@ import pprint
 import glob
 import csv
 from os.path import exists
+import os
 from subprocess import Popen, PIPE
 import time
 
@@ -90,6 +91,10 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
     fhOut = open(f"{query_name}.best", "w", encoding="utf-8")
     fhOut.write(f"{query_name},{best_hit},{best_score}\n")
     fhOut.close()
+    os.remove(f"{query_name}.out")
+    os.remove(f"{query_name}.fa")
+
+
 
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
