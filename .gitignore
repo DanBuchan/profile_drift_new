@@ -3,3 +3,6 @@
 *.msa
 *.pssm
 *.xml
+*.best
+*.out
+*.txt
