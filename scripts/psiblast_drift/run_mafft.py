@@ -2,6 +2,8 @@ import sys
 import os
 import glob
 import subprocess
+from pathlib import Path
+
 
 def read_target_id_list(file):
     targets = []
@@ -22,23 +24,24 @@ def untar_seqs():
 def align_seqs():
     clean_up = False
     for i, fa_file in enumerate(glob.glob('*.fa')):
-        # print(fa_file[:-3])
         msa = f"{fa_file[:-3]}.msa"
         print(msa)
-        mafft_args = [
-        #    '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
-            '/home/ucbcdwb/Applications/mafft-linux64/mafft.bat',
-            fa_file,
-        ]
-        # print(" ".join(mafft_args))
-        try:
-            msa_data = subprocess.check_output(mafft_args)
-            fhOut = open(msa, "wb")
-            fhOut.write(msa_data)
-            fhOut.close()
-            clean_up=True
-        except Exception as e:
-            break
+        my_file = Path(msa)
+        if not my_file.is_file():
+            mafft_args = [
+            #    '/home/dbuchan/Applications/mafft-7.490-with-extensions/core/mafft',
+                '/home/ucbcdwb/Applications/mafft-linux64/mafft.bat',
+                fa_file,
+            ]
+            # print(" ".join(mafft_args))
+            try:
+                msa_data = subprocess.check_output(mafft_args)
+                fhOut = open(msa, "wb")
+                fhOut.write(msa_data)
+                fhOut.close()
+                clean_up=True
+            except Exception as e:
+                break
         #break
 
 

@@ -3,7 +3,7 @@
 #$ -e /home/ucbcdwb/Scratch/output/profile/std.err
 
 # Request an hour of run time
-#$ -l h_rt=40:00:0
+#$ -l h_rt=60:00:0
 
 #$ -l mem=16G
 
