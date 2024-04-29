@@ -63,6 +63,10 @@ c. Are the clusters meaningful?
 6. Collate models and analyse.
 
 
+# 3. Model coherence
+
+1. Generate 100 seqs for each hhemit
+
 ## 2b 
 
 1. Analyse *_blast_summary.csv, to find out which families show drift and what kinds of drift
