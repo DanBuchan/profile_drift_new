@@ -4,7 +4,7 @@ import re
 
 def get_hmm_generated_sequnces(hmm_seqs):
     
-    seqs = defaultdict([])
+    seqs = defaultdict(list)
     with open(hmm_seqs, "r", encoding="utf-8") as fhIn:
         header = ''
         seq = ''
