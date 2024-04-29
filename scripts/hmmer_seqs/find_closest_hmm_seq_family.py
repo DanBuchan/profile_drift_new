@@ -14,8 +14,10 @@ def get_hmm_generated_sequnces(hmm_seqs):
             print(line)
             if line.startswith(">"):
                 match = re.search("^>.+\|(PF\d+)-sample\d+", line)
+                pf_family=''
                 if match:
                     print(match)
+                    print(match.groups[0])
                 if prt_ctl:
                     seqs[pf_family].append({"header": header,
                                             "seq": seq})
