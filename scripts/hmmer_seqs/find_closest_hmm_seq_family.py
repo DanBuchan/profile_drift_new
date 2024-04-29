@@ -29,7 +29,7 @@ def get_hmm_generated_sequences(hmm_seqs):
                 if prt_ctl:
                     seqs[pf_family].append({"header": header,
                                             "seq": seq})
-                    seq = ''
+                seq = ''
                 header = line
                 prt_ctl = True
             else:
@@ -71,8 +71,8 @@ def collect_all_fasta_seqs(pfam_family_names, summaries, pfam_fasta):
                 if prt_ctl and pf_family in all_families:
                     fhOut.write(f'{header}\n')
                     fhOut.write(f'{seq}\n')
-                    seq = ''
                 header = line
+                seq = ''
                 prt_ctl = True
             else:
                 seq += line 
