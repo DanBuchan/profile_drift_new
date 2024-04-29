@@ -106,12 +106,28 @@ def read_fasta_db_seqs(fasta_file):
 def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
     for family in generated_seqs:
         first_entry = generated_seqs[family][0]
-        print(first_entry)
+        match = re.search("^>(.+)\|PF\d+-sample\d+", first_entry['header'])
+        pf_family_name = ''
+        db_set = set()
+        if match:
+            pf_family_name = match.groups()[0]
+            for file in glob.glob(f'{summaries}/*{pf_family_name}-*.csv'):
+                with open(file, "r", encoding="utf-8") as fhIn:
+                    summary = csv.reader(fhIn, delimiter=',')
+                    for row in summary:
+                        db_set.add(row[1])
+                        db_set.add(row[2])
+        fhOut = open("tmp_db.fa", "w", encoding="utf-8")
+        for pfam_id in db_set:
+            if pfam_id in all_family_seqs:
+                for seq_record in all_family_seqs[pfam_id]
+                fhOut.write(seq_record['header'])
+                fhOut.write(seq_record['seq'])
         exit()
 
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
-pprint.pp(generated_seqs)
+# pprint.pp(generated_seqs)
 # {PFID: [{header:,
 #          seq: },]}
 # Header format ">pfam_family_name|PFID-sampleNN"
@@ -120,7 +136,6 @@ pprint.pp(generated_seqs)
 pfam_family_names = get_pfam_family_names(generated_seqs)
 # a list of pfam_family_names
 
-pprint.pp(generated_seqs)
 # 3. Collect a fasta file of all the seqs we are going to need
 if not exists("all_drift_family_seqs.fa"):
     collect_all_fasta_seqs(pfam_family_names, sys.argv[2], sys.argv[3])
