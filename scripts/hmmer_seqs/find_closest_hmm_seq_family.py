@@ -8,10 +8,6 @@ from os.path import exists
 
 # usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa results_data/psiblast_iteration_summaries/  ~/Data/pfam/Pfam-A.full.uniprot.fa
 
-# 2. Open MSA summary for family and get all families
-# 3. make fasta db of all the families
-# 4. Iteratr over seqs in family seeing what the top hits are
-
 def get_hmm_generated_sequences(hmm_seqs):
     seqs = defaultdict(list)
     with open(hmm_seqs, "r", encoding="utf-8") as fhIn:
@@ -37,6 +33,7 @@ def get_hmm_generated_sequences(hmm_seqs):
                 seq += line 
     return seqs       
 
+
 def get_pfam_family_names(seqs):
     family_names = set()
     for pf_id in seqs:
@@ -45,6 +42,7 @@ def get_pfam_family_names(seqs):
             if match:
                 family_names.add(match.groups()[0])
     return list(family_names)
+
 
 def collect_all_fasta_seqs(pfam_family_names, summaries, pfam_fasta):
     all_families = set()
@@ -78,6 +76,7 @@ def collect_all_fasta_seqs(pfam_family_names, summaries, pfam_fasta):
             else:
                 seq += line 
 
+
 def read_fasta_db_seqs(fasta_file):
     all_seqs = defaultdict(list)
     with open(fasta_file, "r", encoding="utf-8") as fhIn:
@@ -103,15 +102,21 @@ def read_fasta_db_seqs(fasta_file):
                 seq += line
     return(all_seqs)
 
+
+def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
+    for family in generated_seqs:
+        pass
+
 # 1. open file of generated seqs, read in and get family ID etc
 generated_seqs = get_hmm_generated_sequences(sys.argv[1])
-# 2. get a unique list of the pfam family names
+pprint.pp(generated_seqs)
+# 2. get a unique list of the pam family names
 pfam_family_names = get_pfam_family_names(generated_seqs)
 # 3. Collect a fasta file of all the seqs we are going to need
 if not exists("all_drift_family_seqs.fa"):
     collect_all_fasta_seqs(pfam_family_names, sys.argv[2], sys.argv[3])
 all_family_seqs = read_fasta_db_seqs("all_drift_family_seqs.fa")
 # 4. loop over the generated seqs, for each family make a fasta db. Then fasta all the seqs
-
+find_closest_fasta(all_family_seqs, pfam_family_names, sys.argv[2], generated_seqs)
 
 # pprint.pp(pfam_family_names)
