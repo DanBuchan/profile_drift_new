@@ -120,9 +120,9 @@ def find_closest_fasta(all_family_seqs, summaries, generated_seqs):
         fhOut = open("tmp_db.fa", "w", encoding="utf-8")
         for pfam_id in db_set:
             if pfam_id in all_family_seqs:
-                for seq_record in all_family_seqs[pfam_id]
-                fhOut.write(seq_record['header'])
-                fhOut.write(seq_record['seq'])
+                for seq_record in all_family_seqs[pfam_id]:
+                    fhOut.write(seq_record['header'])
+                    fhOut.write(seq_record['seq'])
         exit()
 
 # 1. open file of generated seqs, read in and get family ID etc
