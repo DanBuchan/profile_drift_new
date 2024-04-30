@@ -40,7 +40,9 @@ c. Are the clusters meaningful?
 
 ## 2. Drift analysis
 
-1. Use prep_pfam_fasta.py to make a fasta file of all PF families in Pfam-A.full.uniprot, The makeblastdb to make a blsat db of it
+### A: HMM Version we run this for the pfam_consensus_reps.fa reps that were created with HMM EMIT
+
+1. Use prep_pfam_fasta.py to make a fasta file of all PF families in Pfam-A.full.uniprot, The makeblastdb to make a blastt db of it
 2. Psiblast Consensus seq against pfam blast db, Save number of hits for each family at each iteration, Additionally save sequences at each iteration IF we detect drift and build an MSA
    > python run_pfam_rep_blasts.py
   use run_pfam_psiblast.sh on myriad to coordinate this.
@@ -63,6 +65,12 @@ c. Are the clusters meaningful?
    > run_mafft.py mafft.sh
 5. Take all our alignments and then run alphafold2.
 6. Collate models and analyse.
+
+### B: Random rep, we also run this for a set of reps randomly selected from the actual Pfam familes
+
+1. Select a random rep from the pfam family
+   > select_rep.py ~/Data/pfam/Pfam-A.hmm
+2. Repeat 2A steps 1 to 6
 
 
 # 3. Model coherence
