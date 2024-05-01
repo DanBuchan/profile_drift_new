@@ -48,7 +48,8 @@ def run_nw(dbseqs, repseqs):
                'tmpb.fa',
                'out.needle',
                '-gapopen=10',
-               '-gapextend=0'
+               '-gapextend=0',
+               '-sprotein'
             ]
             execute_process(nw_args)
             os.remove('tmpb.fa')
