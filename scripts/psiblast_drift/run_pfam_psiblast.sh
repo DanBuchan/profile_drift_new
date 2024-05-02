@@ -13,9 +13,8 @@
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
-# $ -t 1-21979
-#$ -t 102-102
-# $ -t 1-2
+##$ -t 1-20651
+#$ -t 1-10651
 
 # Set the name of the job.
 
@@ -31,5 +30,5 @@ source /home/ucbcdwb/Scratch/virtualenvs/profile_drift/bin/activate
 cd /home/ucbcdwb/Scratch/output/profile/
 mkdir $SGE_TASK_ID
 cd $SGE_TASK_ID/
-echo "python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_pfam_rep_blasts.py ~/Scratch/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Scratch/Data/pfam/Pfam-A.full.uniprot.fa $SGE_TASK_ID 20"
-python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_pfam_rep_blasts.py ~/Scratch/Data/pfam/pfam_consensus_reps_labelled_flattened.fa ~/Scratch/Data/pfam/Pfam-A.full.uniprot.fa $SGE_TASK_ID 20
+echo "python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_pfam_rep_blasts.py ~/Scratch/Data/pfam/random_pfam_reps.fa ~/Scratch/Data/pfam/Pfam-A.full.uniprot.fa $SGE_TASK_ID 20"
+python /home/ucbcdwb/Applications/profile_drift_new/scripts/run_pfam_rep_blasts.py ~/Scratch/Data/pfam/random_pfam_reps.fa ~/Scratch/Data/pfam/Pfam-A.full.uniprot.fa $SGE_TASK_ID 20

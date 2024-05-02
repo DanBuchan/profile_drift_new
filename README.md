@@ -70,6 +70,7 @@ c. Are the clusters meaningful?
 
 1. Select a random rep from the pfam family
    > select_rep.py ~/Data/pfam/Pfam-A.hmm
+   random_pfam_reps.fa - one rep sequence randomly selected from each pfam family
 2. Repeat 2A steps 1 to 6
 
 
