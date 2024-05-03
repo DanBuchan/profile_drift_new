@@ -75,9 +75,11 @@ def read_fasta(file):
                 seq = ''
             else:
                 seq = seq+line.rstrip()
+    seqs[fasta_name] = seq
     return(seqs)
 
 db_seqs = read_fasta(sys.argv[1])
-# print("IN FILE: "+sys.argv[2])
+# print(len(db_seqs))
+print("IN FILE: "+sys.argv[2])
 rep_seqs = read_fasta(sys.argv[2])
 run_nw(db_seqs, rep_seqs)
