@@ -35,4 +35,4 @@ def annotate_fasta(names, fasta_file):
                     print(line.rstrip())
 
 pfam_names = read_pfam_hmm(sys.argv[1])
-annotate_fasta(pfam_names, sys.argv[2])
+annotate_fasta(pfam_names, sys.argv[2])1-cysPrx_C-consensus|PF10417

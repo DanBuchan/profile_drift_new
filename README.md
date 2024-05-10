@@ -30,7 +30,7 @@ PFAM RELEASE 36 @ 15 March 2024
    wrote a morecambe script run_pfam_nw.sh to batch job this over a couple of days as it is A LOT of comparisons 20k x 20k
 
 7. Script that combines the distances down to a big matrix, maybe numpy and save as blob or pickle.
-   build_pfam_distance_matrix.py
+   build_rep_distance_matrix.py
 
 ## 1b Cluster analysis
 
