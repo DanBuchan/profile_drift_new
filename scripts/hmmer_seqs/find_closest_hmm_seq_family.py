@@ -9,7 +9,7 @@ import os
 from subprocess import Popen, PIPE
 import time
 
-# usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa ~/Data/pfam/Pfam-A.full.uniprot.fa 1
+# usage: python scripts/hmmer_seqs/find_closest_hmm_seq_family.py results_data/hmmer_matches/hmm_generated_seqs.fa ~/Data/pfam/Pfam-A.full.uniprot.fa /home/dbuchan/Projects/profile_drift/ 10
 
 def get_hmm_generated_sequences(hmm_seqs):
     seqs = []
@@ -33,7 +33,7 @@ def get_hmm_generated_sequences(hmm_seqs):
                      "seq": seq})
     return seqs       
 
-def find_closest_fasta(all_family_seqs, gen_seqs, i):
+def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     seq_record = gen_seqs[i]     
     match = re.search("^>.+\|(PF\d+-sample\d+)", seq_record['header'])
     query_name = ''
@@ -88,12 +88,11 @@ def find_closest_fasta(all_family_seqs, gen_seqs, i):
             parse_results = False
         if ">>" in line:
             parse_results = False
-    fhOut = open(f"{query_name}.best", "w", encoding="utf-8")
+    fhOut = open(f"{resultspath}{query_name}.best", "w", encoding="utf-8")
     fhOut.write(f"{query_name},{best_hit},{best_score}\n")
     fhOut.close()
     os.remove(f"{query_name}.out")
     os.remove(f"{query_name}.fa")
-
 
 
 # 1. open file of generated seqs, read in and get family ID etc
@@ -103,4 +102,4 @@ generated_seqs = get_hmm_generated_sequences(sys.argv[1])
 # {PFID: [{header:,
 #          seq: },]}
 # Header format ">pfam_family_name|PFID-sampleNN"
-find_closest_fasta(sys.argv[2], generated_seqs, int(sys.argv[3])-1)
+find_closest_fasta(sys.argv[2], generated_seqs, sys.argv[3], int(sys.argv[4])-1)

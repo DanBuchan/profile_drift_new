@@ -5,7 +5,6 @@ import subprocess
 
 # python hmmer_seq_generator.py /home/dbuchan/Projects/profile_drift/results_data/drift_summary/mafft_targets.txt /home/dbuchan/Projects/profile_drift/results_data/psiblast_iteration_summaries ~/Data/pfam/Pfam-A.hmm 100
 
-
 # Read in list of targets alpha_fold_targets.csv
 # Open drift summaries for each and get full list of PFIDs
 
