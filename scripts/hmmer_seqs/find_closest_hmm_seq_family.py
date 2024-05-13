@@ -39,17 +39,23 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     query_name = ''
     if match:
         query_name = match.groups()[0]
-    fhtmp = open(f"{query_name}.fa", "w", encoding="utf-8")
-    fhtmp.write(f'{seq_record["header"]}\n')
-    fhtmp.write(f'{seq_record["seq"]}\n')
+    # fhtmp = open(f"{query_name}.fa", "w", encoding="utf-8")
+    # fhtmp.write(f'{seq_record["header"]}\n')
+    # fhtmp.write(f'{seq_record["seq"]}\n')
+    fhtmp = open(query_name+".fa", "w", encoding="utf-8")
+    fhtmp.write(seq_record["header"]+'\n')
+    fhtmp.write(seq_record["seq"]+'\n')
     fhtmp.close()
     args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
             '-q',
             '-p',
             '-O',
-            f'{query_name}.out',
-            f"{query_name}.fa", 
-            f"{all_family_seqs}",
+            # f'{query_name}.out',
+            # f"{query_name}.fa", 
+            # f"{all_family_seqs}",
+            query_name+'.out',
+            query_name+".fa", 
+            all_family_seqs,
     ]
     print("Calculating", " ".join(args))
     start = time.time()
@@ -88,11 +94,15 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
             parse_results = False
         if ">>" in line:
             parse_results = False
-    fhOut = open(f"{resultspath}{query_name}.best", "w", encoding="utf-8")
-    fhOut.write(f"{query_name},{best_hit},{best_score}\n")
+    # fhOut = open(f"{resultspath}{query_name}.best", "w", encoding="utf-8")
+    # fhOut.write(f"{query_name},{best_hit},{best_score}\n")
+    fhOut = open(resultspath+query_name+".best", "w", encoding="utf-8")
+    fhOut.write(query_name+","+best_hit+","+best_score+"\n")
     fhOut.close()
-    os.remove(f"{query_name}.out")
-    os.remove(f"{query_name}.fa")
+    # os.remove(f"{query_name}.out")
+    # os.remove(f"{query_name}.fa")
+    os.remove(query_name+".out")
+    os.remove(query_name+".fa")
 
 
 # 1. open file of generated seqs, read in and get family ID etc
