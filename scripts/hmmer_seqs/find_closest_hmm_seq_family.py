@@ -13,7 +13,7 @@ import time
 
 def get_hmm_generated_sequences(hmm_seqs):
     seqs = []
-    with open(hmm_seqs, "r", encoding="utf-8") as fhIn:
+    with open(hmm_seqs, "r") as fhIn:
         header = ''
         seq = ''
         prt_ctl = False
@@ -42,7 +42,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     # fhtmp = open(f"{query_name}.fa", "w", encoding="utf-8")
     # fhtmp.write(f'{seq_record["header"]}\n')
     # fhtmp.write(f'{seq_record["seq"]}\n')
-    fhtmp = open(query_name+".fa", "w", encoding="utf-8")
+    fhtmp = open(query_name+".fa", "w")
     fhtmp.write(seq_record["header"]+'\n')
     fhtmp.write(seq_record["seq"]+'\n')
     fhtmp.close()
@@ -96,7 +96,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
             parse_results = False
     # fhOut = open(f"{resultspath}{query_name}.best", "w", encoding="utf-8")
     # fhOut.write(f"{query_name},{best_hit},{best_score}\n")
-    fhOut = open(resultspath+query_name+".best", "w", encoding="utf-8")
+    fhOut = open(resultspath+query_name+".best", "w")
     fhOut.write(query_name+","+best_hit+","+best_score+"\n")
     fhOut.close()
     # os.remove(f"{query_name}.out")
