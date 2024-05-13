@@ -5,7 +5,7 @@
 #$ -j y
 #$ -N hmm_closest
 ##$ -t 1-51900
-##$ -t 18-18
+#$ -t 18-18
 
 # Run the application.
 
