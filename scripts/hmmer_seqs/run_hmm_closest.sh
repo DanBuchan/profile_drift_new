@@ -3,8 +3,9 @@
 #$ -l h_vmem=2G
 #$ -l h_rt=48:0:0
 #$ -j y
-#$ -N pfam_nw
-#$ -t 1-51900
+#$ -N hmm_closest
+##$ -t 1-51900
+##$ -t 18-18
 
 # Run the application.
 
