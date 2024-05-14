@@ -97,7 +97,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     # fhOut = open(f"{resultspath}{query_name}.best", "w", encoding="utf-8")
     # fhOut.write(f"{query_name},{best_hit},{best_score}\n")
     fhOut = open(resultspath+query_name+".best", "w")
-    fhOut.write(query_name+","+best_hit+","+best_score+"\n")
+    fhOut.write(query_name+","+best_hit+","+str(best_score)+"\n")
     fhOut.close()
     # os.remove(f"{query_name}.out")
     # os.remove(f"{query_name}.fa")

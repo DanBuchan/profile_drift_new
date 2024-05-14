@@ -1,11 +1,11 @@
 #$ -S /bin/bash
-#$ -l tmem=1G
-#$ -l h_vmem=2G
-#$ -l h_rt=48:0:0
+#$ -l tmem=8G
+#$ -l h_vmem=8G
+#$ -l h_rt=4:0:0
 #$ -j y
 #$ -N hmm_closest
 ##$ -t 1-51900
-#$ -t 18-18
+#$ -t 1-100
 
 # Run the application.
 
