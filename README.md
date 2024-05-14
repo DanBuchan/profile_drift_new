@@ -101,3 +101,16 @@ c. Are the clusters meaningful?
 3. Repeat for protein ESM single and ESM-MSA
 
 
+# Currently calculating
+
+1. PSIBlast drift with random pfam members
+2. distance matrix over the all v all pfam members
+3. hmmm generated seqs vs pfam-A for the selection of drift families is to fin relatives
+
+# To do
+
+1. Summarise drift with random pfam members
+2. Run mafft over selection of drift families to make the MSA
+3. build alphafold models for mafft msas
+4. Fix ESM code and generate new seqs
+5. esm generated seqs vs pfam-A for the selection of drift families is to fin relatives
