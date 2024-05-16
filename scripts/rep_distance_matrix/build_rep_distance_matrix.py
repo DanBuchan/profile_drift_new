@@ -42,6 +42,8 @@ for file in sorted(glob.glob(f'{sys.argv[2]}*.csv')):
 
 # now scale/normalise to 0 and 1, flip and fill diagonal
 np.fill_diagonal(similarity_matrix, (np.max(similarity_matrix)*1.2))
+with open("non-normalised_similarity_matrix.npy", "wb") as f:
+    np.save(f, similarity_matrix)
 normalized_similarity_matrix = (similarity_matrix-np.min(similarity_matrix))/(np.max(similarity_matrix)-np.min(similarity_matrix))
 flipped_sim_matrix = 1.0 - normalized_similarity_matrix
 # now save out distance matrix and dom_list
