@@ -109,8 +109,13 @@ c. Are the clusters meaningful?
 
 # To do
 
-1. Summarise drift with random pfam members
+## Blocked/awaiting
+
+1. Summarise drift with random pfam members - awaiting calcs
 2. Run mafft over selection of drift families to make the MSA
 3. build alphafold models for mafft msas
+
+## Open 
+
 4. Fix ESM code and generate new seqs
 5. esm generated seqs vs pfam-A for the selection of drift families is to fin relatives
