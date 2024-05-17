@@ -76,6 +76,8 @@ c. Are the clusters meaningful?
 
 # 3. Model coherence
 
+### HHM coherence
+
 1. Generate 100 seqs for each hhemit, take in alpha_fold_targets/mafft_targets.txt and output 100 seqs for each drift class
    > hmmer_seq_generator.py
    hmm_subset.hmm - the hmms of the target subset
@@ -84,8 +86,13 @@ c. Are the clusters meaningful?
    find_closest_hmm_seqfamily.py run_closest.hmm.sh
    outputs lots of ".best" files that we cat in to one large csv
 
+### Language model coherence
 
-## 2b 
+1. Generate 100 seqs for each family in alpha_fold_targets.csv using ProtTans
+   > prottrans_seq_gen.py
+   prottrans_generated_seqs.fa - 100 seqs per family in the target list
+
+## ANALYSIS OF DRIFT QUESTIONS 
 
 1. Analyse *_blast_summary.csv, to find out which families show drift and what kinds of drift
 
