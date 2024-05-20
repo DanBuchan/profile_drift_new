@@ -106,26 +106,26 @@ masked_25 = open("masked_25_percent_targets.fa", "w", encoding="utf-8")
 masked_50 = open("masked_50_percent_targets.fa", "w", encoding="utf-8")
 masked_75 = open("masked_75_percent_targets.fa", "w", encoding="utf-8")
 for family in pfam_seqs:
-    print(family)
+    # print(family)
     sample = random.choices(pfam_seqs[family], k=100)
-    print(len(sample))
+    # print(len(sample))
     for cnt, seq_data in enumerate(sample):
-        print(f"OG     SEQ: {seq_data['seq']}")
+        # print(f"OG     SEQ: {seq_data['seq']}")
         for i in [25, 50, 75]:
             fraction = i/100
             number = int(math.ceil(len(seq_data['seq']))*fraction)
-            print(number)
+            # print(number)
             locations = list(range(0, len(seq_data['seq'])))
             location_sample = random.sample(locations, k=number)
             new_seq = seq_data['seq']
             for location in location_sample:
                 new_seq = new_seq[:location] + "U" + new_seq[location + 1:]
             
-            print(f"MASKED SEQ: {new_seq}")
+            # print(f"MASKED SEQ: {new_seq}")
             predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
             predicted_seq = re.sub('<.+?>', '', predicted_seq)
 
-            print(f"PREDED SEQ: {predicted_seq}")
+            # print(f"PREDED SEQ: {predicted_seq}")
             if i == 25:
                 head = seq_data['header']
                 masked_25.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
@@ -135,7 +135,7 @@ for family in pfam_seqs:
             if i == 75:
                 head = seq_data['header']
                 masked_75.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
-        exit()
+        # exit()
 
 masked_25.close()
 masked_50.close()
