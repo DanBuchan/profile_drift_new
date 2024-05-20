@@ -123,7 +123,7 @@ for family in pfam_seqs:
             location_sample = random.sample(locations, k=number)
             new_seq = seq_data['seq']
             for location in location_sample:
-                new_seq[location] = 'U'
+                new_seq = new_seq[:location] + "U" + new_seq[location + 1:]
             print(new_seq)
         exit()
     
