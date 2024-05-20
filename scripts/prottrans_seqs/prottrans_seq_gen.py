@@ -123,6 +123,8 @@ for family in pfam_seqs:
             
             print(f"MASKED SEQ: {new_seq}")
             predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
+            predicted_seq = re.sub('<.+?>', '', predicted_seq)
+
             print(f"PREDED SEQ: {predicted_seq}")
             if i == 25:
                 head = seq_data['header']
@@ -133,9 +135,8 @@ for family in pfam_seqs:
             if i == 75:
                 head = seq_data['header']
                 masked_75.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
-
         exit()
-    
+
 masked_25.close()
 masked_50.close()
 masked_75.close()
