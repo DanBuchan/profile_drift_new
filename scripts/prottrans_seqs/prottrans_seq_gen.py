@@ -79,9 +79,9 @@ else:
                 seq = seq_data['seq']
                 fhOut.write(f'{header}\n{seq}\n')
 
-def predict_seq(seq_labels, input_seq, t5):
+def predict_seq(seq_labels, input_labels, t5):
     label_seq = tokenizer([seq_labels], return_tensors="pt").input_ids
-    seq  = " ".join(input_seq)
+    seq  = " ".join(input_labels)
     seq = re.sub(r"[UZOB]", "<extra_id_0>", seq) 
     input_seq = tokenizer([seq], return_tensors="pt").input_ids
     
@@ -90,7 +90,8 @@ def predict_seq(seq_labels, input_seq, t5):
     pred_array = np.argmax(result, axis=2)[0]
     last_index = len(pred_array) -1
     pred_array = np.delete(pred_array, last_index)
-    return(tokenizer.decode(pred_array))
+    print(pred_array)
+    return(tokenizer.decode(pred_array)
 
 tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
@@ -118,7 +119,7 @@ for family in pfam_seqs:
                 print(f"MASKED SEQ: {new_seq}")
                 predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
                 print(f"PREDED SEQ: {predicted_seq}")
-            exit()
+                exit()
     
 masked_25.close()
 masked_50.close()
