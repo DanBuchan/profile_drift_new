@@ -43,6 +43,7 @@ import pprint
 # prottrans_seq_gen.py results_data/drift/drift_summary/alpha_fold_targets.csv
 
 def get_pfam_seqs(pfam_fa, targets):
+    print(targets)
     seqs = defaultdict(list)
     count = 0
     with open(pfam_fa, "r", encoding="utf-8") as fhIn:
@@ -56,8 +57,6 @@ def get_pfam_seqs(pfam_fa, targets):
             if line.startswith(">"):
                 this_family = line.split("|")[1]
                 if prt_ctl:
-                    # print(current_family)
-                    # exit
                     if current_family in targets:
                         print("hi")
                         seqs[current_family].append({
@@ -95,5 +94,4 @@ def read_targets(targets):
     return(data)
 
 target_families = list(read_targets(sys.argv[1]))
-print(target_families)
 pfam_seqs = get_pfam_seqs(sys.argv[2], target_families)
