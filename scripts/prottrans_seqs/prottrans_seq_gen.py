@@ -9,6 +9,7 @@ import numpy as np
 import csv
 from collections import defaultdict
 import pprint
+import os
 
 # tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 # model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
@@ -59,7 +60,6 @@ def get_pfam_seqs(pfam_fa, targets):
                 if prt_ctl:
                     print(current_family, targets[0])
                     if current_family in targets:
-                        print("hi")
                         seqs[current_family].append({
                             "header": header,
                             "seq": seq
@@ -95,5 +95,13 @@ def read_targets(targets):
 
 target_families = list(read_targets(sys.argv[1]))
 # print(target_families)
-target_families = ['PF12406']
-pfam_seqs = get_pfam_seqs(sys.argv[2], target_families)
+if os.path.isfile('pfam_targets_for_prottrans.fa'):
+    pfam_seqs = get_pfam_seqs('pfam_targets_for_prottrans.fa', target_families)
+else:
+    pfam_seqs = get_pfam_seqs(sys.argv[2], target_families)
+    
+    with open('pfam_targets_for_prottrans.fa', "w", encoding="utf-8") as fhOut:
+        for family in pfam_seqs:
+            print(len(pfam_seqs[family]))
+            for seq_data in pfam_seqs[family]:
+                fhOut.write(f'{seq_data['header']}\n{seq_data['seq']}\n')
