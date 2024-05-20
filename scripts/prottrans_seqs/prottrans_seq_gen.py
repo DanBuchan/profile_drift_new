@@ -57,6 +57,7 @@ def get_pfam_seqs(pfam_fa, targets):
             if line.startswith(">"):
                 this_family = line.split("|")[1]
                 if prt_ctl:
+                    print(current_family, targets[1]
                     if current_family in targets:
                         print("hi")
                         seqs[current_family].append({
@@ -94,6 +95,6 @@ def read_targets(targets):
     return(data)
 
 target_families = list(read_targets(sys.argv[1]))
-print(target_families)
+# print(target_families)
 target_families = ['PF12406']
 pfam_seqs = get_pfam_seqs(sys.argv[2], target_families)
