@@ -96,4 +96,5 @@ def read_targets(targets):
 
 target_families = list(read_targets(sys.argv[1]))
 print(target_families)
+target_families = ['PF10417']
 pfam_seqs = get_pfam_seqs(sys.argv[2], target_families)
