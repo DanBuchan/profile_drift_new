@@ -85,7 +85,7 @@ def predict_seq(seq_labels, input_seq, t5):
     seq = re.sub(r"[UZOB]", "<extra_id_0>", seq) 
     input_seq = tokenizer([seq], return_tensors="pt").input_ids
     
-    output = model(input_ids=input_seq, labels=label_seq)
+    output = t5(input_ids=input_seq, labels=label_seq)
     result = output["logits"].detach().numpy()
     pred_array = np.argmax(result, axis=2)[0]
     last_index = len(pred_array) -1
@@ -115,10 +115,10 @@ for family in pfam_seqs:
             new_seq = seq_data['seq']
             for location in location_sample:
                 new_seq = new_seq[:location] + "U" + new_seq[location + 1:]
-                print(new_seq)
+                print(f"MASKED SEQ: {new_seq}")
                 predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
-                print(predicted_seq)
-        exit()
+                print(f"PREDED SEQ: {predicted_seq}")
+            exit()
     
 masked_25.close()
 masked_50.close()
