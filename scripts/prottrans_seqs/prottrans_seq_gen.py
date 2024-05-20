@@ -110,7 +110,7 @@ for family in pfam_seqs:
     sample = random.choices(pfam_seqs[family], k=100)
     print(len(sample))
     for seq_data in sample:
-        print(seq_data)
+        print(f"OG     SEQ: {seq_data['seq']}")
         for i in [25, 5, 75]:
             fraction = i/100
             number = int(math.ceil(len(seq_data['seq']))*fraction)
