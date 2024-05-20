@@ -118,8 +118,8 @@ for family in pfam_seqs:
     for seq_data in sample:
         print(seq_data)
         for i in [0.25, 0.5, 0.75]:
-            number = math.ceil(len(seq_data[seq]))*i
-            locations = list(range(0, len(seq_data[seq])))
+            number = math.ceil(len(seq_data['seq']))*i
+            locations = list(range(0, len(seq_data['seq'])))
             print(number, locations)
         exit()
     
