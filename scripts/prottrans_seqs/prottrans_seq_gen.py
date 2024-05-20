@@ -115,10 +115,14 @@ for family in pfam_seqs:
     print(family)
     sample = random.choices(pfam_seqs[family], k=100)
     print(len(sample))
-    for seq in sample:
+    for seq_data in sample:
+        print(seq_data)
         for i in [0.25, 0.5, 0.75]:
-            number = math.ceil(len(seq))*i
-            locations = list(range(0, len(seq)))
+            number = math.ceil(len(seq_data[seq]))*i
+            locations = list(range(0, len(seq_data[seq])))
             print(number, locations)
         exit()
     
+masked_25.close()
+masked_50.close()
+masked_75.close()
