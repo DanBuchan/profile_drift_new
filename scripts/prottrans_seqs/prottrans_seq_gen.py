@@ -92,7 +92,7 @@ def predict_seq(seq_labels, input_labels, t5):
     last_index = len(pred_array) -1
     pred_array = np.delete(pred_array, last_index)
     # print(pred_array)
-    return "".join(list(tokenizer.decode(pred_array)))
+    return str(list(tokenizer.decode(pred_array)))
 
 tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
@@ -110,8 +110,9 @@ for family in pfam_seqs:
     print(len(sample))
     for seq_data in sample:
         print(seq_data)
-        for i in [0.25, 0.5, 0.75]:
-            number = int(math.ceil(len(seq_data['seq']))*i)
+        for i in [25, 5, 75]:
+            fraction = i/100
+            number = int(math.ceil(len(seq_data['seq']))*fraction)
             locations = list(range(0, len(seq_data['seq'])))
             location_sample = random.sample(locations, k=number)
             new_seq = seq_data['seq']
