@@ -116,10 +116,11 @@ for family in pfam_seqs:
             new_seq = seq_data['seq']
             for location in location_sample:
                 new_seq = new_seq[:location] + "U" + new_seq[location + 1:]
-                print(f"MASKED SEQ: {new_seq}")
-                predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
-                print(f"PREDED SEQ: {predicted_seq}")
-                exit()
+            
+            print(f"MASKED SEQ: {new_seq}")
+            predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
+            print(f"PREDED SEQ: {predicted_seq}")
+        exit()
     
 masked_25.close()
 masked_50.close()
