@@ -90,7 +90,10 @@ c. Are the clusters meaningful?
 
 1. Generate 100 seqs for each family in alpha_fold_targets.csv using ProtTans
    > prottrans_seq_gen.py
-   prottrans_generated_seqs.fa - 100 seqs per family in the target list
+   pfam_targets_for_prottrans.fa - all the seqs for the target families
+   masked_25_percent_targets.fa - a sample of 100 seqs from each family with 25% randomly masked
+   masked_50_percent_targets.fa - a sample of 100 seqs from each family with 50% randomly masked
+   masked_75_percent_targets.fa - a sample of 100 seqs from each family with 75% randomly masked
 
 ## ANALYSIS OF DRIFT QUESTIONS 
 

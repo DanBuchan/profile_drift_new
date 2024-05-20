@@ -107,7 +107,16 @@ else:
                 seq = seq_data['seq']
                 fhOut.write(f'{header}\n{seq}\n')
 
+masked_25 = open("masked_25_percent_targets.fa", "w", encoding="utf-8")
+masked_50 = open("masked_50_percent_targets.fa", "w", encoding="utf-8")
+masked_75 = open("masked_75_percent_targets.fa", "w", encoding="utf-8")
 for family in pfam_seqs:
     print(family)
     sample = random.choices(pfam_seqs[family], k=100)
     print(len(sample))
+    for seq in sample:
+        for i in [0.25, 0.5, 0.75]:
+            number = math.ceil(len(seq))*i
+            
+        exit()
+    
