@@ -80,6 +80,7 @@ else:
                 fhOut.write(f'{header}\n{seq}\n')
 
 def predict_seq(seq_labels, input_labels, t5):
+    seq_labels  = " ".join(seq_labels)
     label_seq = tokenizer([seq_labels], return_tensors="pt").input_ids
     seq  = " ".join(input_labels)
     seq = re.sub(r"[UZOB]", "<extra_id_0>", seq) 
