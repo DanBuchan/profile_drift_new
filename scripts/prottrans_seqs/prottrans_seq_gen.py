@@ -104,4 +104,6 @@ else:
         for family in pfam_seqs:
             print(len(pfam_seqs[family]))
             for seq_data in pfam_seqs[family]:
-                fhOut.write(f'{seq_data['header']}\n{seq_data['seq']}\n')
+                header = seq_data['header']
+                seq = seq_data['seq']
+                fhOut.write(f'{header}\n{seq}\n')
