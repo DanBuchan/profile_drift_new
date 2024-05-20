@@ -65,7 +65,7 @@ def get_pfam_seqs(pfam_fa, targets):
                         })
                         count+=1
                         if count == 10:
-                            pprint.pp(pfam_seqs)
+                            pprint.pp(seqs)
                             exit()
                         current_family = this_family
                         header = ''
