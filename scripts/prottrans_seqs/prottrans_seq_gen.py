@@ -13,36 +13,6 @@ import os
 import random
 import math
 
-# tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
-# model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
-# # device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-# device = torch.device('cpu')
-
-# model = model.to(device)
-# model = model.eval()
-
-# sequence_labels = "AFQFHEEHGEVCPANWQPGAKTIVANPQDSH"
-# sequence_labels  = " ".join(sequence_labels)
-# label_seq = tokenizer([sequence_labels], return_tensors="pt").input_ids
-
-# seqs = ["AFQFHEEUUUVCPANWQPGUUUIVANPQDSH",
-#         "UFQFHEEUGEVCPANWUPGAKTUVANPQDSU",
-#         "AFUFHUEHGEVCPANWUPGAKUIVANPQDSH",]
-
-# # print(model(input_ids=input_seq, labels=label_seq).loss)
-
-# for i in range(0, 3):
-#     seq  = " ".join(seqs[i])
-#     seq = re.sub(r"[UZOB]", "<extra_id_0>", seq) 
-#     input_seq = tokenizer([seq], return_tensors="pt").input_ids
-#     output = model(input_ids=input_seq, labels=label_seq)
-#     result = output["logits"].detach().numpy()
-#     pred_array = np.argmax(result, axis=2)[0]
-#     last_index = len(pred_array) -1
-#     pred_array = np.delete(pred_array, last_index)
-#     print(tokenizer.decode(pred_array))
-
-
 # prottrans_seq_gen.py results_data/drift/drift_summary/alpha_fold_targets.csv
 
 def get_pfam_seqs(pfam_fa, targets):
@@ -95,6 +65,7 @@ def read_targets(targets):
             data.add(row[0])
     return(data)
 
+
 target_families = list(read_targets(sys.argv[1]))
 # print(target_families)
 if os.path.isfile('pfam_targets_for_prottrans.fa'):
@@ -107,6 +78,26 @@ else:
                 header = seq_data['header']
                 seq = seq_data['seq']
                 fhOut.write(f'{header}\n{seq}\n')
+
+def predict_seq(seq_labels, input_seq, t5):
+    label_seq = tokenizer([seq_labels], return_tensors="pt").input_ids
+    seq  = " ".join(input_seq)
+    seq = re.sub(r"[UZOB]", "<extra_id_0>", seq) 
+    input_seq = tokenizer([seq], return_tensors="pt").input_ids
+    
+    output = model(input_ids=input_seq, labels=label_seq)
+    result = output["logits"].detach().numpy()
+    pred_array = np.argmax(result, axis=2)[0]
+    last_index = len(pred_array) -1
+    pred_array = np.delete(pred_array, last_index)
+    return(tokenizer.decode(pred_array))
+
+tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
+model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
+# device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cpu')
+model = model.to(device)
+model = model.eval()
 
 masked_25 = open("masked_25_percent_targets.fa", "w", encoding="utf-8")
 masked_50 = open("masked_50_percent_targets.fa", "w", encoding="utf-8")
@@ -124,9 +115,24 @@ for family in pfam_seqs:
             new_seq = seq_data['seq']
             for location in location_sample:
                 new_seq = new_seq[:location] + "U" + new_seq[location + 1:]
-            print(new_seq)
+                print(new_seq)
+                predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
+                print(predicted_seq)
         exit()
     
 masked_25.close()
 masked_50.close()
 masked_75.close()
+
+# # print(model(input_ids=input_seq, labels=label_seq).loss)
+
+# for i in range(0, 3):
+#     seq  = " ".join(seqs[i])
+#     seq = re.sub(r"[UZOB]", "<extra_id_0>", seq) 
+#     input_seq = tokenizer([seq], return_tensors="pt").input_ids
+#     output = model(input_ids=input_seq, labels=label_seq)
+#     result = output["logits"].detach().numpy()
+#     pred_array = np.argmax(result, axis=2)[0]
+#     last_index = len(pred_array) -1
+#     pred_array = np.delete(pred_array, last_index)
+#     print(tokenizer.decode(pred_array))
