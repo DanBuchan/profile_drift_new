@@ -109,7 +109,7 @@ for family in pfam_seqs:
     print(family)
     sample = random.choices(pfam_seqs[family], k=100)
     print(len(sample))
-    for seq_data in sample:
+    for cnt, seq_data in enumerate(sample):
         print(f"OG     SEQ: {seq_data['seq']}")
         for i in [25, 50, 75]:
             fraction = i/100
@@ -124,6 +124,16 @@ for family in pfam_seqs:
             print(f"MASKED SEQ: {new_seq}")
             predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
             print(f"PREDED SEQ: {predicted_seq}")
+            if i == 25:
+                head = seq_data['header']
+                masked_25.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
+            if i == 50:
+                head = seq_data['header']
+                masked_50.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
+            if i == 75:
+                head = seq_data['header']
+                masked_75.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
+
         exit()
     
 masked_25.close()
