@@ -57,7 +57,7 @@ def get_pfam_seqs(pfam_fa, targets):
             if line.startswith(">"):
                 this_family = line.split("|")[1]
                 if prt_ctl:
-                    print(current_family, targets[1])
+                    print(current_family, targets[0])
                     if current_family in targets:
                         print("hi")
                         seqs[current_family].append({
