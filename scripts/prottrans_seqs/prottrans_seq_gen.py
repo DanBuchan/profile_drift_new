@@ -10,6 +10,7 @@ import csv
 from collections import defaultdict
 import pprint
 import os
+import random
 
 # tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 # model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
@@ -99,11 +100,14 @@ if os.path.isfile('pfam_targets_for_prottrans.fa'):
     pfam_seqs = get_pfam_seqs('pfam_targets_for_prottrans.fa', target_families)
 else:
     pfam_seqs = get_pfam_seqs(sys.argv[2], target_families)
-    
     with open('pfam_targets_for_prottrans.fa', "w", encoding="utf-8") as fhOut:
         for family in pfam_seqs:
-            print(len(pfam_seqs[family]))
             for seq_data in pfam_seqs[family]:
                 header = seq_data['header']
                 seq = seq_data['seq']
                 fhOut.write(f'{header}\n{seq}\n')
+
+for family in pfam_seqs:
+    print(family)
+    sample = random.choices(pfam_seqs[family], k=100)
+    print(sample)
