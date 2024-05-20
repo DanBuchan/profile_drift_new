@@ -68,10 +68,9 @@ def get_pfam_seqs(pfam_fa, targets):
                         if count == 10:
                             pprint.pp(seqs)
                             exit()
-                        current_family = this_family
-                        header = ''
-                else:
-                    current_family = this_family
+                    header = ''
+                
+                current_family = this_family
                 seq = ''
                 header = line
                 prt_ctl = True
