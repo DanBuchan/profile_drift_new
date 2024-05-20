@@ -110,4 +110,4 @@ else:
 for family in pfam_seqs:
     print(family)
     sample = random.choices(pfam_seqs[family], k=100)
-    print(sample)
+    print(len(sample))
