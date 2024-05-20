@@ -120,7 +120,7 @@ for family in pfam_seqs:
         for i in [0.25, 0.5, 0.75]:
             number = math.ceil(len(seq_data['seq']))*i
             locations = list(range(0, len(seq_data['seq'])))
-            location_sample = random.sample(locations)
+            location_sample = random.sample(locations, k=number)
             new_seq = seq_data['seq']
             for location in location_sample:
                 new_seq[location] = 'U'
