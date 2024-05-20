@@ -91,8 +91,9 @@ def predict_seq(seq_labels, input_labels, t5):
     pred_array = np.argmax(result, axis=2)[0]
     last_index = len(pred_array) -1
     pred_array = np.delete(pred_array, last_index)
-    # print(pred_array)
-    return str(list(tokenizer.decode(pred_array)))
+    pred_str = "".join(list(tokenizer.decode(pred_array)))
+    pred_str = pred_str.replace(" ", "")
+    return pred_str
 
 tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
