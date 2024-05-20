@@ -113,6 +113,7 @@ for family in pfam_seqs:
         print(f"OG     SEQ: {seq_data['seq']}")
         for i in [25, 5, 75]:
             fraction = i/100
+            print(fraction)
             number = int(math.ceil(len(seq_data['seq']))*fraction)
             locations = list(range(0, len(seq_data['seq'])))
             location_sample = random.sample(locations, k=number)
