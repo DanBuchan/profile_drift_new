@@ -11,6 +11,7 @@ from collections import defaultdict
 import pprint
 import os
 import random
+import math
 
 # tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 # model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
@@ -117,6 +118,7 @@ for family in pfam_seqs:
     for seq in sample:
         for i in [0.25, 0.5, 0.75]:
             number = math.ceil(len(seq))*i
-            
+            locations = list(range(0, len(seq)))
+            print(number, locations)
         exit()
     
