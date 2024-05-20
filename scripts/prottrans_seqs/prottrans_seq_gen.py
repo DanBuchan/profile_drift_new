@@ -92,7 +92,7 @@ def predict_seq(seq_labels, input_labels, t5):
     last_index = len(pred_array) -1
     pred_array = np.delete(pred_array, last_index)
     # print(pred_array)
-    return "".join(tokenizer.decode(pred_array))
+    return "".join(list(tokenizer.decode(pred_array)))
 
 tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
