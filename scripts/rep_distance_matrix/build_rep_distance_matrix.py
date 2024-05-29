@@ -28,7 +28,7 @@ def build_distance_matrix():
     
     # populate with values from file
     for file in sorted(glob.glob(f'{sys.argv[2]}*.csv')):
-        print(file[len(sys.argv[2]):])
+        # print(file[len(sys.argv[2]):])
         with open(file, 'r') as pffile:
             reader = csv.reader(pffile, delimiter=',')
             next(reader)
@@ -40,7 +40,7 @@ def build_distance_matrix():
                     continue
                 # print(x, y)
                 similarity_matrix[x][y] = row[2]
-        exit()
+        break
     return similarity_matrix
 
 similarity_matrix = None
