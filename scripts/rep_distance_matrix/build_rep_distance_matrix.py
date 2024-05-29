@@ -33,11 +33,11 @@ def build_distance_matrix():
             reader = csv.reader(pffile, delimiter=',')
             next(reader)
             for row in reader:
-                try:
-                    x = dom_list.index(row[0])-1
-                    y = dom_list.index(row[1])-1
-                except Exception:
-                    continue
+                # try:
+                x = dom_list.index(row[0])-1
+                y = dom_list.index(row[1])-1
+                # except Exception:
+                #    continue
                 # print(x, y)
                 print(row[2])
                 similarity_matrix[x][y] = row[2]
