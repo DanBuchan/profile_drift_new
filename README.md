@@ -117,7 +117,7 @@ c. Are the clusters meaningful?
 
 1. PSIBlast drift with random pfam members
 2. distance matrix over the all v all pfam members
-3. hmmm generated seqs vs pfam-A for the selection of drift families is to fin relatives
+3. hmmm generated seqs vs pfam-A for the selection of drift families is to fin relatives - halfway through
 
 # To do
 
@@ -126,6 +126,7 @@ c. Are the clusters meaningful?
 1. Summarise drift with random pfam members - awaiting calcs
 2. Run mafft over selection of drift families to make the MSA
 3. build alphafold models for mafft msas
+4. hmmm generated seqs vs pfam-A for the selection of drift families is to fin relatives - halfway through - waiting distance mat re-calculation
 
 ## Open 
 
