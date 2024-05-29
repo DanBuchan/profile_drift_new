@@ -22,13 +22,13 @@ def build_distance_matrix():
                     line = line.rstrip()
                     dom_list.append(line)
     
-    print(len(dom_list))
+    # print(len(dom_list))
     
     similarity_matrix = np.empty((len(dom_list), len(dom_list)), dtype=float)
     
     # populate with values from file
     for file in sorted(glob.glob(f'{sys.argv[2]}*.csv')):
-        # print(file[len(sys.argv[2]):])
+        print(file[len(sys.argv[2]):])
         with open(file, 'r') as pffile:
             reader = csv.reader(pffile, delimiter=',')
             next(reader)
