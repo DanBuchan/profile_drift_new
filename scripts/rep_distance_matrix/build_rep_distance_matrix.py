@@ -53,6 +53,7 @@ if os.path.isfile("non-normalised_similarity_matrix.npy"):
 else:
     print("Building matrix")
     similarity_matrix = build_distance_matrix()
+    print(similarity_matrix)
     with open("non-normalised_similarity_matrix.npy", "wb") as f:
         np.save(f, similarity_matrix)
 
