@@ -44,9 +44,12 @@ def build_distance_matrix():
 
 similarity_matrix = None
 if os.path.isfile("non-normalised_similarity_matrix.npy"):
+    print("Reading in matrix")
     similarity_matrix = np.load("non-normalised_similarity_matrix.npy")
+    print(similarity_matrix)
     # read this npy
 else:
+    print("Building matrix")
     similarity_matrix = build_distance_matrix()
     with open("non-normalised_similarity_matrix.npy", "wb") as f:
         np.save(f, similarity_matrix)
