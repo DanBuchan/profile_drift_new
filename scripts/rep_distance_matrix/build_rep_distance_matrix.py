@@ -22,7 +22,7 @@ def build_distance_matrix():
                     line = line.rstrip()
                     dom_list.append(line)
     
-    # print(len(dom_list))
+    print(dom_list)
     
     similarity_matrix = np.empty((len(dom_list), len(dom_list)), dtype=float)
     
