@@ -39,6 +39,7 @@ def build_distance_matrix():
                 except Exception:
                     continue
                 # print(x, y)
+                print(row[2])
                 similarity_matrix[x][y] = row[2]
         break
     return similarity_matrix
