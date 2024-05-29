@@ -6,7 +6,7 @@
 #$ -N hmm_closest
 ##$ -t 1-51900
 #$ -t 10001-20000
-
+# failed 14640-14645:1,16964,16990
 # Run the application.
 
 mkdir /scratch0/pfam_nw_${SGE_TASK_ID}/
