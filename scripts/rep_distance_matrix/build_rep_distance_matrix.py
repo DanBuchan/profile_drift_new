@@ -13,7 +13,7 @@ def build_distance_matrix():
     current_id = ''
     start = True
     dom_list = []
-    for file in sorted(glob.glob(f'{sys.argv[1]}*_consensus')):
+    for file in sorted(glob.glob(f'{sys.argv[1]}*_random')):
         # print(file[len(sys.argv[1]):])
         with open(file, "r", encoding="utf-8") as fhIn:
             for line in fhIn:
@@ -21,8 +21,7 @@ def build_distance_matrix():
                     line = line[1:]
                     line = line.rstrip()
                     dom_list.append(line)
-    
-    print(dom_list)
+    # print(dom_list)
     
     similarity_matrix = np.empty((len(dom_list), len(dom_list)), dtype=float)
     
@@ -39,7 +38,7 @@ def build_distance_matrix():
                 # except Exception:
                 #    continue
                 # print(x, y)
-                print(row[2])
+                # print(row[2])
                 similarity_matrix[x][y] = row[2]
         break
     return similarity_matrix

@@ -171,6 +171,7 @@ def read_fasta(file):
                 seq = ''
             else:
                 seq = seq+line.rstrip()
+    seqs[fasta_name] = seq
     return(seqs)
 
 rep_file = sys.argv[1]
