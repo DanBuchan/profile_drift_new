@@ -1,12 +1,12 @@
 #$ -S /bin/bash
 #$ -l tmem=8G
 #$ -l h_vmem=8G
-#$ -l h_rt=1:0:0
+#$ -l h_rt=4:0:0
 #$ -j y
 #$ -N hmm_closest
 ##$ -t 1-51900
-#$ -t 1-100
-
+#$ -t 10001-20000
+# failed 14640-14645:1,16964,16990
 # Run the application.
 
 mkdir /scratch0/pfam_nw_${SGE_TASK_ID}/

@@ -42,8 +42,8 @@ def run_nw(dbseqs, repseqs):
             fhOut.write(dbseqs[seqb])
             fhOut.close()
             nw_args = [
-               '/home/dbuchan/Applications/EMBOSS-6.4.0/emboss/needle',
-               # '/home/dbuchan/EMBOSS-6.4.0/emboss/needle',
+               # '/home/dbuchan/Applications/EMBOSS-6.4.0/emboss/needle',
+               '/home/dbuchan/EMBOSS-6.4.0/emboss/needle',
                'tmpa.fa',
                'tmpb.fa',
                'out.needle',

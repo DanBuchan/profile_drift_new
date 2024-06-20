@@ -24,10 +24,12 @@ PFAM RELEASE 36 @ 15 March 2024
 6. Perform an all-against-all Needleman and wunsch of the reps. Extract bits scores for a similarity matrix Scale/Normalise to between 0 and one and invert for a distance matrix
    > wc -l pfam_consensus_reps_labelled_flattened.fa
    Then use split to divide in to 500 files (880 will change depending on size), for cluster execution
-   > split --numeric-suffixes=1 -a 3 -l 84 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
+   > split --numeric-suffixes=1 -a 3 -l 82 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
 
    use pfam_reps_nw.py over our relabelled pfam_consensus_reps_labelled.fa
    wrote a morecambe script run_pfam_nw.sh to batch job this over a couple of days as it is A LOT of comparisons 20k x 20k
+
+   Also do this for the random reps
 
 7. Script that combines the distances down to a big matrix, maybe numpy and save as blob or pickle.
    build_rep_distance_matrix.py
@@ -115,7 +117,7 @@ c. Are the clusters meaningful?
 
 1. PSIBlast drift with random pfam members
 2. distance matrix over the all v all pfam members
-3. hmmm generated seqs vs pfam-A for the selection of drift families is to fin relatives
+3. hmmm generated seqs vs pfam-A for the selection of drift families is to fin relatives - halfway through
 
 # To do
 
@@ -124,6 +126,7 @@ c. Are the clusters meaningful?
 1. Summarise drift with random pfam members - awaiting calcs
 2. Run mafft over selection of drift families to make the MSA
 3. build alphafold models for mafft msas
+4. hmmm generated seqs vs pfam-A for the selection of drift families is to fin relatives - halfway through - waiting distance mat re-calculation
 
 ## Open 
 
