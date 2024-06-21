@@ -167,6 +167,9 @@ def read_fasta(file):
             if line.startswith(">"):
                 if fasta_name:
                     seqs[fasta_name] = seq
+                else:
+                    # do something
+                    pass
                 fasta_name = line.rstrip()
                 seq = ''
             else:

@@ -40,7 +40,7 @@ def build_distance_matrix():
                 # print(x, y)
                 # print(row[2])
                 similarity_matrix[x][y] = row[2]
-        break
+        # break
     return similarity_matrix
 
 similarity_matrix = None
@@ -48,7 +48,7 @@ if os.path.isfile("non-normalised_similarity_matrix.npy"):
     print("Reading in matrix")
     similarity_matrix = np.load("non-normalised_similarity_matrix.npy")
     # similarity_matrix = np.load("hmm_rep_distance_matrix.npy")
-    print(similarity_matrix)
+    # print(similarity_matrix)
     # read this npy
 else:
     print("Building matrix")
@@ -59,7 +59,6 @@ else:
 
 # now scale/normalise to 0 and 1, flip and fill diagonal
 np.fill_diagonal(similarity_matrix, (np.max(similarity_matrix)*1.2))
-
 print(np.min(similarity_matrix))
 print(np.max(similarity_matrix))
 
