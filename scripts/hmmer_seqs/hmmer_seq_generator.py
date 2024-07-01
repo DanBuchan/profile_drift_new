@@ -22,8 +22,11 @@ def read_summaries(targets, summaries):
         print(file)
         with open(file, "r", encoding="utf-8") as fhIn:
             next(fhIn)
-            csvreader = csv.reader(fhIn, delimiter=',')
-            entries = next(csvreader)
+            try:
+                csvreader = csv.reader(fhIn, delimiter=',')
+                entries = next(csvreader)
+            except Exception as e:
+                pass
             # print(entries)
             target_pfam_ids.add(entries[1])
     return(list(target_pfam_ids))
