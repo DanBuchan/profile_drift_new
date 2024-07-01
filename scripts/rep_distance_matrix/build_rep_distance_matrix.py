@@ -8,10 +8,8 @@ import os
 # python ./scripts/rep_distance_matrix/build_rep_distance_matrix.py /home/dbuchan/Data/pfam/ ./results_data/distance_matrix/pfam_rep_all_against_all/
 ###
 
-def build_distance_matrix():
-    # open the first file in the dir to get the ordered list of IDs
-    current_id = ''
-    start = True
+
+def get_dom_list():
     dom_list = []
     for file in sorted(glob.glob(f'{sys.argv[1]}*_random')):
         # print(file[len(sys.argv[1]):])
@@ -21,8 +19,12 @@ def build_distance_matrix():
                     line = line[1:]
                     line = line.rstrip()
                     dom_list.append(line)
+    return(dom_list)
+
+
+def build_distance_matrix():
     # print(dom_list)
-    
+    dom_list = get_dom_list()
     similarity_matrix = np.empty((len(dom_list), len(dom_list)), dtype=float)
     
     # populate with values from file
@@ -59,9 +61,9 @@ else:
 
 # now scale/normalise to 0 and 1, flip and fill diagonal
 np.fill_diagonal(similarity_matrix, (np.max(similarity_matrix)*1.2))
-print(np.min(similarity_matrix))
-print(np.max(similarity_matrix))
-
+# print(np.min(similarity_matrix))
+# print(np.max(similarity_matrix))
+dom_list = get_dom_list()
 normalized_similarity_matrix = (similarity_matrix-np.min(similarity_matrix))/(np.max(similarity_matrix)-np.min(similarity_matrix))
 flipped_sim_matrix = 1.0 - normalized_similarity_matrix
 # now save out distance matrix and dom_list
