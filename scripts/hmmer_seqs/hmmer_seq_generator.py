@@ -19,7 +19,7 @@ def read_summaries(targets, summaries):
     target_pfam_ids = set()
     for target in targets:
         file = list(glob.glob(f"{summaries}/{target}_*.csv"))[0]
-        print(file)
+        # print(file)
         with open(file, "r", encoding="utf-8") as fhIn:
             next(fhIn)
             try:
