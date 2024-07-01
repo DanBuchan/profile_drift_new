@@ -28,6 +28,7 @@ def read_summaries(targets, summaries):
                 target_pfam_ids.add(entries[1])
                 # print(entries)
             except Exception as e:
+                print("OH NO")
                 pass
     return(list(target_pfam_ids))
 
