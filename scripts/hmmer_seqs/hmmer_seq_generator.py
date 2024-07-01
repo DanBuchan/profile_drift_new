@@ -19,7 +19,7 @@ def read_summaries(targets, summaries):
     target_pfam_ids = set()
     for target in targets:
         file = list(glob.glob(f"{summaries}/{target}_*.csv"))[0]
-        # print(file)
+        print(file)
         with open(file, "r", encoding="utf-8") as fhIn:
             next(fhIn)
             csvreader = csv.reader(fhIn, delimiter=',')
@@ -71,7 +71,7 @@ def runhmmemit(num_seqs):
 
 
 mafft_targets = read_mafft_targets(sys.argv[1])
-print(mafft_targets)
+# print(mafft_targets)
 pfam_list = read_summaries(mafft_targets, sys.argv[2])
 # print(pfam_list)
 make_hmms_file(pfam_list, sys.argv[3])
