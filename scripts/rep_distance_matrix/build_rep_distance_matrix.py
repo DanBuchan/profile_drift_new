@@ -62,9 +62,9 @@ np.fill_diagonal(similarity_matrix, (np.max(similarity_matrix)*1.2))
 print(np.min(similarity_matrix))
 print(np.max(similarity_matrix))
 
-# normalized_similarity_matrix = (similarity_matrix-np.min(similarity_matrix))/(np.max(similarity_matrix)-np.min(similarity_matrix))
-# flipped_sim_matrix = 1.0 - normalized_similarity_matrix
+normalized_similarity_matrix = (similarity_matrix-np.min(similarity_matrix))/(np.max(similarity_matrix)-np.min(similarity_matrix))
+flipped_sim_matrix = 1.0 - normalized_similarity_matrix
 # now save out distance matrix and dom_list
-# with open("hmm_rep_distance_matrix.npy", "wb") as f:
-#     np.save(f, flipped_sim_matrix)
-#     np.save(f, dom_list)
+with open("hmm_rep_distance_matrix.npy", "wb") as f:
+    np.save(f, flipped_sim_matrix)
+    np.save(f, dom_list)
