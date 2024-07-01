@@ -28,7 +28,6 @@ def read_summaries(targets, summaries):
                 target_pfam_ids.add(entries[1])
                 # print(entries)
             except Exception as e:
-                print("OH NO")
                 pass
     return(list(target_pfam_ids))
 
@@ -75,7 +74,7 @@ def runhmmemit(num_seqs):
 
 
 mafft_targets = read_mafft_targets(sys.argv[1])
-# print(mafft_targets)
+print(len(mafft_targets))
 pfam_list = read_summaries(mafft_targets, sys.argv[2])
 print(len(pfam_list))
 make_hmms_file(pfam_list, sys.argv[3])
