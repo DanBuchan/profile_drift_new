@@ -76,6 +76,6 @@ def runhmmemit(num_seqs):
 mafft_targets = read_mafft_targets(sys.argv[1])
 # print(mafft_targets)
 pfam_list = read_summaries(mafft_targets, sys.argv[2])
-# print(pfam_list)
+print(len(pfam_list))
 make_hmms_file(pfam_list, sys.argv[3])
 runhmmemit(sys.argv[4])
