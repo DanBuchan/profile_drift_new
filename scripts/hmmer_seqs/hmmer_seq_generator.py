@@ -17,6 +17,7 @@ def read_mafft_targets(file):
 
 def read_summaries(targets, summaries):
     target_pfam_ids = set()
+    all = []
     for target in targets:
         file = list(glob.glob(f"{summaries}/{target}_*.csv"))[0]
         # print(file)
@@ -26,9 +27,11 @@ def read_summaries(targets, summaries):
                 csvreader = csv.reader(fhIn, delimiter=',')
                 entries = next(csvreader)
                 target_pfam_ids.add(entries[1])
+                all.append(entries[1])
                 # print(entries)
             except Exception as e:
                 pass
+    print(all)
     return(list(target_pfam_ids))
 
 
