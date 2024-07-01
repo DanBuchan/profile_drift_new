@@ -2,7 +2,7 @@ from collections import defaultdict
 import sys
 import csv
 
-# python run_raxml.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa results_data/drift_summary/alpha_fold_targets.csv
+# python get_target_id_list.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa results_data/drift_summary/alpha_fold_targets.csv
 
 
 def read_fasta(file):
@@ -19,8 +19,7 @@ def read_fasta(file):
             else:
                 seq = seq+line.rstrip()
     return(seqs)
-
-
+ 
 def read_targets(file):
     targets = []
     with open(file) as csvfile:
