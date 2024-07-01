@@ -25,10 +25,10 @@ def read_summaries(targets, summaries):
             try:
                 csvreader = csv.reader(fhIn, delimiter=',')
                 entries = next(csvreader)
+                target_pfam_ids.add(entries[1])
+                # print(entries)
             except Exception as e:
                 pass
-            # print(entries)
-            target_pfam_ids.add(entries[1])
     return(list(target_pfam_ids))
 
 
