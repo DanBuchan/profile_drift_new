@@ -3,8 +3,7 @@ import glob
 import csv
 import subprocess
 
-# python hmmer_seq_generator.py /home/dbuchan/Projects/profile_drift/results_data/drift_summary/mafft_targets.txt /home/dbuchan/Projects/profile_drift/results_data/psiblast_iteration_summaries ~/Data/pfam/Pfam-A.hmm 100
-
+python ./scripts/hmmer_seqs/hmmer_seq_generator.py /home/dbuchan/Projects/profile_drift/results_data/generation_or_af_targets/alphafold_targets_as_id.txt /home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/ ~/Data/pfam/Pfam-A.hmm 50
 # Read in list of targets alpha_fold_targets.csv
 # Open drift summaries for each and get full list of PFIDs
 
@@ -19,6 +18,7 @@ def read_summaries(targets, summaries):
     target_pfam_ids = set()
     all = []
     for target in targets:
+        # print(target)
         file = list(glob.glob(f"{summaries}/{target}_*.csv"))[0]
         # print(file)
         with open(file, "r", encoding="utf-8") as fhIn:
@@ -31,7 +31,7 @@ def read_summaries(targets, summaries):
                 # print(entries)
             except Exception as e:
                 pass
-    print(all)
+    # print(all)
     return(list(target_pfam_ids))
 
 
@@ -77,8 +77,8 @@ def runhmmemit(num_seqs):
 
 
 mafft_targets = read_mafft_targets(sys.argv[1])
-print(mafft_targets)
+# print(mafft_targets)
 pfam_list = read_summaries(mafft_targets, sys.argv[2])
-print(len(pfam_list))
+# print(len(pfam_list))
 make_hmms_file(pfam_list, sys.argv[3])
 runhmmemit(sys.argv[4])

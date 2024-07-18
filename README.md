@@ -60,10 +60,10 @@ c. Are the clusters meaningful?
 4. We select some Pfam families from each drift class. Unpack the sequences. Align them with mafft.
    > select_targets.py
    we take in some lists of families and output a list of targets that we want to model
-   alpha_fold_targets.csv - a list of target pfam families for differing drift classes
+   alphafold_targets.csv - a list of target pfam families for differing drift classes
    > get_target_id_list.py
    little helper script that takes the target list and translates it in to the JOB IDs that were used on the cluster to output the target list
-   mafft_targets.txt - just the list of JOB IDs that map to the alphafold targets
+   alphafold_targets_as_id.txt - just the list of JOB IDs that map to the alphafold targets
    > run_mafft.py mafft.sh
 5. Take all our alignments and then run alphafold2.
 6. Collate models and analyse.
@@ -80,17 +80,17 @@ c. Are the clusters meaningful?
 
 ### HHM coherence
 
-1. Generate 100 seqs for each hhemit, take in alpha_fold_targets/mafft_targets.txt and output 100 seqs for each drift class
+1. Generate 50 seqs for each hhemit, take in results_data/generation_or_af_targets/alpha_fold_targets_as_id.txt and output 50 seqs for each drift class
    > hmmer_seq_generator.py
    hmm_subset.hmm - the hmms of the target subset
    hmm_generated_seqs.fa - 100 seqs per family in the target list
-2. Find the pfam family that our mafft/alpha fold targets best hit using fasta
+2. Find the pfam family that our mafft/lsalpha fold targets best hit using fasta
    find_closest_hmm_seqfamily.py run_closest.hmm.sh
    outputs lots of ".best" files that we cat in to one large csv
 
 ### Language model coherence
 
-1. Generate 100 seqs for each family in alpha_fold_targets.csv using ProtTans
+1. Generate 50 seqs for each family in alpha_fold_targets.csv using ProtTans
    > prottrans_seq_gen.py
    pfam_targets_for_prottrans.fa - all the seqs for the target families
    masked_25_percent_targets.fa - a sample of 100 seqs from each family with 25% randomly masked

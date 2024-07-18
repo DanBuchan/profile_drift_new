@@ -2,8 +2,7 @@ from collections import defaultdict
 import sys
 import csv
 
-# python get_target_id_list.py ~/Data/pfam/pfam_consensus_reps_labelled_flattened.fa results_data/drift_summary/alpha_fold_targets.csv
-
+# python ./scripts/psiblast_drift/get_target_id_list.py ~/Data/pfam/random_pfam_reps.fa results_data/generation_or_af_targets/alphafold_targets.csv
 
 def read_fasta(file):
     seqs = {}
