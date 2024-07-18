@@ -1,17 +1,10 @@
 #!/bin/bash -l
 #$ -o /home/ucbcdwb/Scratch/output/hmm/std.out
 #$ -e /home/ucbcdwb/Scratch/output/hmm/std.err
-
-# Request an hour of run time
 #$ -l h_rt=01:00:0
-
-# Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
 #$ -l mem=16G
-
-# Request 10 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
 #$ -l tmpfs=8G
-
-#$ -pe smp 4
+#$ -pe smp 10
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
