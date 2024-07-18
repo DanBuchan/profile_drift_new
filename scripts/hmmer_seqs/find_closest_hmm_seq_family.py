@@ -46,7 +46,8 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     fhtmp.write(seq_record["header"]+'\n')
     fhtmp.write(seq_record["seq"]+'\n')
     fhtmp.close()
-    args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
+    args = ['/home/ucbcdwb/Applications/fasta36/bin/fasta36',
+    # args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
             '-q',
             '-p',
             '-O',
@@ -102,7 +103,7 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     # os.remove(f"{query_name}.out")
     # os.remove(f"{query_name}.fa")
     os.remove(query_name+".out")
-    os.remove(query_name+".fa")
+    # os.remove(query_name+".fa")
 
 
 # 1. open file of generated seqs, read in and get family ID etc
