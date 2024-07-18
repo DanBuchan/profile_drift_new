@@ -48,6 +48,8 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     fhtmp.close()
     args = ['/home/ucbcdwb/Applications/fasta36/bin/fasta36',
     # args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
+            '-T',
+            '20'
             '-q',
             '-p',
             '-O',
