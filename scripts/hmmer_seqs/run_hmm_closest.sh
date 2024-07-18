@@ -24,6 +24,7 @@
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
 #$ -wd /home/ucbcdwb/Scratch/output/hmm/
+
 module load python3
 mkdir /home/ucbcdwb/Scratch/output/hmm/hmm_fa_${SGE_TASK_ID}/
 cd /home/ucbcdwb/Scratch/output/hmm/hmm_fa_${SGE_TASK_ID}/
