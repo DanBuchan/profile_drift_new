@@ -1,12 +1,12 @@
 #!/bin/bash -l
-#$ -o /home/ucbcdwb/Scratch/output/profile/std.out
-#$ -e /home/ucbcdwb/Scratch/output/profile/std.err
+#$ -o /home/ucbcdwb/Scratch/output/hmm/std.out
+#$ -e /home/ucbcdwb/Scratch/output/hmm/std.err
 
 # Request an hour of run time
 #$ -l h_rt=01:00:0
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=8G
+#$ -l mem=24G
 
 # Request 10 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
 #$ -l tmpfs=8G
@@ -22,6 +22,7 @@
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
 #$ -wd /home/ucbcdwb/Scratch/output/hmm/
+
 module load python3
 mkdir /home/ucbcdwb/Scratch/output/hmm/hmm_fa_${SGE_TASK_ID}/
 cd /home/ucbcdwb/Scratch/output/hmm/hmm_fa_${SGE_TASK_ID}/
