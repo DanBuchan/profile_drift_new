@@ -1,6 +1,6 @@
 #!/bin/bash -l
-#$ -o /home/ucbcdwb/Scratch/output/profile/std.out
-#$ -e /home/ucbcdwb/Scratch/output/profile/std.err
+#$ -o /home/ucbcdwb/Scratch/output/hmm/std.out
+#$ -e /home/ucbcdwb/Scratch/output/hmm/std.err
 
 # Request an hour of run time
 #$ -l h_rt=01:00:0
