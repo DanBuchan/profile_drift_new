@@ -35,7 +35,7 @@ def get_generated_sequences(hmm_seqs):
 
 def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     seq_record = gen_seqs[i]     
-    match = re.search("^>.+\|(PF\d+-sample\d+)", seq_record['header'])
+    match = re.search("^>.+\|(PF\d+_masked\d\d_\d+)", seq_record['header'])
     query_name = ''
     if match:
         query_name = match.groups()[0]
