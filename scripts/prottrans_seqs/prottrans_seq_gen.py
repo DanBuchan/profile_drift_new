@@ -13,7 +13,7 @@ import os
 import random
 import math
 
-# prottrans_seq_gen.py results_data/drift/drift_summary/alpha_fold_targets.csv
+# python prottrans_seq_gen.py ../../results_data/generation_or_af_targets/alphafold_targets.csv ~/Data/pfam/Pfam-A.full.uniprot.fa
 
 def get_pfam_seqs(pfam_fa, targets):
     # print(targets)
@@ -79,15 +79,18 @@ else:
                 seq = seq_data['seq']
                 fhOut.write(f'{header}\n{seq}\n')
 
-def predict_seq(seq_labels, input_labels, t5):
+def predict_seq(seq_labels, input_labels, t5, device):
     seq_labels  = " ".join(seq_labels)
     label_seq = tokenizer([seq_labels], return_tensors="pt").input_ids
     seq  = " ".join(input_labels)
     seq = re.sub(r"[UZOB]", "<extra_id_0>", seq) 
     input_seq = tokenizer([seq], return_tensors="pt").input_ids
-    
-    output = t5(input_ids=input_seq, labels=label_seq)
-    result = output["logits"].detach().numpy()
+    inputs = input_seq.to(device)
+    labels = label_seq.to(device)
+    output = t5(input_ids=inputs, labels=labels)
+    del inputs
+    del labels
+    result = output["logits"].detach().cpu().numpy()
     pred_array = np.argmax(result, axis=2)[0]
     last_index = len(pred_array) -1
     pred_array = np.delete(pred_array, last_index)
@@ -101,15 +104,21 @@ model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50'
 device = torch.device('cpu')
 model = model.to(device)
 model = model.eval()
-
+print("generating seqs")
 masked_25 = open("masked_25_percent_targets.fa", "w", encoding="utf-8")
 masked_50 = open("masked_50_percent_targets.fa", "w", encoding="utf-8")
 masked_75 = open("masked_75_percent_targets.fa", "w", encoding="utf-8")
+errors = open("dropped_targets.fa", "w", encoding="utf-8")
+
 for family in pfam_seqs:
-    # print(family)
-    sample = random.choices(pfam_seqs[family], k=100)
+    print(family)
+    # if("PF05086" not in family):
+    #     continue
+    sample = random.choices(pfam_seqs[family], k=50)
     # print(len(sample))
     for cnt, seq_data in enumerate(sample):
+        torch.cuda.empty_cache()
+        # print(seq_data)
         # print(f"OG     SEQ: {seq_data['seq']}")
         for i in [25, 50, 75]:
             fraction = i/100
@@ -122,19 +131,25 @@ for family in pfam_seqs:
                 new_seq = new_seq[:location] + "U" + new_seq[location + 1:]
             
             # print(f"MASKED SEQ: {new_seq}")
-            predicted_seq = predict_seq(seq_data['seq'], new_seq, model)
-            predicted_seq = re.sub('<.+?>', '', predicted_seq)
+            try:
+                predicted_seq = predict_seq(seq_data['seq'], new_seq, model, device)
+                predicted_seq = re.sub('<.+?>', '', predicted_seq)
 
-            # print(f"PREDED SEQ: {predicted_seq}")
-            if i == 25:
-                head = seq_data['header']
-                masked_25.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
-            if i == 50:
-                head = seq_data['header']
-                masked_50.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
-            if i == 75:
-                head = seq_data['header']
-                masked_75.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
+                # print(f"PREDED SEQ: {predicted_seq}")
+                if i == 25:
+                    head = seq_data['header']
+                    masked_25.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
+                if i == 50:
+                    head = seq_data['header']
+                    masked_50.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
+                if i == 75:
+                    head = seq_data['header']
+                    masked_75.write(f'{head}_masked{i}_{cnt}\n{predicted_seq}\n')
+            except Exception as e:
+                print(f"COULDN'T ALLOCATE {family}")
+                errors.write(f"{seq_data['header']}\n")
+                errors.write(f"{seq_data['seq']}\n")
+            
         # exit()
 
 masked_25.close()
