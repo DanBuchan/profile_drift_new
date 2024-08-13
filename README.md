@@ -24,9 +24,14 @@ PFAM RELEASE 36 @ 15 March 2024
 6. Perform an all-against-all Needleman and wunsch of the reps. Extract bits scores for a similarity matrix Scale/Normalise to between 0 and one and invert for a distance matrix
    > wc -l pfam_consensus_reps_labelled_flattened.fa
    Then use split to divide in to 500 files (880 will change depending on size), for cluster execution
-   > split --numeric-suffixes=1 -a 3 -l 82 --additional-suffix=_pfam_consensus pfam_consensus_reps_labelled_flattened.fa ''
+   > split --numeric-suffixes=1 -a 3 -l 82 --additional-suffix=_pfam_random 
+   > rename x00 '' *_pfam_random
+   > rename x0 '' *_pfam_random
+   > rename x '' *_pfam_random
+   
+   pfam_consensus_reps_labelled_flattened.fa ''
 
-   use pfam_reps_nw.py over our relabelled pfam_consensus_reps_labelled.fa
+   use pfam_reps_nw.py over our relabelled pfam_random_reps_labelled.fa
    wrote a morecambe script run_pfam_nw.sh to batch job this over a couple of days as it is A LOT of comparisons 20k x 20k
 
    Also do this for the random reps
