@@ -6,6 +6,7 @@
 #$ -j y
 #$ -N pfam_nw
 #$ -t 3-504
+#$ -l hostname=!(saunders-608-35.local,)
 
 # Run the application.
 hostname
