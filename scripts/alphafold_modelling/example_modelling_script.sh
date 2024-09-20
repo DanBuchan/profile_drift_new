@@ -1,5 +1,6 @@
 #!/bin/bash -l
 
+#$ -S /bin/bash
 # Request an hour of run time
 #$ -l h_rt=200:00:0
 
@@ -19,6 +20,7 @@
 # Set the name of the job.
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/cuda-11.8/lib64/
+export PATH="/home/dbuchan/miniconda3/bin:$PATH"
 source /home/dbuchan/.bashrc
 /home/dbuchan/miniconda3/condabin/conda activate /cluster/project1/ProCovar/lmoffat/miniconda/envs/alphafold 
 cd /cluster/project1/ProCovar/colabfold-customtemplates
@@ -28,7 +30,7 @@ FASTA_ID="$(tail -n +${SGE_TASK_ID} /home/dbuchan/inputs/alphafold/${CLASS}/targ
 FAMILY_ID=${FASTA_ID::-3}
 
 for i in /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}_*.a2m; do
-    bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh ${FASTA_ID} $i ${CLASS}_${FAMILY_ID}
+    bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID} $i ${CLASS}_${FAMILY_ID}_${i:57:-4}
     echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID} $i ${CLASS}_${FAMILY_ID}_${i:57:-4}"
 done
 
