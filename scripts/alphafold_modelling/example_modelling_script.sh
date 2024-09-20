@@ -28,7 +28,7 @@ FASTA_ID="$(tail -n +${SGE_TASK_ID} /home/dbuchan/inputs/alphafold/${CLASS}/targ
 FAMILY_ID=${FASTA_ID::-3}
 
 for i in /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}_*.a2m; do
-    # bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh ${FASTA_ID} $i ${CLASS}_${FAMILY_ID}
+    bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh ${FASTA_ID} $i ${CLASS}_${FAMILY_ID}
     echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID} $i ${CLASS}_${FAMILY_ID}_${i:57:-4}"
 done
 
