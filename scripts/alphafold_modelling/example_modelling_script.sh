@@ -6,7 +6,8 @@
 #$ -l h_rt=200:00:0
 
 # Request 10 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=10G
+#$ -l tscratch=1G
+#$ -l scratch0free=1G
 
 #$ -N runalpha
 #$ -l tmem=2G
