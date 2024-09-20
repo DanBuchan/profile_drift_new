@@ -75,7 +75,6 @@ def align_seqs(align_list, location, main_pfam):
                     f'{sys.argv[2]}sorted_target_data/{location}/{main_pfam}_{iteration}.a2m',
                     '--outfmt=a2m',
                     '--threads=10',
-                    '--force'
             ]
             print("Clustering", " ".join(args))
             try:
@@ -86,7 +85,7 @@ def align_seqs(align_list, location, main_pfam):
                 sys.exit(1)
             if p.returncode != 0:
                 print("Non Zero Exit status: "+str(p.returncode))
-                raise OSError("Non Zero Exit status: "+str(p.returncode))
+                ## raise OSError("Non Zero Exit status: "+str(p.returncode))
 
 def process_complex(target_data, main_pfam):
     # 3 models 1st, last and peak contamination : 100 examples = 300 models
@@ -97,10 +96,17 @@ def process_complex(target_data, main_pfam):
         family_count = 0
         contaminant_value = 0
         for family in target_data[iteration]:
-            family_count = int(target_data[iteration][main_pfam])
+            #print(iteration)
+            try:
+                family_count = int(target_data[iteration][main_pfam])
+            except Exception as e:
+                family_count = 0
             if family not in main_pfam:
                 contaminant_value += int(target_data[iteration][family])
-        contamination_percentage = contaminant_value/family_count
+        if family_count == 0:
+            contamination_percentage = contaminant_value
+        else:
+            contamination_percentage = contaminant_value/family_count
         if contamination_percentage > max_contamination_percentage:
             max_contamination_percentage = contamination_percentage
             peak_iteration = iteration
@@ -119,10 +125,16 @@ def process_purified(target_data, main_pfam):
         family_count = 0
         contaminant_value = 0
         for family in target_data[iteration]:
-            family_count = int(target_data[iteration][main_pfam])
+            try:
+                family_count = int(target_data[iteration][main_pfam])
+            except Exception as e:
+                family_count = 0
             if family not in main_pfam:
                 contaminant_value += int(target_data[iteration][family])
-        contamination_percentage = contaminant_value/family_count
+        if family_count == 0:
+            contamination_percentage = contaminant_value
+        else:
+            contamination_percentage = contaminant_value/family_count
         if contamination_percentage > max_contamination_percentage:
             max_contamination_percentage = contamination_percentage
             peak_iteration = iteration
@@ -170,7 +182,7 @@ def process_targets(af_dir, target_class):
                 target_family = row[1]
                 target_data[row[0]][row[2]] = row[3]
         #print(target_family)
-        #print(target_data)
+        # print(target_data)
         
         for target_type in target_class[target_family]:
             print(target_type)
