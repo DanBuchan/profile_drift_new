@@ -19,7 +19,7 @@
 # Set the name of the job.
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/cuda-11.8/lib64/
-conda activate /cluster/project1/ProCovar/lmoffat/miniconda/envs/alphafold 
+/home/dbuchan/miniconda3/condabin/conda activate /cluster/project1/ProCovar/lmoffat/miniconda/envs/alphafold 
 cd /cluster/project1/ProCovar/colabfold-customtemplates
 
 CLASS='contaminants_grew' # remove 57 leading chars
