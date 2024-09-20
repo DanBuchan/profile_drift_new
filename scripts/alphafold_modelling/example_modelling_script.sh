@@ -1,6 +1,4 @@
 #!/bin/bash -l
-#$ -o /home/ucbcdwb/Scratch/output/alpha/std.out
-#$ -e /home/ucbcdwb/Scratch/output/alpha/std.err
 
 # Request an hour of run time
 #$ -l h_rt=200:00:0
