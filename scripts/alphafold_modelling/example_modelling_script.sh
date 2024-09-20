@@ -20,8 +20,7 @@
 # Set the name of the job.
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/cuda-11.8/lib64/
-export PATH="/home/dbuchan/miniconda3/bin:$PATH"
-source /home/dbuchan/.bashrc
+/home/dbuchan/miniconda3/condabin/conda init bash
 /home/dbuchan/miniconda3/condabin/conda activate /cluster/project1/ProCovar/lmoffat/miniconda/envs/alphafold 
 cd /cluster/project1/ProCovar/colabfold-customtemplates
 
