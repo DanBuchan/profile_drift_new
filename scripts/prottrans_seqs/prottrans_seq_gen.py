@@ -101,7 +101,7 @@ def predict_seq(seq_labels, input_labels, t5, device):
 tokenizer = T5Tokenizer.from_pretrained('Rostlab/prot_t5_xl_uniref50', do_lower_case=False)
 model = T5ForConditionalGeneration.from_pretrained('Rostlab/prot_t5_xl_uniref50')
 # device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-device = torch.device('cpu')
+device = torch.device('cuda')
 model = model.to(device)
 model = model.eval()
 print("generating seqs")
@@ -114,7 +114,7 @@ for family in pfam_seqs:
     print(family)
     # if("PF05086" not in family):
     #     continue
-    sample = random.choices(pfam_seqs[family], k=50)
+    sample = random.choices(pfam_seqs[family], k=25)
     # print(len(sample))
     for cnt, seq_data in enumerate(sample):
         torch.cuda.empty_cache()
