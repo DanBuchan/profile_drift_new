@@ -33,8 +33,8 @@ FAMILY_ID=${FASTA_ID::-3}
 for i in /home/dbuchan/inputs/alphafold/${CLASS}/*.a2m; do
     FAMILY_ID=`echo ${i} | grep -oP "PF\d{5}"`
     ENDING_CONFIG=`echo ${i} | grep -oP "PF\d{5}_\d+"`
-    # bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID}.fa $i ${CLASS}_${ENDING_CONFIG}
-    echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID} $i ${CLASS}_${ENDING_CONFIG}"
+    # bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa $i ${CLASS}_${ENDING_CONFIG}
+    echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa $i ${CLASS}_${ENDING_CONFIG}"
 done
 
 # move the model
