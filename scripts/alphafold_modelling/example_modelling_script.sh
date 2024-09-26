@@ -16,7 +16,6 @@
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
-#$ -t 1-2
 # Set the name of the job.
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/cuda-11.8/lib64/
@@ -24,13 +23,19 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/cuda-11.8/lib64/
 /home/dbuchan/miniconda3/condabin/conda activate /cluster/project1/ProCovar/lmoffat/miniconda/envs/alphafold 
 cd /cluster/project1/ProCovar/colabfold-customtemplates
 
-CLASS='contaminants_grew' # remove 57 leading chars
-FASTA_ID="$(tail -n +${SGE_TASK_ID} /home/dbuchan/inputs/alphafold/${CLASS}/targets | head -n 1)"
+CLASS='contaminants_grew' # remove 49 leading chars
+#CLASS='contaminants_purified'
+#CLASS='insig_drift'
+#CLASS='non_drift'
+# CLASS='query_purified'
+
 FAMILY_ID=${FASTA_ID::-3}
 
-for i in /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}_*.a2m; do
-    bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID} $i ${CLASS}_${FAMILY_ID}_${i:57:-4}
-    echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID} $i ${CLASS}_${FAMILY_ID}_${i:57:-4}"
+for i in /home/dbuchan/inputs/alphafold/${CLASS}/*.a2m; do
+    FAMILY_ID=echo ${i} | grep -oP "PF\d{5}"
+    ENDING_CONFIG=echo ${i} | grep -oP "PF\d{5}_\d+"
+    # bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID}.fa $i ${CLASS}_${ENDING_CONFIG}
+    echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FASTA_ID} $i ${CLASS}_${ENDING_CONFIG}"
 done
 
 # move the model
