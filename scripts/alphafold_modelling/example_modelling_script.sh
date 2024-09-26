@@ -27,7 +27,7 @@ conda activate /cluster/project1/ProCovar/lmoffat/miniconda/envs/alphafold
 cd /cluster/project1/ProCovar/colabfold-customtemplates
 
 CLASSES=('contaminants_grew' 'contaminants_complex' 'contaminants_purified' 'insig_drift' 'non_drift' 'query_purified')
-CLASS=${CLASSES[${SGE_TASK_ID}]}
+CLASS=${CLASSES[${SGE_TASK_ID}-1]}
 
 FAMILY_ID=${FASTA_ID::-3}
 
