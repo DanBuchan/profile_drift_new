@@ -2,7 +2,7 @@
 
 #$ -S /bin/bash
 # Request an hour of run time
-#$ -l h_rt=200:00:0
+#$ -l h_rt=300:00:0
 
 # Request 10 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
 #$ -l tscratch=1G
@@ -18,16 +18,15 @@
 # numbered 1 to 10000.
 # Set the name of the job.
 
+#$ -t 1-6
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/cuda-11.8/lib64/
 /home/dbuchan/miniconda3/condabin/conda init bash
 /home/dbuchan/miniconda3/condabin/conda activate /cluster/project1/ProCovar/lmoffat/miniconda/envs/alphafold 
 cd /cluster/project1/ProCovar/colabfold-customtemplates
 
-CLASS='contaminants_grew' # remove 49 leading chars
-#CLASS='contaminants_purified'
-#CLASS='insig_drift'
-#CLASS='non_drift'
-# CLASS='query_purified'
+CLASSES=('contaminants_grew' 'contaminants_complex' 'contaminants_purified' 'insig_drift' 'non_drift' 'query_purified')
+CLASS=${CLASSES[${SGE_TASK_ID}]}
 
 FAMILY_ID=${FASTA_ID::-3}
 
