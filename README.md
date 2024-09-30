@@ -148,6 +148,6 @@ so we look at the average plDDT
 
 # To do
 
-1. collate hmm and plm results
-2. collate alphafold plDDT results
+1. collate hmm and pLM results (/home/dbuchan/Projects/profile_drift/results_data/hmm_closest and /home/dbuchan/Projects/profile_drift/results_data//prottrans_closest/)
+2. collate alphafold plDDT results (/home/dbuchan/Projects/profile_drift/results_data/alphafold_models)
 3. merizo search over alphfold models?
