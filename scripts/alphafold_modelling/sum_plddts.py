@@ -17,5 +17,6 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
         for line in fh:
             if line.startswith("ATOM"):
                 plDDT = line[61:66]
-                print(f'{plDDT}_')
+                plDDT = float(plDDT.replace(" ", ""))
+                print(f'{plDDT}')
     break
