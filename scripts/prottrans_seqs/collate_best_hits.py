@@ -3,7 +3,7 @@ import sys
 from collections import defaultdict
 
 #
-# python scripts/hmmer_seqs/collate_best_hits.py ./results_data/prottrans_closest/ > results_data/prottrans_closest/drift_summary.csv
+# python scripts/prottrans_seqs/collate_best_hits.py ./results_data/prottrans_closest/ > results_data/prottrans_closest/drift_summary.csv
 #
 
 collation = {}
@@ -31,7 +31,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.best'):
                 collation[target_family][mask_level]["correct_count"] += 1
             else:
                 collation[target_family][mask_level]["drift_count"] += 1
-            collation[target_family]["total_count"] += 1
+            collation[target_family][mask_level]["total_count"] += 1
 
 
 print("target_family,mask,tot_seqs,correct_count,drift_count,nobest")
