@@ -3,6 +3,7 @@ import numpy as np
 import glob
 import csv
 import os
+from natsort import natsorted, ns
 
 ### Usage
 # python ./scripts/rep_distance_matrix/build_rep_distance_matrix.py /home/dbuchan/Data/pfam/ ./results_data/distance_matrix/pfam_rep_all_against_all/
@@ -11,7 +12,7 @@ import os
 
 def get_dom_list():
     dom_list = []
-    for file in sorted(glob.glob(f'{sys.argv[1]}*_random')):
+    for file in natsorted(list(glob.glob(f'{sys.argv[1]}*_random')), key=lambda y: y.lower()):
         # print(file[len(sys.argv[1]):])
         with open(file, "r", encoding="utf-8") as fhIn:
             for line in fhIn:
@@ -35,12 +36,11 @@ def build_distance_matrix():
             next(reader)
             for row in reader:
                 # try:
-                x = dom_list.index(row[0])-1
-                y = dom_list.index(row[1])-1
+                x = dom_list.index(row[0])
+                y = dom_list.index(row[1])
+                # print(x, y)
                 # except Exception:
                 #    continue
-                # print(x, y)
-                # print(row[2])
                 similarity_matrix[x][y] = row[2]
         # break
     return similarity_matrix
@@ -55,10 +55,13 @@ if os.path.isfile("non-normalised_similarity_matrix.npy"):
 else:
     print("Building matrix")
     similarity_matrix = build_distance_matrix()
-    print(similarity_matrix)
+    # print(similarity_matrix)
     with open("non-normalised_similarity_matrix.npy", "wb") as f:
         np.save(f, similarity_matrix)
 
+# TEMPORARILY TAKE SUB MATRIX
+# similarity_matrix = similarity_matrix[0:80, 0:80]
+# exit()
 # now scale/normalise to 0 and 1, flip and fill diagonal
 np.fill_diagonal(similarity_matrix, (np.max(similarity_matrix)*1.2))
 # print(np.min(similarity_matrix))
