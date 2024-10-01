@@ -8,6 +8,8 @@ import sys
 results = {}
 for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     with open(file, "r", encoding="utf-8") as fh:
+        if 'contaminants_complex_PF00106_1_428ec_unrelaxed_rank_1_model_3.pdb' not in file:
+            continue
         print(file)
         file_parts = file[len(sys.argv[1]):].split("_")
         drift_class = f'{file_parts[0]}_{file_parts[1]}'
