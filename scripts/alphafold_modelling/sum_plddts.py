@@ -21,11 +21,12 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             if line.startswith("ATOM"):
                 res_id = line[24:28]
                 res_id = int(res_id.replace(" ", ""))
-                print(f'{res_id}_')
+                print(f'{res_id}')
                 plDDT = line[61:66]
                 plDDT = float(plDDT.replace(" ", ""))
                 print(f'{plDDT}')
                 plDDT_scores[res_id] = plDDT
+        print(plDDT_scores)
         plDDT_tot = 0
         plDDT_count = 0
         for res_id in plDDT_scores:
