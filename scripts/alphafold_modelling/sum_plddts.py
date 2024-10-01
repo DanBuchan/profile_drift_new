@@ -30,5 +30,11 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             plDDT_count += 1
             plDDT_tot += plDDT_scores[res_id]
         ave_plDDT = plDDT_tot/res_id
-        print(ave_plDDT)
+        if drift_class not in results:
+            results[drift_class] = {}
+        if family not in results[drift_class]:
+            results[drift_class][family] = {}
+        
+        results[drift_class][family][iteration] = ave_plDDT
+        print(results)
     break
