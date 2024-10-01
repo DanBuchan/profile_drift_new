@@ -2,7 +2,7 @@ import glob
 import sys
 
 #
-# python scripts/alphafold_modelling/sum_plddts.py ./results_data/alphafold_models/
+# python scripts/alphafold_modelling/sum_plddts.py ./results_data/alphafold_models/ > ./results_data/alphafold_models/plddt_summary.csv
 #
 
 results = {}
@@ -38,3 +38,10 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
         results[drift_class][family][iteration] = ave_plDDT
         print(results)
     break
+
+print("drift_class,family,iteraton,mean_plDDT")
+for drift_class in results:
+    for family in results[drift_class]: 
+        for iteration in results[drift_class][family]:
+            plDDT = results[drift_class][family][iteration]
+            print(f'{drift_class},{family},{iteration},{plDDT}')
