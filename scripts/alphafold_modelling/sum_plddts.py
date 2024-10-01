@@ -14,8 +14,11 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
         family = file_parts[2]
         iteration = file_parts[3]
         print(drift_class, family, iteration)
+        plDDT_scores = {}
         for line in fh:
             if line.startswith("ATOM"):
+                res_id = line[24:28]
+                print(res_id)
                 plDDT = line[61:66]
                 plDDT = float(plDDT.replace(" ", ""))
                 print(f'{plDDT}')
