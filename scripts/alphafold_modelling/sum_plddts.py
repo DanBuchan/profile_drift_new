@@ -19,9 +19,9 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
         plDDT_scores = {}
         for line in fh:
             if line.startswith("ATOM"):
-                res_id = line[24:28]
+                res_id = line[22:26]
                 res_id = int(res_id.replace(" ", ""))
-                print(f'{res_id}')
+                print(f'_{res_id}_')
                 plDDT = line[61:66]
                 plDDT = float(plDDT.replace(" ", ""))
                 print(f'{plDDT}')
