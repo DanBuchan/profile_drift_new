@@ -63,7 +63,7 @@ c. Are the clusters meaningful?
    alpha_fold_targets.csv - a list of target pfam families for differing drift classes
    > get_target_id_list.py
    little helper script that takes the target list and translates it in to the JOB IDs that were used on the cluster to output the target list
-   mafft_targets.txt - just the list of JOB IDs that map to the alphafold targets
+   alpha_fold_targets_as_id.txt - just the list of JOB IDs that map to the alphafold targets
    > run_mafft.py mafft.sh
 5. Take all our alignments and then run alphafold2.
 6. Collate models and analyse.
@@ -75,12 +75,11 @@ c. Are the clusters meaningful?
    random_pfam_reps.fa - one rep sequence randomly selected from each pfam family
 2. Repeat 2A steps 1 to 6
 
-
 # 3. Model coherence
 
 ### HHM coherence
 
-1. Generate 100 seqs for each hhemit, take in alpha_fold_targets/mafft_targets.txt and output 100 seqs for each drift class
+1. Generate 100 seqs for each hhemit, take in alpha_fold_targets/alpha_fold_targets_as_id.txt and output 100 seqs for each drift class
    > hmmer_seq_generator.py
    hmm_subset.hmm - the hmms of the target subset
    hmm_generated_seqs.fa - 100 seqs per family in the target list
