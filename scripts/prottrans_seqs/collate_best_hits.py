@@ -41,5 +41,5 @@ for family in collation:
         correct = collation[family][mask]['correct_count']
         drift = collation[family][mask]['drift_count']
         nobest = collation[family][mask]['nobest_count']
-        print(f'{family},{mask}{total},{correct},{drift},{nobest}')
+        print(f'{family},{mask},{total},{correct},{drift},{nobest}')
 
