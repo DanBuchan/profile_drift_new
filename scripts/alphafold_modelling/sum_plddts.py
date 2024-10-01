@@ -8,12 +8,12 @@ import sys
 results = {}
 for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     with open(file, "r", encoding="utf-8") as fh:
-        print(file)
+        # print(file)
         file_parts = file[len(sys.argv[1]):].split("_")
         drift_class = f'{file_parts[0]}_{file_parts[1]}'
         family = file_parts[2]
         iteration = file_parts[3]
-        print(drift_class, family, iteration)
+        # print(drift_class, family, iteration)
         plDDT_scores = {}
         for line in fh:
             if line.startswith("ATOM"):
@@ -36,8 +36,8 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             results[drift_class][family] = {}
         
         results[drift_class][family][iteration] = ave_plDDT
-        print(results)
-    break
+        # print(results)
+    # break
 
 print("drift_class,family,iteraton,mean_plDDT")
 for drift_class in results:
