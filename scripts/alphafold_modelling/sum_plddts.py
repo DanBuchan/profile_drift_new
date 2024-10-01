@@ -8,7 +8,8 @@ import sys
 results = {}
 for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     with open(file, "r", encoding="utf-8") as fh:
-        file_parts = file.split("_")
+        
+        file_parts = file[len(sys.argv[1]):].split("_")
         drift_class = f'{file_parts[0]}_{file_parts[1]}'
         family = file_parts[2]
         iteration = file_parts[3]
