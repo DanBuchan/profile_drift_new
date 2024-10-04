@@ -29,11 +29,12 @@ cd /cluster/project1/ProCovar/colabfold-customtemplates
 CLASSES=('contaminants_grew' 'contaminants_complex' 'contaminants_purified' 'insig_drift' 'non_drift' 'query_purified')
 CLASS=${CLASSES[${SGE_TASK_ID}-1]}
 
-FAMILY_ID=${FASTA_ID::-3}
+# FAMILY_ID=${FASTA_ID::-3}
 
 for i in /home/dbuchan/inputs/alphafold/${CLASS}/*.a2m; do
     FAMILY_ID=`echo ${i} | grep -oP "PF\d{5}"`
     ENDING_CONFIG=`echo ${i} | grep -oP "PF\d{5}_\d+"`
+    /home/dbuchan/Applications/reformat.pl a2m a3m  /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a2m /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a3m
     echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa $i ${CLASS}_${ENDING_CONFIG}"
     bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa $i ${CLASS}_${ENDING_CONFIG}
     # move the model
@@ -42,4 +43,5 @@ for i in /home/dbuchan/inputs/alphafold/${CLASS}/*.a2m; do
     rm -rf ${CLASS}_${FAMILY_ID}_*_all
     rm -rf ${CLASS}_${FAMILY_ID}_*_template
     rm -f ${CLASS}_${FAMILY_ID}*
+    rm -f ${CLASS}_${ENDING_CONFIG}*.csv
 done
