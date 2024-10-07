@@ -34,7 +34,7 @@ CLASS=${CLASSES[${SGE_TASK_ID}-1]}
 for i in /home/dbuchan/inputs/alphafold/${CLASS}/*.a2m; do
     FAMILY_ID=`echo ${i} | grep -oP "PF\d{5}"`
     ENDING_CONFIG=`echo ${i} | grep -oP "PF\d{5}_\d+"`
-    /home/dbuchan/Applications/reformat.pl a2m a3m  /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a2m /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a3m
+    # /home/dbuchan/Applications/reformat.pl a2m a3m  /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a2m /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a3m
     echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a3m ${CLASS}_${ENDING_CONFIG}"
     bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a3m ${CLASS}_${ENDING_CONFIG}
     # move the model
