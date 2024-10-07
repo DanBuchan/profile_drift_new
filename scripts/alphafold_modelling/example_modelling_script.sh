@@ -38,7 +38,7 @@ for i in /home/dbuchan/inputs/alphafold/${CLASS}/*.a2m; do
     echo "bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a3m ${CLASS}_${ENDING_CONFIG}"
     bash /cluster/project1/ProCovar/colabfold-customtemplates/main_db.sh /home/dbuchan/inputs/alphafold/${CLASS}/${FAMILY_ID}.fa /home/dbuchan/inputs/alphafold/${CLASS}/${ENDING_CONFIG}.a3m ${CLASS}_${ENDING_CONFIG}
     # move the model
-    cp ${ENDING_CONFIG}_unrelaxed_rank_1_model_*.pdb /home/dbuchan/alphafold_runs/${CLASS}_${FAMILY_ID}_unrelaxed_rank_1_model.pdb
+    cp ${ENDING_CONFIG}_unrelaxed_rank_1_model_*.pdb /home/dbuchan/alphafold_runs/${CLASS}_${ENDING_CONFIG}_unrelaxed_rank_1_model.pdb
     # tidy up
     rm -rf ${CLASS}_${FAMILY_ID}_*_all
     rm -rf ${CLASS}_${FAMILY_ID}_*_template

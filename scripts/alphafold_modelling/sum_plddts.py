@@ -8,6 +8,7 @@ import sys
 results = {}
 for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     with open(file, "r", encoding="utf-8") as fh:
+        print(file)
         #if 'contaminants_complex_PF00106_1_428ec_unrelaxed_rank_1_model_3.pdb' not in file:
         #    continue
         #print(file)
@@ -40,7 +41,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
         
         results[drift_class][family][iteration] = ave_plDDT
         #print(results)
-    # break
+    break
 
 print("drift_class,family,iteraton,mean_plDDT")
 for drift_class in results:

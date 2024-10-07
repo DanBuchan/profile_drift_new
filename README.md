@@ -109,6 +109,8 @@ c. Are the clusters meaningful?
 
 > collate_best_hits.py
 
+outputs : results_data/hmm_closest/drift_summary.csv and results_data/prottrans_closest/drift_summary.csv
+
 # 4. Alphafold plDDT experiment
 
 
@@ -126,7 +128,9 @@ Outputs an alphafold model for each part of the targets that we were interested 
 
 3. Collate plDDTs
 
-so we look at the average plDDT
+> sum_plddts.py
+
+> ./results_data/alphafold_models/plddt_summary.csv
 
 4. Find best CATH hit using merizo search.
 
