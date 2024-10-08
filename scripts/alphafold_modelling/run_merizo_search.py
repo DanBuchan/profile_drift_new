@@ -49,9 +49,11 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             entries = line.split("\t")
             hit = entries[2]
             max_tm = entries[10]
-            meta = entries[12][1:-1]
+            meta = entries[12][1:-2]
             meta_fields = meta.split(", ")
+            print(meta_fields)
             cath_fields = meta_fields[0].split(": ")
+            print(cath_fields)
             h_family = cath_fields[1]
             print(hit, max_tm, cath_fields)
             
