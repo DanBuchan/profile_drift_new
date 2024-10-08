@@ -46,6 +46,10 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     print(results_file)
     with open(results_file, "r", encoding="utf-8") as fhIn:
         for line in fhIn:
-            entries = line.split()
-            print(entries[2], entries[10], entries[12])
+            entries = line.split("\t")
+            hit = entries[2]
+            max_tm = entries[10]
+            meta = entries[12][1:-1]
+            print(hit, max_tm, meta)
+            
     # break
