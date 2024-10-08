@@ -67,6 +67,6 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             h_family = cath_fields[1]
             h_family = h_family.rstrip('"')
             h_family = h_family.lstrip('"')
-            print(search_class, domain, iteration hit, max_tm, h_family)
+            print(search_class, domain, iteration, hit, max_tm, h_family)
             
     # break
