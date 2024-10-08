@@ -8,7 +8,7 @@ import sys
 results = {}
 for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     with open(file, "r", encoding="utf-8") as fh:
-        print(file)
+        # print(file)
         #if 'contaminants_complex_PF00106_1_428ec_unrelaxed_rank_1_model_3.pdb' not in file:
         #    continue
         #print(file)
