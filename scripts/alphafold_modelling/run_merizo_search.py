@@ -20,7 +20,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     if "contaminants_complex_PF00106_20_unrelaxed_rank_1_model.pdb" not in file:
         continue
     # print(m.group(1))
-    print(identifier)
+    # print(identifier)
     args = ['python',
             '/home/dbuchan/Code/merizo_search/merizo_search/merizo.py',
             'search',
@@ -43,7 +43,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
         print("Non Zero Exit status: "+str(p.returncode))
         raise OSError("Non Zero Exit status: "+str(p.returncode))
     results_file = f'{identifier}_search.tsv'
-    print(results_file)
+    print('class,domain,iteration,hit,max_tm,h_family')
     with open(results_file, "r", encoding="utf-8") as fhIn:
         next(fhIn)
         id_parts = identifier.split("_")
@@ -67,6 +67,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             h_family = cath_fields[1]
             h_family = h_family.rstrip('"')
             h_family = h_family.lstrip('"')
-            print(search_class, domain, iteration, hit, max_tm, h_family)
+
+            print(f'{search_class},{domain},{iteration},{hit},{max_tm},{h_family}')
             
     # break
