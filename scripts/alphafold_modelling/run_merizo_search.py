@@ -32,7 +32,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             'query,emb_rank,target,emb_score,q_len,t_len,ali_len,seq_id,q_tm,t_tm,max_tm,rmsd,metadata',
             '--output_headers',
     ]
-    print("Calculating", " ".join(args))
+    # print("Calculating", " ".join(args))
     try:
         p = Popen(args, stdout=PIPE, stderr=PIPE)
         result_stdout, err = p.communicate()
@@ -67,6 +67,6 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             h_family = cath_fields[1]
             h_family = h_family.rstrip('"')
             h_family = h_family.lstrip('"')
-            print(f'{search_class},{domain},{iteration},{hit},{max_tm},{h_family}')
+        print(f'{search_class},{domain},{iteration},{hit},{max_tm},{h_family}')
             
     # break
