@@ -17,6 +17,8 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     if m:
         identifier = m.group(1)
     # print(file)
+    if "contaminants_complex_PF00106_20_unrelaxed_rank_1_model.pdb" not in file:
+        continue
     # print(m.group(1))
     print(identifier)
     args = ['python',
@@ -44,5 +46,6 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     print(results_file)
     with open(results_file, "r", encoding="utf-8") as fhIn:
         for line in fhIn:
-            print(line)
+            entries = line.split()
+            print(entries[2], entries[10], entries[12])
     # break
