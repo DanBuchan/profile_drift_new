@@ -45,6 +45,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     results_file = f'{identifier}_search.tsv'
     print(results_file)
     with open(results_file, "r", encoding="utf-8") as fhIn:
+        next(fhIn)
         for line in fhIn:
             entries = line.split("\t")
             hit = entries[2]
