@@ -17,8 +17,8 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     if m:
         identifier = m.group(1)
     # print(file)
-    if "contaminants_complex_PF00106_20_unrelaxed_rank_1_model.pdb" not in file:
-        continue
+    # if "contaminants_complex_PF00106_20_unrelaxed_rank_1_model.pdb" not in file:
+    #    continue
     # print(m.group(1))
     # print(identifier)
     args = ['python',
