@@ -47,15 +47,19 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     with open(results_file, "r", encoding="utf-8") as fhIn:
         next(fhIn)
         for line in fhIn:
+            if len(line) == 0:
+                continue
             entries = line.split("\t")
             hit = entries[2]
             max_tm = entries[10]
             meta = entries[12][1:-2]
             meta_fields = meta.split(", ")
-            print(meta_fields)
+            #print(meta_fields)
             cath_fields = meta_fields[0].split(": ")
-            print(cath_fields)
+            #print(cath_fields)
             h_family = cath_fields[1]
-            print(hit, max_tm, cath_fields)
+            h_family = h_family.rstrip('"')
+            h_family = h_family.lstrip('"')
+            print(hit, max_tm, h_family)
             
     # break
