@@ -46,6 +46,13 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
     print(results_file)
     with open(results_file, "r", encoding="utf-8") as fhIn:
         next(fhIn)
+        id_parts = identifier.split("_")
+        search_class = f'{id_parts[0]}_{id_parts[1]}'
+        domain = id_parts[2]
+        iteration = id_parts[3]
+        hit = "NA"
+        max_tm = "NA"
+        h_family = "NA"
         for line in fhIn:
             if len(line) == 0:
                 continue
@@ -60,6 +67,6 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
             h_family = cath_fields[1]
             h_family = h_family.rstrip('"')
             h_family = h_family.lstrip('"')
-            print(hit, max_tm, h_family)
+            print(search_class, domain, iteration hit, max_tm, h_family)
             
     # break
