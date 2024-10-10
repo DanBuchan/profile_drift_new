@@ -3,7 +3,7 @@ import sys
 from collections import defaultdict
 
 #
-# python scripts/prottrans_seqs/collate_best_hits.py ./results_data/prottrans_closest/ > results_data/prottrans_closest/drift_summary.csv
+# python scripts/prottrans_seqs/collate_best_hits.py ./results_data/drift/best_hits/prottrans_closest/ > results_data/drift/best_hits/prottrans_closest/drift_summary.csv 
 #
 
 collation = {}

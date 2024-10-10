@@ -41,7 +41,7 @@ for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
         
         results[drift_class][family][iteration] = ave_plDDT
         #print(results)
-    break
+    # break
 
 print("drift_class,family,iteraton,mean_plDDT")
 for drift_class in results:
