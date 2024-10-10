@@ -17,3 +17,7 @@ From that we sample 530 families
 3. Chart table of prottrans, how many are in family and how many are out of family, broken down by 25, 50, 75 mask
 - /results_data/drift/best_hits/prottrans_closest/drift_summary.csv
 - prottrans_drift_percentages.csv
+
+
+4. Model analysis
+  - results_data/generation_or_af_targets/alphafold_targets.csv
