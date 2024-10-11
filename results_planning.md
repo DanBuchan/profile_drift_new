@@ -21,3 +21,5 @@ From that we sample 530 families
 
 4. Model analysis
   - results_data/generation_or_af_targets/alphafold_targets.csv
+  analyse_plddt.py
+

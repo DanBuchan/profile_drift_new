@@ -135,6 +135,12 @@ Outputs an alphafold model for each part of the targets that we were interested 
 4. Find best CATH hit using merizo search.
 
 
+## Results collation
+
+hmm_drift_summary.R
+prottrans_drift_summary.R
+summarise_models.R
+
 ## ANALYSIS OF DRIFT QUESTIONS 
 
 1. Analyse *_blast_summary.csv, to find out which families show drift and what kinds of drift
@@ -143,15 +149,3 @@ Outputs an alphafold model for each part of the targets that we were interested 
 2. What kinds of drift pattern are there?
 3. Do drift families share the same folds or not? If not what happens if we build alphafold models with the MSAs at each iteration (see above)
 4. Do drifting families correlate with "hard" targets for alphafold/dmplfold. i.e. regions of low plDDT or just the poor models in CASP15
-
-## 3. Other Model coherence.
-
-1. Generate 100 seqs for each drift family using hhemit
-2. blast each seq against pfam seq db. What is the family of top hit? What is the consensus family of the top 5 and 10 hits?
-3. Repeat for protein ESM single and ESM-MSA
-
-# To do
-
-1. collate alphafold plDDT results (/home/dbuchan/Projects/profile_drift/results_data/alphafold_models)
-2. merizo search over alphfold models?
-3. some r-scripts to make barcharts
