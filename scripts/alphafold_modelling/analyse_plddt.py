@@ -1,6 +1,5 @@
 import csv
 import sys
-from collections import defaultdict
 #
 # python scripts/alphafold_modelling/analyse_plddt.py ./results_data/alphafold_models/plddt_summary.csv  > ./results_data/alphafold_models/plddt_means.csv
 #

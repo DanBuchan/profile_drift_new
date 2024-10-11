@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #$ -o /home/ucbcdwb/Scratch/output/hmm/std.out
 #$ -e /home/ucbcdwb/Scratch/output/hmm/std.err
-#$ -l h_rt=01:00:0
+#$ -l h_rt=02:00:0
 #$ -l mem=16G
 #$ -l tmpfs=8G
 #$ -pe smp 10
@@ -12,7 +12,7 @@
 
 # Set the name of the job.
 
-#$ -N hmmGene
+#$ -N prottrans25
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
