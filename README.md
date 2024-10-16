@@ -133,6 +133,7 @@ Outputs an alphafold model for each part of the targets that we were interested 
 > ./results_data/alphafold_models/plddt_summary.csv
 
 4. Find best CATH hit using merizo search.
+> ./ run_merizo_search.py
 
 
 ## Results collation
