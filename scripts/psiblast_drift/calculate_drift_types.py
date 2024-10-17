@@ -133,8 +133,10 @@ def calculate_drift_types(main_family, summary):
         except:
             five_percent_peak = 0
 
-        if track_data[family]['peak_value'] <= five_percent_peak and \
-               track_data[family]['final_value'] <= five_percent_peak:
+        if (track_data[family]['peak_value'] <= five_percent_peak and \
+               track_data[family]['final_value'] <= five_percent_peak) and \
+                (track_data[family]['final_value'] > 0 and \
+                 track_data[family]['peak_value'] <= five_percent_peak > 0):
            results['growth_types'][family]['negligible_contaminant'] = True
         else:
             results['growth_types'][family]['negligible_contaminant'] = False
