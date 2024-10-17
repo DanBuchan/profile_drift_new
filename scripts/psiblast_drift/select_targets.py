@@ -13,34 +13,34 @@ def select_from_list(file, number):
     return random.sample(target_list, number)
     
 
-print("family,type")
-drift_list = "results_data/drift/pfam_rep_drift_summary/non_drift_list.txt"
-drift_set = select_from_list(drift_list, 100)
-# print(len(drift_set))
-for item in drift_set:
-    print(f"{item},non_drift")
+# print("family,type")
+# drift_list = "results_data/drift/pfam_rep_drift_summary/non_drift_list.txt"
+# drift_set = select_from_list(drift_list, 100)
+# # print(len(drift_set))
+# for item in drift_set:
+#     print(f"{item},non_drift")
 
-drift_list = "results_data/drift/pfam_rep_drift_summary/non_drift_list.txt"
+drift_list = "results_data/drift/pfam_rep_drift_summary/insignificant_drifts.txt"
 drift_set = select_from_list(drift_list, 100)
 for item in drift_set:
     print(f"{item},insig_drift")
 
-drift_list = "results_data/drift/pfam_rep_drift_summary/set_where_contaminants_grew.txt"
-drift_set = select_from_list(drift_list, 100)
-for item in drift_set:
-    print(f"{item},contaminants_grew")
+# drift_list = "results_data/drift/pfam_rep_drift_summary/set_where_contaminants_grew.txt"
+# drift_set = select_from_list(drift_list, 100)
+# for item in drift_set:
+#     print(f"{item},contaminants_grew")
 
-drift_list = "results_data/drift/pfam_rep_drift_summary/set_where_contaminants_are_purified_out.txt"
-drift_set = select_from_list(drift_list, 100)
-for item in drift_set:
-    print(f"{item},contaminants_purified")
+# drift_list = "results_data/drift/pfam_rep_drift_summary/set_where_contaminants_are_purified_out.txt"
+# drift_set = select_from_list(drift_list, 100)
+# for item in drift_set:
+#     print(f"{item},contaminants_purified")
 
-drift_list = "results_data/drift/pfam_rep_drift_summary/set_with_complex_contamination_behaviours.txt"
-drift_set = select_from_list(drift_list, 100)
-for item in drift_set:
-    print(f"{item},contaminants_complex")
+# drift_list = "results_data/drift/pfam_rep_drift_summary/set_with_complex_contamination_behaviours.txt"
+# drift_set = select_from_list(drift_list, 100)
+# for item in drift_set:
+#     print(f"{item},contaminants_complex")
 
-drift_list = "results_data/drift/pfam_rep_drift_summary/set_where_the_query_was_purified_out.txt"
-drift_set = select_from_list(drift_list, 100)
-for item in drift_set:
-    print(f"{item},query_purified")
+# drift_list = "results_data/drift/pfam_rep_drift_summary/set_where_the_query_was_purified_out.txt"
+# drift_set = select_from_list(drift_list, 100)
+# for item in drift_set:
+#     print(f"{item},query_purified")
