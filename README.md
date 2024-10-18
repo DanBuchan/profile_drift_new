@@ -114,7 +114,7 @@ outputs : results_data/hmm_closest/drift_summary.csv and results_data/prottrans_
 # 4. Alphafold plDDT experiment
 
 
-1. generat CLUSTAL-Omega alignments for the drift and non drift sample for use in alpha fold
+1. generate CLUSTAL-Omega alignments for the drift and non drift sample for use in alpha fold
 
 > python prep_alignments.py /home/dbuchan/Projects/profile_drift/results_data/generation_or_af_targets/alphafold_targets.csv /home/dbuchan/Projects/profile_drift/results_data/alphafold_targets/ 
 
