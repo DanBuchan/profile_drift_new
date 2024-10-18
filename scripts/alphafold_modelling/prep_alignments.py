@@ -206,7 +206,7 @@ def process_targets(af_dir, target_class):
 
 
 target_class = read_target_sample(sys.argv[1])
-print(target_class)
+# print(target_class)
 process_targets(sys.argv[2], target_class)
 
 
