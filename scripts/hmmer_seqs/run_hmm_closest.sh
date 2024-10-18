@@ -8,7 +8,7 @@
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
-#$ -t 1-26500
+#$ -t 1-9901
 
 # Set the name of the job.
 
