@@ -88,7 +88,7 @@ c. Are the clusters meaningful?
 1. Generate 50 seqs for each hhemit, take in results_data/generation_or_af_targets/alpha_fold_targets_as_id.txt and output 50 seqs for each drift class
    > hmmer_seq_generator.py
    hmm_subset.hmm - the hmms of the target subset
-   hmm_generated_seqs.fa - 100 seqs per family in the target list
+   hmm_generated_seqs.fa - 50 seqs per family in the target list
 2. Find the pfam family that our mafft/salpha fold targets best hit using fasta
    find_closest_hmm_seqfamily.py run_closest.hmm.sh
    outputs lots of ".best" files that we cat in to one large csv

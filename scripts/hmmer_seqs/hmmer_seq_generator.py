@@ -3,7 +3,7 @@ import glob
 import csv
 import subprocess
 
-# python ./scripts/hmmer_seqs/hmmer_seq_generator.py /home/dbuchan/Projects/profile_drift/results_data/generation_or_af_targets/alphafold_targets_as_id.txt /home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/ ~/Data/pfam/Pfam-A.hmm 50
+# python ./scripts/hmmer_seqs/hmmer_seq_generator.py /home/dbuchan/Projects/profile_drift/results_data/generation_or_af_targets/alphafold_targets_as_id.txt /home/dbuchan/Projects/profile_drift/results_data/alphafold_targets ~/Data/pfam/Pfam-A.hmm 50
 
 # Read in list of targets alpha_fold_targets.csv
 # Open drift summaries for each and get full list of PFIDs

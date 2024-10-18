@@ -67,7 +67,7 @@ def read_targets(targets):
 
 
 target_families = list(read_targets(sys.argv[1]))
-# print(target_families)
+print(target_families)
 if os.path.isfile('pfam_targets_for_prottrans.fa'):
     pfam_seqs = get_pfam_seqs('pfam_targets_for_prottrans.fa', target_families)
 else:
