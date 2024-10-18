@@ -55,7 +55,7 @@ def untar_file(file):
 
 def create_fasta(main_pfam, location):
     for file in glob.glob("*_iteration1_*"):
-        # print(file)
+        print(file)
         with open(file, "r") as fhIn:
             header = next(fhIn)
             seq = next(fhIn)
