@@ -8,7 +8,7 @@
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
-#$ -t 1-26827
+#$ -t 1-4950
 
 # Set the name of the job.
 
@@ -22,7 +22,7 @@ module load python3
 mkdir /home/ucbcdwb/Scratch/output/prottrans/prottrans_fa_${SGE_TASK_ID}/
 cd /home/ucbcdwb/Scratch/output/prottrans/prottrans_fa_${SGE_TASK_ID}/
 
-echo 'python scripts/prottrans_seqs/find_closest_seq_family.py /home/dbuchan/inputs/masked_25_percent_targets.fa /home/dbuchan/inputs/Pfam-A.full.uniprot.fa /home/dbuchan/outputs/prottrans_closest/ ${SGEls_TASK_ID}'
+echo 'python scripts/prottrans_seqs/find_closest_seq_family.py /home/dbuchan/insig_inputs/masked_25_percent_targets.fa /home/dbuchan/insig_inputs/Pfam-A.full.uniprot.fa /home/ucbcdwb/Scratch/output/prottrans ${SGEls_TASK_ID}'
 python /home/ucbcdwb/Applications/profile_drift_new/scripts/prottrans_seqs/find_closest_seq_family.py /home/ucbcdwb/inputs/masked_25_percent_targets.fa /home/ucbcdwb/inputs/Pfam-A.full.uniprot.fa /home/ucbcdwb/Scratch/output/prottrans ${SGE_TASK_ID}
 
 cd ~/
