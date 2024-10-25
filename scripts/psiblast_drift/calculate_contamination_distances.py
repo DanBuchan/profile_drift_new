@@ -43,4 +43,7 @@ with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfa
     dom_list = np.load(f)
 drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-print(f'median: {dist_matrix.mode()}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
+vals, counts = np.unique(dist_matrix, return_counts=True)
+mode_value = np.argwhere(counts == np.max(counts))
+
+print(f'mode: {mode_value}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
