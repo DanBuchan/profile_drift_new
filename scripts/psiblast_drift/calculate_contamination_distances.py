@@ -46,6 +46,6 @@ drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_d
 counts, bins = np.histogram(dist_matrix[dist_matrix>0])
 mode_value = np.argmax(counts)
 
-print(tuple(np.argwhere(counts == mode_value)[0]))
+print(bins)
 
 print(f'mode: {mode_value}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
