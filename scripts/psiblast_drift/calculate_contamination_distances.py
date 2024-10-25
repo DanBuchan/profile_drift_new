@@ -85,4 +85,4 @@ for file in files:
             
 print(f"Total comparions: {total_comparisons}, Total Dist: {total_dist}")
 distances = np.array(distances)
-print(f"Mean Dist: {distances.mean()}, std: {distances.std}")
+print(f"Mean Dist: {distances.mean()}, std: {distances.std()}")
