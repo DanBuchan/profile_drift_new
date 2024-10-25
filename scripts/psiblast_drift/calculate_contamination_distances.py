@@ -56,21 +56,26 @@ print(dom_list)
 
 # print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
 
-total_dist = 0
-total_comparisions =0
-for file in files:
-    pfam_set = read_list(summaries_location, file)
-    pfam_id_set = set()
-    for pfam in pfam_set:
-        pfam_id_set = set()
-        if pfam in drift_summaries:
-            for iteration in drift_summaries[pfam]:
-                for hit_pfam in drift_summaries[pfam][iteration]:
-                    if pfam not in hit_pfam:
-                        pfam_id_set.add(hit_pfam)
-        query_idx = np.where(dom_list == pfam)
-        for hit_pfam in pfam_id_set:
-            hit_idx =  np.where(dom_list == hit_pfam)
-            # print(query_idx, hit_idx)
-            # print(dist_matrix[query_idx][hit_idx])
-            exit
+for i, item in enumerate(dom_list):
+    print(i, item)
+
+print(dom_list)
+
+# total_dist = 0
+# total_comparisions =0
+# for file in files:
+#     pfam_set = read_list(summaries_location, file)
+#     pfam_id_set = set()
+#     for pfam in pfam_set:
+#         pfam_id_set = set()
+#         if pfam in drift_summaries:
+#             for iteration in drift_summaries[pfam]:
+#                 for hit_pfam in drift_summaries[pfam][iteration]:
+#                     if pfam not in hit_pfam:
+#                         pfam_id_set.add(hit_pfam)
+#         query_idx = np.where(dom_list == pfam)
+#         for hit_pfam in pfam_id_set:
+#             hit_idx =  np.where(dom_list == hit_pfam)
+#             # print(query_idx, hit_idx)
+#             # print(dist_matrix[query_idx][hit_idx])
+#             exit
