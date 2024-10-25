@@ -41,4 +41,4 @@ files = [query_purified, contam_purified, contam_grew, contam_complex]
 dist_matrix = np.load("/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfam_rep_all_against_all/rand_rep_distance_matrix.npy")
 drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-print(dist_matrix.files)
+print(dist_matrix.ndim)
