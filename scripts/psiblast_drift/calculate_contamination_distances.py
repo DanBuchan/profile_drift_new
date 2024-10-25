@@ -39,7 +39,7 @@ contam_grew = "set_where_contaminants_grew.txt"
 contam_complex = "set_with_complex_contamination_behaviours.txt"
 files = [query_purified, contam_purified, contam_grew, contam_complex]
 
-with open('rand_rep_distance_matrix.npy', 'rb') as f:
+with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfam_rep_all_against_all/rand_rep_distance_matrix.npy', 'rb') as f:
     dist_matrix = np.load(f)
     dom_list = np.load(f)
 # drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
