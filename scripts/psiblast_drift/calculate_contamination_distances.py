@@ -39,6 +39,6 @@ contam_complex = "set_with_complex_contamination_behaviours.txt"
 files = [query_purified, contam_purified, contam_grew, contam_complex]
 
 dist_matrix = np.load("pfam_rep_distance_matrix.npy")
-drift_summaries, dom_list = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
+drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-print(dom_list.shape)
+print(drift_summaries[20651])
