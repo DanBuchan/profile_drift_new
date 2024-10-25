@@ -79,7 +79,7 @@ for file in files:
         for hit_pfam in pfam_id_set:
             hit_idx =  np.where(dom_list == hit_pfam)
             total_comparisons+=1
-            total_dist += dist_matrix[query_idx[0][0]][hit_idx[0][0]])
+            total_dist += dist_matrix[query_idx[0][0]][hit_idx[0][0]]
             
 print(f"Total comparions: {total_comparisons}, Total Dist: {total_dist}")
 print(f"Mea Dist: {total_dist/total_comparisons}")
