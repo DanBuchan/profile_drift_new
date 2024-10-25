@@ -56,9 +56,9 @@ print(dom_list)
 
 # print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
 
-for item, i in enumerate(dom_list):
+for i, item in enumerate(dom_list):
     print(i, item)
-
+    dom_list[i] = iterm
 print(dom_list)
 
 # total_dist = 0
