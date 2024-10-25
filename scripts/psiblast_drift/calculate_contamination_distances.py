@@ -58,7 +58,7 @@ print(dom_list)
 
 for i, item in enumerate(dom_list):
     print(i, item)
-    dom_list[i] = iterm
+    dom_list[i] = item
 print(dom_list)
 
 # total_dist = 0
