@@ -54,10 +54,10 @@ drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_d
 
 # plt.show()
 
-# print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
+print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
 
 for i, item in enumerate(dom_list):
-    print(i, item)
+    # print(i, item)
     parts =item.split("|")
     dom_list[i] = parts[1]
     
