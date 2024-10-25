@@ -79,5 +79,5 @@ for file in files:
         for hit_pfam in pfam_id_set:
             hit_idx =  np.where(dom_list == hit_pfam)
             print(query_idx[0][0], hit_idx[0][0])
-            #print(dist_matrix[query_idx][hit_idx])
+            print(dist_matrix[query_idx[0][0]][hit_idx[0][0]])
             exit
