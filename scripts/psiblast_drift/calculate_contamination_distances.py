@@ -58,7 +58,9 @@ print(dom_list)
 
 for i, item in enumerate(dom_list):
     print(i, item)
-    dom_list[i] = item
+    parts =item.split("|")
+    dom_list[i] = parts[1]
+    
 print(dom_list)
 
 # total_dist = 0
