@@ -43,4 +43,4 @@ with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfa
     dom_list = np.load(f)
 drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
+print(f'median: {dist_matrix.median()}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
