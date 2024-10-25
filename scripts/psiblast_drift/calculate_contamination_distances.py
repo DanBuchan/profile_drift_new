@@ -1,6 +1,7 @@
 import csv
 import glob
 import numpy as np
+from matplotlib import pyplot as plt
 
 def read_summaries(path):
     summaries = {}
@@ -38,14 +39,18 @@ contam_grew = "set_where_contaminants_grew.txt"
 contam_complex = "set_with_complex_contamination_behaviours.txt"
 files = [query_purified, contam_purified, contam_grew, contam_complex]
 
-with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfam_rep_all_against_all/rand_rep_distance_matrix.npy', 'rb') as f:
+with open('rand_rep_distance_matrix.npy', 'rb') as f:
     dist_matrix = np.load(f)
     dom_list = np.load(f)
-drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
+# drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-counts, bins = np.histogram(dist_matrix[dist_matrix>0])
-mode_value = np.argmax(counts)
+# bins = list(np.arange(0.0,1.0,0.001))
+flat_array = dist_matrix.flatten()
+for value in flat_array:
+    print(value)
+# frq, edges = np.histogram(flat_array, bins)
+# fig, ax = plt.subplots()
+# ax.bar(edges[:-1], frq, width=np.diff(edges), edgecolor="black", align="edge")
 
-print(bins)
-
-print(f'mode: {mode_value}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
+# plt.show()
+#print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
