@@ -45,12 +45,12 @@ with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfa
 # drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
 # bins = list(np.arange(0.0,1.0,0.001))
-flat_array = dist_matrix.flatten()
-for value in flat_array:
-    print(value)
+# flat_array = dist_matrix.flatten()
+# for value in flat_array:
+#     print(value)
 # frq, edges = np.histogram(flat_array, bins)
 # fig, ax = plt.subplots()
 # ax.bar(edges[:-1], frq, width=np.diff(edges), edgecolor="black", align="edge")
 
 # plt.show()
-#print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
+print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
