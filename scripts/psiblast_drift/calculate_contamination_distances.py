@@ -1,6 +1,7 @@
 import csv
 import glob
 import numpy as np
+from scipy import stats
 
 def read_summaries(path):
     summaries = {}
@@ -43,7 +44,6 @@ with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfa
     dom_list = np.load(f)
 drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-vals, counts = np.unique(dist_matrix, return_counts=True)
-mode_value = np.argwhere(counts == np.max(counts))
+mode_value = stats.mode(dist_matrix)
 
 print(f'mode: {mode_value}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
