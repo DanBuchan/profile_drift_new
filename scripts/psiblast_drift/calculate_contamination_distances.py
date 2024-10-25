@@ -68,8 +68,8 @@ for file in files:
                 for hit_pfam in drift_summaries[pfam][iteration]:
                     if pfam not in hit_pfam:
                         pfam_id_set.add(hit_pfam)
-        query_idx = dom_list.index(pfam)
+        query_idx = np.where(dom_list == pfam)
         for hit_pfam in pfam_id_set:
-            hit_idx = dom_list.index(hit_pfam)
+            hit_idx =  np.where(dom_list == hit_pfam)
             print(dist_matrix[query_idx,hit_idx])
             exit
