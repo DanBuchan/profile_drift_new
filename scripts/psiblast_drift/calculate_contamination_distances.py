@@ -43,7 +43,7 @@ with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfa
     dom_list = np.load(f)
 drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-counts, bins = np.histogram(dist_matrix[dist_matrix>0], bins=np.arange(426463801))
+counts, bins = np.histogram(dist_matrix[dist_matrix>0])
 mode_value = np.argmax(counts)
 
 print(f'mode: {mode_value}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
