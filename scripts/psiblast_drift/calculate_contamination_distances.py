@@ -65,6 +65,7 @@ for i, item in enumerate(dom_list):
 
 total_dist = 0
 total_comparisons =0
+distances = []
 for file in files:
     pfam_set = read_list(summaries_location, file)
     pfam_id_set = set()
@@ -80,6 +81,8 @@ for file in files:
             hit_idx =  np.where(dom_list == hit_pfam)
             total_comparisons+=1
             total_dist += dist_matrix[query_idx[0][0]][hit_idx[0][0]]
+            distances.append(dist_matrix[query_idx[0][0]][hit_idx[0][0]])
             
 print(f"Total comparions: {total_comparisons}, Total Dist: {total_dist}")
-print(f"Mea Dist: {total_dist/total_comparisons}")
+distances = np.array(distances)
+print(f"Mean Dist: {distances.mean()}, std: {distances.std}")
