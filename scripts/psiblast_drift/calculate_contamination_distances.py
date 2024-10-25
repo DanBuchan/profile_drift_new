@@ -56,7 +56,7 @@ print(dom_list)
 
 # print(f'mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
 
-for i, item in enumerate(dom_list):
+for item, i in enumerate(dom_list):
     print(i, item)
 
 print(dom_list)
