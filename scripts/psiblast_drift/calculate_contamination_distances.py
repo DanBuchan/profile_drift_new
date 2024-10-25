@@ -43,7 +43,7 @@ with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfa
     dist_matrix = np.load(f)
     dom_list = np.load(f)
 drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
-print(dom_list)
+# print(dom_list)
 # bins = list(np.arange(0.0,1.0,0.001))
 # flat_array = dist_matrix.flatten()
 # for value in flat_array:
@@ -78,6 +78,6 @@ for file in files:
         query_idx = np.where(dom_list == pfam)
         for hit_pfam in pfam_id_set:
             hit_idx =  np.where(dom_list == hit_pfam)
-            # print(query_idx, hit_idx)
-            # print(dist_matrix[query_idx][hit_idx])
+            print(query_idx, hit_idx)
+            print(dist_matrix[query_idx][hit_idx])
             exit
