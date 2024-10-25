@@ -1,7 +1,7 @@
 import csv
 import glob
 import numpy as np
-from scipy import stats
+from findpeaks import findpeaks
 
 def read_summaries(path):
     summaries = {}
@@ -44,6 +44,8 @@ with open('/home/dbuchan/Projects/profile_drift/results_data/distance_matrix/pfa
     dom_list = np.load(f)
 drift_summaries = read_summaries("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/")
 
-mode_value = stats.mode(dist_matrix)
+fp = findpeaks(lookahead=1, interpolate=10)
+results = fp.fit(dist_matrix)
+results['df_interp']
 
 print(f'mode: {mode_value}, mean: {dist_matrix.mean()}, std: {dist_matrix.std()}')
