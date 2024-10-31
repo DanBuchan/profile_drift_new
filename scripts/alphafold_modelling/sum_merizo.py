@@ -56,12 +56,12 @@ def read_counts(data, iterations):
             else:
                 count_missed += 1
     print(f'Total Analysed {len(data)}')
-    print(f'No domains recognised: {count_NAs}')
-    print(f'Domain always the same: {count_matched}')
-    print(f'Domain always unassigned: {count_matched_unassigned}')
-    print(f'Domain id changed: {count_missed}')
-    print(f'Domain changed to NA: {count_became_na}')
-    print(f'Domain changed to unassigned: {count_became_unassigned}')
+    print(f'No domains recognised: {count_NAs/len(data)}')
+    print(f'Domain always the same: {count_matched/len(data)}')
+    print(f'Domain always unassigned: {count_matched_unassigned/len(data)}')
+    print(f'Domain id changed: {count_missed/len(data)}')
+    print(f'Domain changed to NA: {count_became_na/len(data)}')
+    print(f'Domain changed to unassigned: {count_became_unassigned/len(data)}')
     print(f'mean tmscore at 1: {statistics.mean(first_iteration_tm_scores)}')
     print(f'mean tmscore at 10: {statistics.mean(final_iteration_tm_scores)}')
     
