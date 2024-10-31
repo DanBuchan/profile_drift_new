@@ -34,8 +34,8 @@ def get_hmm_generated_sequences(hmm_seqs):
     return seqs       
 
 def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
-    seq_record = gen_seqs[i]     
-    match = re.search("^>.+\|(PF\d+)-", seq_record['header'])
+    seq_record = gen_seqs[i]    
+    match = re.search("^>.+\|(PF\d+-sample\d+)", seq_record['header'])
     query_name = ''
     if match:
         query_name = match.groups()[0]
@@ -46,10 +46,10 @@ def find_closest_fasta(all_family_seqs, gen_seqs, resultspath, i):
     fhtmp.write(seq_record["header"]+'\n')
     fhtmp.write(seq_record["seq"]+'\n')
     fhtmp.close()
-    args = ['/home/ucbcdwb/Applications/fasta36/bin/fasta36',
-    # args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
-            '-T',
-            '10'
+    # args = ['/home/ucbcdwb/Applications/fasta36/bin/fasta36',
+    args = ['/home/dbuchan/Applications/fasta36/bin/fasta36',
+            # '-T',
+            # '1',
             '-q',
             '-p',
             '-O',

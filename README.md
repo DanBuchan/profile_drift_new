@@ -133,8 +133,13 @@ Outputs an alphafold model for each part of the targets that we were interested 
 > ./results_data/alphafold_models/plddt_summary.csv
 
 4. Find best CATH hit using merizo search.
-> ./ run_merizo_search.py
+> ./run_merizo_search.py
 
+Runs merizo search and collates which cath h family and the TMscore
+
+> ./sum_merizo.py
+
+read the merzio summary and work out, per class, how often the cath class changes and how much the TMScor changes
 
 ## Results collation
 

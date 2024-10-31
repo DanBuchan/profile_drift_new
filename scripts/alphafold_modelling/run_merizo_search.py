@@ -16,6 +16,7 @@ logging.basicConfig(level=logging.INFO)
 
 print('class,domain,iteration,hit,max_tm,h_family')
 for file in glob.glob(f'{sys.argv[1]}/*.pdb'):
+    # print(file)
     m = re.search('models/(.+_PF\d+_\d+)_', file)
     identifier = ''
     if m:
