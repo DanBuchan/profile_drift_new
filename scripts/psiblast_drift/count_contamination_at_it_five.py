@@ -45,6 +45,7 @@ contam_grew = "set_where_contaminants_grew.txt"
 contam_complex = "set_with_complex_contamination_behaviours.txt"
 insig = "insignificant_drifts.txt"
 non_drift = "non_drift_list.txt"
+summaries_location = "/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_drift_summary"
 
 files = [insig, non_drift, query_purified, contam_purified, contam_grew, contam_complex]
 
