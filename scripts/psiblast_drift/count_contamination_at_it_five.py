@@ -53,4 +53,4 @@ files = [insig, non_drift, query_purified, contam_purified, contam_grew, contam_
 for file in files:
     pfam_set = read_list(summaries_location, file)
     for pfam in pfam_set:
-        print(pfam_set[pfam])
+        print(pfam)
