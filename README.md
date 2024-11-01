@@ -111,6 +111,12 @@ c. Are the clusters meaningful?
 
 outputs : results_data/hmm_closest/drift_summary.csv and results_data/prottrans_closest/drift_summary.csv
 
+## Caclu
+
+> count_contamination_at_it_five.py
+
+Just totaly the amount of out of family sequences at iteration 5 of the psiblast search.
+
 # 4. Alphafold plDDT experiment
 
 
@@ -146,12 +152,3 @@ read the merzio summary and work out, per class, how often the cath class change
 hmm_drift_summary.R
 prottrans_drift_summary.R
 summarise_models.R
-
-## ANALYSIS OF DRIFT QUESTIONS 
-
-1. Analyse *_blast_summary.csv, to find out which families show drift and what kinds of drift
-
-1. How many and What families drift?
-2. What kinds of drift pattern are there?
-3. Do drift families share the same folds or not? If not what happens if we build alphafold models with the MSAs at each iteration (see above)
-4. Do drifting families correlate with "hard" targets for alphafold/dmplfold. i.e. regions of low plDDT or just the poor models in CASP15
