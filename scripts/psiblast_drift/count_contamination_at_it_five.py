@@ -53,5 +53,12 @@ files = [insig, non_drift, query_purified, contam_purified, contam_grew, contam_
 for file in files:
     print(file)
     pfam_set = read_list(summaries_location, file)
+    total = 0
+    total_contam = 0
     for pfam in pfam_set:
-        print(drift_summaries[pfam][1])
+        print(drift_summaries[pfam][5])
+        for hit_pfam in drift_summaries[pfam][5]:
+            total += drift_summaries[pfam][5][hit_pfam]
+            if pfam in hit_pfam:
+                total_contam += drift_summaries[pfam][5][hit_pfam]
+    print(total, total_contam)
