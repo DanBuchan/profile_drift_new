@@ -63,4 +63,4 @@ for file in files:
             total += drift_summaries[pfam][5][hit_pfam]
             if pfam in hit_pfam:
                 total_contam += drift_summaries[pfam][5][hit_pfam]
-    print(total, total_contam)
+    print(f"Percentage con at iteration 5: {total_contam/total}")
