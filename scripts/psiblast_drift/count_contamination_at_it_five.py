@@ -54,4 +54,4 @@ for file in files:
     print(file)
     pfam_set = read_list(summaries_location, file)
     for pfam in pfam_set:
-        print(drift_summaries[pfam][0])
+        print(drift_summaries[pfam][1])
