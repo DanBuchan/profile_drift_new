@@ -51,6 +51,7 @@ files = [insig, non_drift, query_purified, contam_purified, contam_grew, contam_
 
 # find out ratio at iteration 5
 for file in files:
+    print(file)
     pfam_set = read_list(summaries_location, file)
     for pfam in pfam_set:
-        print(pfam)
+        print(drift_summaries[pfam])
