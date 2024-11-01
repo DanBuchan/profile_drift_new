@@ -58,7 +58,7 @@ for file in files:
     for pfam in pfam_set:
         if 5 not in drift_summaries[pfam]:
             continue
-        print(drift_summaries[pfam][5])
+        # print(drift_summaries[pfam][5])
         for hit_pfam in drift_summaries[pfam][5]:
             total += drift_summaries[pfam][5][hit_pfam]
             if pfam in hit_pfam:
