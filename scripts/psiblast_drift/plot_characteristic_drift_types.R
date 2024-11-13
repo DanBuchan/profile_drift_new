@@ -6,7 +6,7 @@ library(gridExtra)
 
 drops <- c("extra")
 
-()
+
 # PF12878
 contaminants_grew <- read.csv("/home/dbuchan/Projects/profile_drift/results_data/drift/pfam_rep_psiblast_iteration_summaries/17447_A0A1Y3DLV4.1_1002-1171_blast_summary.csv")
 colnames(contaminants_grew) <- c("iteration","query_family","hit_family","count","extra")
